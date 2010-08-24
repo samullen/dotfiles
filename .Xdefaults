@@ -1,0 +1,55 @@
+! xrdb -merge $HOME/.Xdefaults
+
+Rxvt*background: black
+Rxvt*foreground: lightgrey
+Rxvt*font: fixed
+Rxvt*internalBorder: 1
+Rxvt*loginShell: True
+Rxvt*scrollBar: True
+Rxvt*saveLines: 1000
+Rxvt*scrollStyle: rxvt
+Rxvt*cutchars:"&()*,.-<=>?@[]{}|\\\/':;#$%^+"
+Rxvt*color0: Black
+Rxvt*color1: Red
+Rxvt*color2: Green
+Rxvt*color3: Yellow
+Rxvt*color4: Blue
+Rxvt*color5: Magenta
+Rxvt*color6: Cyan
+Rxvt*color7: LightGrey
+Rxvt*color8: grey45
+Rxvt*color9: Red
+Rxvt*color10: Green
+Rxvt*color11: Yellow
+Rxvt*color12: Blue
+Rxvt*color13: Magenta
+Rxvt*color14: Cyan
+Rxvt*color15: White
+Rxvt*tripleclickwords: False
+URxvt*background: black
+URxvt*foreground: lightgrey
+URxvt*font: fixed
+URxvt*internalBorder: 1
+URxvt*loginShell: True
+URxvt*scrollBar: True
+URxvt*saveLines: 1000
+URxvt*scrollStyle: rxvt
+URxvt*cutchars:"&()*,.-<=>?@[]{}|\\\/':;#$%^+"
+URxvt*color0: Black
+URxvt*color1: Red
+URxvt*color2: Green
+URxvt*color3: Yellow
+URxvt*color4: Blue
+URxvt*color5: Magenta
+URxvt*color6: Cyan
+URxvt*color7: LightGrey
+URxvt*color8: grey45
+URxvt*color9: Red
+URxvt*color10: Green
+URxvt*color11: Yellow
+URxvt*color12: Blue
+URxvt*color13: Magenta
+URxvt*color14: Cyan
+URxvt*color15: White
+URxvt*tripleclickwords: False
+URxvt*termName: rxvt
