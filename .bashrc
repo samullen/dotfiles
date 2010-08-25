@@ -41,6 +41,27 @@ function ri {
   /usr/bin/ri -f ansi $1 | less -R -I
 }
 
+function downcase {
+  for fullpath in "$@"; do
+    path=$(dirname $fullpath)
+    file=${fullpath##*/}
+
+    smallfile=$(echo $file | tr '[A-Z]' '[a-z]')
+    newfile="$path/$smallfile"
+
+    if [ $file != $smallfile ]; then
+      if [ -e $newfile ]; then
+        echo "Can't downcase '$file', a file matching that name already exists."
+      elif [ -e $fullpath ]; then
+        echo "Renaming $fullpath to $newfile"
+        mv $fullpath $newfile
+      else
+        echo $fullpath "not found or is not a normal file. Skipping..."
+      fi
+    fi
+  done
+}
+
 #----- code for adding git branch to prompt -----#
 function find_git_branch {
   local dir=. head
