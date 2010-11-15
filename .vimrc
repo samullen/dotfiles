@@ -173,3 +173,15 @@ hi MatchParen     ctermfg=black ctermbg=darkgrey
 
 hi perlStatementSub ctermfg=magenta cterm=NONE
 hi perlMatchStartEnd ctermfg=magenta cterm=NONE
+
+"----- simple same-file Tab completion -----"
+function InsertTabWrapper()
+  let col = col('.') - 1
+  if !col || getline('.')[col - 1] !~ '\k'
+    return "\<tab>"     
+  else
+    return "\<c-p>"
+  endif
+endfunction
+inoremap <tab> <c-r>=InsertTabWrapper()<cr>
+
