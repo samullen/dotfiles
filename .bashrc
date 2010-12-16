@@ -25,6 +25,7 @@ alias cpan='sudo perl -MCPAN -eshell'
 alias perldoc='perldoc -n "groff -Tascii"'
 alias spec='/usr/bin/rspec -c -fs'
 alias rspec='/usr/bin/rspec -c -fs'
+alias watch="bundle exec watchr spec/specs.watchr"
 # alias irb='/usr/bin/irb -r rubygems'
 
 # functions

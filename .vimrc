@@ -42,81 +42,7 @@ syntax on
 
 let mapleader = ','
 
-"-------------------------------------------------------------------------------
-" Javascript specific abbrs and mappings
-"-------------------------------------------------------------------------------
-function! s:loadJavascripts()
-  ab pndcom //------------------------------------------------------------------------------
-  ab pndsec //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-  ab pnd //##############################################################################
-  ab brem //-----
-  ab erem -----//
-
-  "----- Mappings -----"
-  map ` 0i//<Esc>j
-  map ~ 02xj
-endfunction
-
-"-------------------------------------------------------------------------------
-" C and CSS specific abbrs and mappings
-"-------------------------------------------------------------------------------
-function! s:loadCSources()
-  ab bpnd /*******************************************************************************
-  ab epnd *******************************************************************************/
-  ab bcom /*------------------------------------------------------------------------------
-  ab ecom ------------------------------------------------------------------------------*/
-  ab cpndcom /*----------------------------------------------------------------------------*/
-  ab bsec /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-  ab esec =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
-  ab cbrem /*----
-  ab cerem ----*/
-endfunction
-
-"-------------------------------------------------------------------------------
-" UNIX Scripting specific abbrs and mappings
-"-------------------------------------------------------------------------------
-function! s:loadUnixScripts()
-  "----- Mappings -----"
-  map ` 0i# <Esc>j
-  map ~ 02xj
-
-  "----- Abreviations -----"
-  ab perl# #!/usr/bin/perl
-  ab ruby# #!/usr/bin/ruby
-  ab python# #!/usr/bin/python
-  ab brem #-----
-  ab erem -----#
-  ab pnd ################################################################################
-  ab pndcom #------------------------------------------------------------------------------#
-  ab pndsec #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
-endfunction
-
-"-------------------------------------------------------------------------------
-" HTML specific abbrs and mappings
-"-------------------------------------------------------------------------------
-function! s:loadHTML()
-  "----- Abreviations -----"
-  ab brem <!-- 
-  ab erem --> 
-  ab pnd <!-- ####################################################################### -->
-  ab pndcom <!-- ----------------------------------------------------------------------  -->
-  ab pndsec <!-- -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- -->
-endfunction
-
-" filetype plugin on
-
-"-------------------------------------------------------------------------------
-" Ruby specific abbrs and mappings
-"-------------------------------------------------------------------------------
-function! s:loadRuby()
-  map <leader>x :!clear; ./%<CR>
-
-  let g:SuperTabDefaultCompletionType = 'context'
-endfunction
-
 "----- default to unix script commenting -----"
-call s:loadUnixScripts()
-
 autocmd VimEnter *.c,*.cpp,*.pc,*.h,*.pl,*.pm,*.plx,*.html,*.htm,*.css,*.java,*.cgi set cindent
 autocmd VimEnter *.txt,*.rdoc set textwidth=80
 autocmd VimEnter *.pc set filetype=c
@@ -124,13 +50,6 @@ autocmd VimEnter *.sql set filetype=plsql
 autocmd VimEnter *.tt,*.tt2 set filetype=html
 autocmd VimEnter *pm,*.pxl,*plx set filetype=perl
 autocmd VimEnter *.css set filetype=css
-
-autocmd FileType javascript call s:loadJavascripts()
-autocmd FileType cpp call s:loadJavascripts()
-autocmd FileType c call s:loadCSources()
-autocmd FileType css call s:loadCSources()
-autocmd FileType html call s:loadHTML()
-autocmd FileType ruby call s:loadRuby()
 
 "improve autocomplete menu color
 highlight Pmenu ctermbg=238 gui=bold
@@ -174,6 +93,10 @@ hi MatchParen     ctermfg=black ctermbg=darkgrey
 hi perlStatementSub ctermfg=magenta cterm=NONE
 hi perlMatchStartEnd ctermfg=magenta cterm=NONE
 
+"###############################################################################
+" Functions
+"###############################################################################
+
 "----- simple same-file Tab completion -----"
 function InsertTabWrapper()
   let col = col('.') - 1
@@ -185,3 +108,83 @@ function InsertTabWrapper()
 endfunction
 inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 
+"-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
+" Functions relating to filetypes
+"-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
+
+"-------------------------------------------------------------------------------
+" UNIX Scripting specific abbrs and mappings
+"-------------------------------------------------------------------------------
+function! s:loadUnixScripts()
+  "----- Mappings -----"
+  map ` 0i# <Esc>j
+  map ~ 02xj
+
+  "----- Abreviations -----"
+  ab perl# #!/usr/bin/perl
+  ab ruby# #!/usr/bin/ruby
+  ab python# #!/usr/bin/python
+  ab brem #-----
+  ab erem -----#
+  ab pnd ################################################################################
+  ab pndcom #------------------------------------------------------------------------------#
+  ab pndsec #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
+endfunction
+call s:loadUnixScripts()
+
+"-------------------------------------------------------------------------------
+" Javascript specific abbrs and mappings
+"-------------------------------------------------------------------------------
+function! s:loadJavascripts()
+  ab pndcom //------------------------------------------------------------------------------
+  ab pndsec //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+  ab pnd //##############################################################################
+  ab brem //-----
+  ab erem -----//
+
+  "----- Mappings -----"
+  map ` 0i//<Esc>j
+  map ~ 02xj
+endfunction
+autocmd FileType cpp call s:loadJavascripts()
+autocmd FileType javascript call s:loadJavascripts()
+
+"-------------------------------------------------------------------------------
+" C and CSS specific abbrs and mappings
+"-------------------------------------------------------------------------------
+function! s:loadCSources()
+  ab bpnd /*******************************************************************************
+  ab epnd *******************************************************************************/
+  ab bcom /*------------------------------------------------------------------------------
+  ab ecom ------------------------------------------------------------------------------*/
+  ab cpndcom /*----------------------------------------------------------------------------*/
+  ab bsec /*-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+  ab esec =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
+  ab cbrem /*----
+  ab cerem ----*/
+endfunction
+autocmd FileType css call s:loadCSources()
+autocmd FileType c call s:loadCSources()
+
+"-------------------------------------------------------------------------------
+" HTML specific abbrs and mappings
+"-------------------------------------------------------------------------------
+function! s:loadHTML()
+  "----- Abreviations -----"
+  ab brem <!-- 
+  ab erem --> 
+  ab pnd <!-- ####################################################################### -->
+  ab pndcom <!-- ----------------------------------------------------------------------  -->
+  ab pndsec <!-- -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- -->
+endfunction
+autocmd FileType html call s:loadHTML()
+
+" filetype plugin on
+
+"-------------------------------------------------------------------------------
+" Ruby specific abbrs and mappings
+"-------------------------------------------------------------------------------
+function! s:loadRuby()
+  map <leader>x :!clear; ./%<CR>
+endfunction
+autocmd FileType ruby call s:loadRuby()
