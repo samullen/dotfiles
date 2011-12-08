@@ -1,55 +1,77 @@
 " set t_kb=^h<BS> alsdfj
 " fiet t_Sb=xdel
 
-set t_Co=16
-set t_AF=[3%dm
-set t_AB=[4%dm
-set t_Sf=[3%dm
-set t_Sb=[4%dm
-set t_fs=
+"set t_Co=16
+set t_Co=256
+" set t_AF=[3%dm
+" set t_AB=[4%dm
+" set t_Sf=[3%dm
+" set t_Sb=[4%dm
+" set t_fs=
+
+"------------------------------------------------------------------------------"
+" General
+"------------------------------------------------------------------------------"
+set history=500 
+
+filetype plugin on
 
 set autoread " automatically read files when they are changed outside of VIM.
-set autowrite " only when editing multiple files
+
+let mapleader = ','
+
+set autowrite " automatically write to file only when editing multiple files
 set backspace=""
+set magic            " for regular expressions
 set complete-=i
-set cpoptions=ces$
-set expandtab
-set filetype=on
-set formatoptions=tq
-set ignorecase
+set nocompatible     " do not make VIM compatible with VI
+set cpoptions=aABceFs$   " compatability options. Must come after nocompatible
+set expandtab        " insert appropriate number of spaces with a tab
+set filetype=on      " Enable file detection
+set ignorecase       " ignore case when searching
+set smartcase        " override ignore case if search patter contains caps
 set noai
 set nobackup
-set nocompatible
-set nohlsearch
-set nolazyredraw
-set noshowmatch
-set notitle
+set nohlsearch   " do not highlight search strings
+set nolazyredraw " don't redraw while executing macros
+set noshowmatch  " Do not bounce to matching bracket
+set title             " Try to output to term titlebar
 set novisualbell
 set ruler
 set rulerformat=%40(%<%f%=[%l:%L,%v]%)
 set shiftwidth=2
 set showcmd " display # of characters/lines/area are visually highlighted
-set smartcase
 set tabstop=2
 set textwidth=0
 set wildignore+=*.class,*.o
 set wildmode=list:longest,list:full " for finding files when opening new frames
 set wrapmargin=0
 set writebackup
-set smarttab
+set smarttab          " inteliigently add spaces to tab stop
+set formatoptions=tcq " autowrap text, comments, and use GQ with commengs.
+set formatoptions-=or " Do not auto insert comment leader 
 
 syntax on
 
-let mapleader = ','
+" Toggles spell
+map <leader>ss :setlocal spell!<cr> 
+
+map <leader>n :tabn<cr>
+map <leader>p :tabp<cr>
+map <leader>o :tabo<cr>
+map <leader>c :tabc<cr>
+map <leader>a :tabnew<cr>:Ack
 
 "----- default to unix script commenting -----"
 autocmd VimEnter *.c,*.cpp,*.pc,*.h,*.pl,*.pm,*.plx,*.html,*.htm,*.css,*.java,*.cgi set cindent
-autocmd VimEnter *.txt,*.rdoc set textwidth=80
+autocmd VimEnter *.txt,*.rdoc,*.markdown set textwidth=80
 autocmd VimEnter *.pc set filetype=c
 autocmd VimEnter *.sql set filetype=plsql
 autocmd VimEnter *.tt,*.tt2 set filetype=html
 autocmd VimEnter *pm,*.pxl,*plx set filetype=perl
 autocmd VimEnter *.css set filetype=css
+autocmd Bufread,BufNewFile *.feature set filetype=gherkin
+autocmd! Syntax gherkin source ~/.vim/syntax/cucumber.vim
 
 "improve autocomplete menu color
 highlight Pmenu ctermbg=238 gui=bold
@@ -59,39 +81,8 @@ map \| .j
 map + <C-w>+
 map - <C-w>-
 
-"###############################################################################
-" Colors
-"###############################################################################
-set background=dark
-
-" Use "help hi" and "help group-name" for more information
-" ------------------------------------------------------------------------------
-hi Boolean        ctermfg=red     cterm=NONE
-hi Comment        ctermfg=white   ctermbg=black cterm=bold
-hi Constant       ctermfg=darkgrey   cterm=NONE
-	hi String      ctermfg=darkgrey   cterm=NONE
-	hi Character   ctermfg=red     cterm=NONE
-	hi number      ctermfg=red     cterm=NONE
-hi Identifier     ctermfg=green cterm=NONE 
-" Statements
-hi Statement      ctermfg=cyan cterm=NONE
-	hi Conditional ctermfg=red
-	hi Repeat      ctermfg=red
-	hi Operator    ctermfg=yellow
-	hi Keyword     ctermfg=cyan
-hi PreProc        ctermfg=magenta cterm=NONE
-hi Type           ctermfg=red
-hi Special        ctermfg=yellow   cterm=NONE
-hi SpecialKey     ctermfg=yellow   cterm=NONE
-hi Statement      ctermfg=cyan cterm=NONE
-hi Cursor         ctermfg=NONE ctermbg=cyan
-hi ErrorMsg       ctermfg=white ctermbg=red 
-hi NonText        ctermbg=black 
-hi Normal         ctermfg=lightgrey ctermbg=Black
-hi MatchParen     ctermfg=black ctermbg=darkgrey
-
-hi perlStatementSub ctermfg=magenta cterm=NONE
-hi perlMatchStartEnd ctermfg=magenta cterm=NONE
+"----- CommandT Specifc settings -----"
+let g:CommandTCancelMap='<Esc>'
 
 "###############################################################################
 " Functions
@@ -122,7 +113,7 @@ function! s:loadUnixScripts()
 
   "----- Abreviations -----"
   ab perl# #!/usr/bin/perl
-  ab ruby# #!/usr/bin/ruby
+  ab ruby# #!/usr/bin/env ruby
   ab python# #!/usr/bin/python
   ab brem #-----
   ab erem -----#
@@ -179,8 +170,6 @@ function! s:loadHTML()
 endfunction
 autocmd FileType html call s:loadHTML()
 
-" filetype plugin on
-
 "-------------------------------------------------------------------------------
 " Ruby specific abbrs and mappings
 "-------------------------------------------------------------------------------
@@ -188,3 +177,6 @@ function! s:loadRuby()
   map <leader>x :!clear; ./%<CR>
 endfunction
 autocmd FileType ruby call s:loadRuby()
+
+"   colorscheme solarized
+colorscheme samullen
