@@ -49,6 +49,7 @@ alias ri='ri -f ansi'
 alias rc='rails c'
 alias rs='rails s'
 alias cuc='bundle exec cucumber'
+alias spec='bundle exec rspec'
 
 # alias irb='irb ~/Dropbox/dotfiles/.irbrc'
 
