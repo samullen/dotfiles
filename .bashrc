@@ -4,7 +4,6 @@
 export FIGNORE=.svn # Ignore subversion directories with filename completion
 export HISTCONTROL=ignoredups
 export EDITOR=vim
-export ACKRC=~/Dropbox/dotfiles/.ackrc
 export PAGER="less -I -R"
 
 # Sets
@@ -24,10 +23,6 @@ export LS_COLORS
 alias ls='ls -F'
 alias cls='clear; ls'
 alias lpr='enscript -C1 -G -M letter --mark-wrapped-lines=plus -T 3 -f fixed8'
-# alias vi='/usr/bin/vim -u ~/Dropbox/dotfiles/.vimrc'
-# alias vim='/usr/bin/vim -u ~/Dropbox/dotfiles/.vimrc'
-alias vi='/usr/local/bin/mvim -u ~/Dropbox/dotfiles/.vimrc -v'
-alias vim='/usr/local/bin/mvim -u ~/Dropbox/dotfiles/.vimrc -v'
 alias cpan='sudo perl -MCPAN -eshell'
 alias perldoc='perldoc -n "groff -Tascii"'
 alias spec='rspec -c -fs'
@@ -36,12 +31,11 @@ alias watch="bundle exec watchr spec/specs.watchr"
 alias grep="grep -n -H --color=auto"
 alias egrep='egrep -n -H --color=auto'
 alias fgrep='fgrep -n -H --color=auto'
-# alias ack="ack-grep"
-# alias grep="ack-grep --column --rc=~/Dropbox/dotfiles/.ackrc"
 alias gemdir='cd `gem env gemdir`'
 
 # Mac aliases
 alias libreoffice='open -a LibreOffice'
+alias preview='open -a Preview'
 
 # Rails aliases
 alias be='bundle exec'
