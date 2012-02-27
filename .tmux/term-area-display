@@ -1,0 +1,3 @@
+splitw -v -l 24 -t 0
+splitw -v -l 24 -t 0
+select-pane -t 2
