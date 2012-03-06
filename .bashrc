@@ -23,6 +23,8 @@ export LS_COLORS
 alias ls='ls -F'
 alias cls='clear; ls'
 alias lpr='enscript -C1 -G -M letter --mark-wrapped-lines=plus -T 3 -f fixed8'
+alias vi='/usr/local/bin/mvim -v'
+alias vim='/usr/local/bin/mvim -v'
 alias cpan='sudo perl -MCPAN -eshell'
 alias perldoc='perldoc -n "groff -Tascii"'
 alias spec='rspec -c -fs'
@@ -131,3 +133,9 @@ PROMPT_COMMAND="git_dirty; find_git_branch; $PROMPT_COMMAND"
 PS1="${magenta}[\A]${reset_color} ${green}\w${reset_color} \$git_branch\n \$ "
 
 [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
+
+function colors {
+  for i in {0..255} ; do
+    printf "\x1b[38;5;${i}mcolour${i}\n"
+  done
+}
