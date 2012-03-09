@@ -1,0 +1,4 @@
+splitw -h -l 80 -t 0
+splitw -h -l 80 -t 0
+splitw -h -l 80 -t 0
+select-pane -t 1
