@@ -1,10 +1,2 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =8
-let g:netrw_dirhist_1='/Users/samullen/databasically/qcal/app/controllers'
-let g:netrw_dirhist_2='/Users/samullen/projects/daily_special/app/views/search'
-let g:netrw_dirhist_3='/Users/samullen/projects/daily_special'
-let g:netrw_dirhist_4='/Users/samullen/.tmux'
-let g:netrw_dirhist_5='/'
-let g:netrw_dirhist_6='/Users/samullen/projects/daily_special/app/assets/stylesheets'
-let g:netrw_dirhist_7='/Users/samullen/.tmux'
-let g:netrw_dirhist_8='/Users/samullen/projects/ar_explain/db/migrate'
+let g:netrw_dirhist_cnt =0

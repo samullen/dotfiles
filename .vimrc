@@ -50,6 +50,7 @@ set writebackup
 set smarttab          " inteliigently add spaces to tab stop
 set formatoptions=tcq " autowrap text, comments, and use GQ with commengs.
 set formatoptions-=or " Do not auto insert comment leader 
+set pastetoggle=<f2>
 
 syntax on
 
