@@ -64,6 +64,7 @@ map <leader>c :tabc<cr>
 map <leader>a :tabnew<cr>:Ack<space>
 map <leader>y :YRShow<cr>
 map <leader>rt :!ctags -R `bundle show rails`/../* *<cr><cr>
+map <leader>t :CtrlP<cr>
 
 "----- default to unix script commenting -----"
 autocmd VimEnter *.c,*.cpp,*.pc,*.h,*.pl,*.pm,*.plx,*.html,*.htm,*.css,*.java,*.cgi set cindent
