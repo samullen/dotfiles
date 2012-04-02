@@ -51,6 +51,7 @@ set smarttab          " inteliigently add spaces to tab stop
 set formatoptions=tcq " autowrap text, comments, and use GQ with commengs.
 set formatoptions-=or " Do not auto insert comment leader 
 set pastetoggle=<f2>
+set clipboard=unnamed
 
 syntax on
 
@@ -65,6 +66,7 @@ map <leader>a :tabnew<cr>:Ack<space>
 map <leader>y :YRShow<cr>
 map <leader>rt :!ctags -R `bundle show rails`/../* *<cr><cr>
 map <leader>t :CtrlP<cr>
+map <leader>b :CtrlPBuffer<cr>
 
 "----- default to unix script commenting -----"
 autocmd VimEnter *.c,*.cpp,*.pc,*.h,*.pl,*.pm,*.plx,*.html,*.htm,*.css,*.java,*.cgi set cindent
@@ -74,6 +76,7 @@ autocmd VimEnter *.sql set filetype=plsql
 autocmd VimEnter *.tt,*.tt2 set filetype=html
 autocmd VimEnter *pm,*.pxl,*plx set filetype=perl
 autocmd VimEnter *.css set filetype=css
+autocmd VimEnter *.thor set filetype=ruby
 autocmd Bufread,BufNewFile *.feature set filetype=gherkin
 autocmd! Syntax gherkin source ~/.vim/syntax/cucumber.vim
 
