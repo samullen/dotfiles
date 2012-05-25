@@ -25,5 +25,5 @@ if [ -f `brew --prefix`/etc/bash_completion ]; then
 fi
 
 #----- Get the aliases and functions
-[[ -f ~/.bashrc.local ]] && . ~/.bashrc.local
 [[ -f ~/.bashrc ]] && . ~/.bashrc
+[[ -f ~/.bashrc.local ]] && . ~/.bashrc.local
