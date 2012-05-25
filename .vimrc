@@ -14,7 +14,7 @@ set t_Co=256
 "------------------------------------------------------------------------------"
 set history=500 
 
-filetype plugin on
+filetype plugin indent on
 
 set autoread " automatically read files when they are changed outside of VIM.
 
@@ -77,6 +77,7 @@ autocmd VimEnter *.tt,*.tt2 set filetype=html
 autocmd VimEnter *pm,*.pxl,*plx set filetype=perl
 autocmd VimEnter *.css set filetype=css
 autocmd VimEnter *.thor set filetype=ruby
+autocmd VimEnter *.m set filetype=objc
 autocmd Bufread,BufNewFile *.feature set filetype=gherkin
 autocmd! Syntax gherkin source ~/.vim/syntax/cucumber.vim
 
@@ -88,8 +89,11 @@ map \| .j
 map + <C-w>+
 map - <C-w>-
 
+command! Rroutes :e config/routes.rb
+command! RTroutes :tabe config/routes.rb
+
 "----- CommandT Specifc settings -----"
-let g:CommandTCancelMap='<Esc>'
+" let g:CommandTCancelMap='<Esc>'
 
 "###############################################################################
 " Functions
