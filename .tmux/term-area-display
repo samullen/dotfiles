@@ -1,3 +1,5 @@
 splitw -v -l 24 -t 0
+splitw -h -t 1
 splitw -v -l 24 -t 0
-select-pane -t 2
+splitw -h -t 3
+select-pane -t 0
