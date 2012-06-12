@@ -7,3 +7,13 @@ db/*.sqlite3
 db/schema.rb
 db/schema.sql
 .vim/.netrwhist
+
+# iOS specific files
+*~.nib
+build/
+*.pbxuser
+*.perspective
+*.perspectivev3
+*.mode1v3
+*.mode2v3
+xcuserdata
