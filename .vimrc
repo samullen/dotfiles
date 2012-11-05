@@ -25,7 +25,7 @@ set backspace=""
 set magic            " for regular expressions
 set complete-=i
 set nocompatible     " do not make VIM compatible with VI
-set cpoptions=aABceFs$   " compatability options. Must come after nocompatible
+set cpoptions=abABceFs$   " compatability options. Must come after nocompatible
 set expandtab        " insert appropriate number of spaces with a tab
 set filetype=on      " Enable file detection
 set ignorecase       " ignore case when searching
@@ -55,6 +55,8 @@ set clipboard=unnamed
 
 syntax on
 
+cnoremap %% <C-R>=expand('%:h')<cr>
+
 " Toggles spell
 map <leader>ss :setlocal spell!<cr> 
 
@@ -68,9 +70,12 @@ map <leader>rt :!ctags -R `bundle show rails`/../* *<cr><cr>
 map <leader>t :CtrlP<cr>
 map <leader>b :CtrlPBuffer<cr>
 
+map <leader>e :edit %%
+map <leader>v :view %%
+
 "----- default to unix script commenting -----"
 autocmd VimEnter *.c,*.cpp,*.pc,*.h,*.pl,*.pm,*.plx,*.html,*.htm,*.css,*.java,*.cgi set cindent
-autocmd VimEnter *.txt,*.rdoc,*.markdown set textwidth=80
+autocmd VimEnter *.txt,*.rdoc,*.markdown,*.md set textwidth=80
 autocmd VimEnter *.pc set filetype=c
 autocmd VimEnter *.sql set filetype=plsql
 autocmd VimEnter *.tt,*.tt2 set filetype=html
@@ -78,6 +83,7 @@ autocmd VimEnter *pm,*.pxl,*plx set filetype=perl
 autocmd VimEnter *.css set filetype=css
 autocmd VimEnter *.thor set filetype=ruby
 autocmd VimEnter *.m set filetype=objc
+autocmd VimEnter *.md set filetype=markdown
 autocmd Bufread,BufNewFile *.feature set filetype=gherkin
 autocmd! Syntax gherkin source ~/.vim/syntax/cucumber.vim
 
@@ -85,15 +91,11 @@ autocmd! Syntax gherkin source ~/.vim/syntax/cucumber.vim
 highlight Pmenu ctermbg=238 gui=bold
 
 "----- Mappings -----"
-map \| .j
 map + <C-w>+
 map - <C-w>-
 
 command! Rroutes :e config/routes.rb
 command! RTroutes :tabe config/routes.rb
-
-"----- CommandT Specifc settings -----"
-" let g:CommandTCancelMap='<Esc>'
 
 "###############################################################################
 " Functions
@@ -189,5 +191,4 @@ function! s:loadRuby()
 endfunction
 autocmd FileType ruby call s:loadRuby()
 
-"   colorscheme solarized
 colorscheme samullen
