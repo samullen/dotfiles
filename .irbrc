@@ -1,21 +1,20 @@
 require 'rubygems'
 
 require 'irb/completion'
-require 'awesome-print'
 
 ARGV.concat [ "--readline", "--prompt-mode", "simple" ]
 
 $LOAD_PATH.push('.')
 
-def load_irbrc(path)
-  return if (path == ENV["HOME"]) || (path == '/')
-
-  load_irbrc(File.dirname path)
-
-  irbrc = File.join(path, ".irbrc")
-
-  load irbrc if File.exists?(irbrc)
-end
+# def load_irbrc(path)
+#   return if (path == ENV["HOME"]) || (path == '/')
+# 
+#   load_irbrc(File.dirname path)
+# 
+#   irbrc = File.join(path, ".irbrc")
+# 
+#   load irbrc if File.exists?(irbrc)
+# end
 
 class Object
   def interesting_methods
@@ -30,11 +29,14 @@ class Array
 end
 class Hash
   def self.test_list
-    h = Hash.new
-    (:a..:z).to_a.each {|x| h[x] = rand(100) }
-    h
+    Array(:a..:z).each_with_object({}) {|x,h| h[x] = rand(100) }
   end
+
+  def slice(*list)
+    self.select {|key| list.flatten.include?(key)}
+  end
+
 end
 
-load_irbrc(Dir.pwd)
+# load_irbrc(Dir.pwd)
 
