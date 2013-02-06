@@ -6,7 +6,7 @@ export HISTCONTROL=ignoredups
 export EDITOR=vim
 export PAGER="less -I -R"
 
-# Sets
+# Settings
 #------------------------------------------------------------------------------#
 set -o vi
 
@@ -28,9 +28,9 @@ alias vi='/usr/local/bin/mvim -v'
 alias vim='/usr/local/bin/mvim -v'
 alias cpan='sudo perl -MCPAN -eshell'
 alias perldoc='perldoc -n "groff -Tascii"'
-alias spec='rspec -c -fs'
+# alias spec='rspec -c -fs'
 alias rspec='rspec -c -fs'
-alias watch="bundle exec watchr spec/specs.watchr"
+# alias watch="bundle exec watchr spec/specs.watchr"
 alias grep="grep -n -H --color=auto"
 alias egrep='egrep -n -H --color=auto'
 alias fgrep='fgrep -n -H --color=auto'
@@ -48,6 +48,11 @@ alias rs='rails s'
 alias cuc='bundle exec cucumber'
 alias spec='bundle exec rspec'
 alias guard='be guard --notify false'
+
+# heroku_aliases
+alias hc="heroku run script/rails console -a"
+alias hl="heroku logs -a"
+alias hlt="heroku logs -t -a"
 
 # tmux aliases
 alias tmuxcp='tmux saveb -|pbcopy && tmux deleteb'
@@ -144,3 +149,11 @@ function colors {
     printf "\x1b[38;5;${i}mcolour${i}\n"
   done
 }
+
+function update_vim {
+  wget -O $HOME/.vim/autoload/rails.vim https://raw.github.com/tpope/vim-rails/master/autoload/rails.vim
+  wget -O $HOME/.vim/doc/rails.txt https://raw.github.com/tpope/vim-rails/master/doc/rails.txt
+  wget -O $HOME/.vim/plugin/rails.vim  https://raw.github.com/tpope/vim-rails/master/plugin/rails.vim
+}
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
