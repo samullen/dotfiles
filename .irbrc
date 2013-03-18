@@ -20,6 +20,11 @@ class Object
   def interesting_methods
     (self.methods - Object.instance_methods).sort
   end
+
+  def unique_methods
+    ancestors = self.class.ancestors - [self.class]
+    (self.methods - ancestors.map(&:instance_methods).flatten).sort
+  end
 end
 
 class Array
