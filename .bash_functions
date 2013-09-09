@@ -10,6 +10,24 @@ function colors {
   done
 }
 
+function worktime {
+  echo "# WORKTIME" | sudo tee -a /etc/hosts > /dev/null
+  while read -r line; do
+    echo "127.0.0.1 ${line}"
+  done < $HOME/.blocked_sites | sudo tee -a /etc/hosts > /dev/null
+}
+
+function slacktime {
+  flag=0
+  while read -r line; do
+    [[ $line =~ "# WORKTIME" ]] && flag=1
+    [[ $flag -eq 1 ]] && continue
+    echo $line
+  done < /etc/hosts > /tmp/hosts
+
+  sudo cp /tmp/hosts /etc/hosts
+}
+
 #----- code for adding git branch to prompt -----#
 black=$'\e[0;30m'
 red=$'\e[0;31m'
