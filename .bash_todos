@@ -1,0 +1,8 @@
+# todo aliases
+alias tdadd='cat >> ~/Dropbox/todos.txt'
+alias tdls='cat ~/Dropbox/todos.txt'
+alias tdedit='vim ~/Dropbox/todos.txt'
+
+function tds {
+  ag -i $1 ~/Dropbox/todos.txt
+}

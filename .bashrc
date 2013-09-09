@@ -22,6 +22,7 @@ export LSCOLORS=gxfxCxDxdxegedabagacad
 
 [[ -f ~/.bash_aliases ]] && . ~/.bash_aliases
 [[ -f ~/.bash_functions ]] && . ~/.bash_functions
+[[ -f ~/.bash_todos ]] && . ~/.bash_todos
 
 # PS1="\[$red\]\$git_branch\[$normal_colours\] \w \$ "
 PS1="${magenta}[\A]${reset_color} ${green}\w${reset_color} \$git_branch\n \$ "
