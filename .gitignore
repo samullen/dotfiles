@@ -5,6 +5,7 @@ db/*.sqlite3
 # db/schema.rb
 # db/schema.sql
 .vim/.netrwhist
+.vim/bundle
 
 # OSX Specific files
 .DS_Store
