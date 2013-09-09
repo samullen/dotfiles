@@ -1,3 +1,7 @@
+if $SHELL =~ 'bin/fish'
+  set shell=/bin/sh
+endif
+
 " set t_kb=^h<BS> alsdfj
 " fiet t_Sb=xdel
 
@@ -20,10 +24,10 @@ filetype off
 set rtp+=~/.vim/bundle/vundle
 call vundle#rc()
 Bundle 'gmarik/vundle'
-Bundle 'Valloric/YouCompleteMe'
-Bundle 'wincent/Command-T'
+" Bundle 'wincent/Command-T'
 Bundle 'tpope/vim-rails'
 Bundle 'vim-scripts/YankRing.vim'
+Bundle 'vim-scripts/ctrlp.vim'
 " End Vundle plugin
 
 filetype plugin indent on
@@ -85,8 +89,14 @@ map <leader>a :tabnew<cr>:Ack<space>
 map <leader>y :YRShow<cr>
 map <leader>rt :!ctags -R `bundle show rails`/../* *<cr><cr>
 
-map <leader>e :edit %%
-map <leader>v :view %%
+map <leader>t :CtrlP<cr>
+map <leader>b :CtrlPBuffer<cr>
+
+" map <leader>e :edit %%
+" map <leader>v :view %%
+
+let g:ruby_path = system('rvm current') " speed up vim start up using RVM
+" let g:ruby_path = system('echo $HOME/.rbenv/shims') " speed up vim start up using RVM
 
 "----- default to unix script commenting -----"
 autocmd VimEnter *.c,*.cpp,*.pc,*.h,*.pl,*.pm,*.plx,*.html,*.htm,*.css,*.java,*.cgi set cindent
@@ -111,21 +121,23 @@ map - <C-w>-
 
 command! Rroutes :e config/routes.rb
 command! RTroutes :tabe config/routes.rb
+command! Rgemfile :e Gemfile
+command! RTgemfile :tabe Gemfile
 
 "###############################################################################
 " Functions
 "###############################################################################
 
 "----- simple same-file Tab completion -----"
-" function InsertTabWrapper()
-"   let col = col('.') - 1
-"   if !col || getline('.')[col - 1] !~ '\k'
-"     return "\<tab>"     
-"   else
-"     return "\<c-p>"
-"   endif
-" endfunction
-" inoremap <tab> <c-r>=InsertTabWrapper()<cr>
+function InsertTabWrapper()
+  let col = col('.') - 1
+  if !col || getline('.')[col - 1] !~ '\k'
+    return "\<tab>"     
+  else
+    return "\<c-p>"
+  endif
+endfunction
+inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 
 "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=#
 " Functions relating to filetypes
