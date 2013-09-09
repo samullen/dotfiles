@@ -2,8 +2,8 @@
 alias ls='ls -F'
 alias cls='clear; ls'
 alias lpr='enscript -C1 -G -M letter --mark-wrapped-lines=plus -T 3 -f fixed8'
-alias vi='/usr/local/bin/mvim -v'
-alias vim='/usr/local/bin/mvim -v'
+alias vi='/usr/local/bin/vim'
+alias vim='/usr/local/bin/vim'
 alias cpan='sudo perl -MCPAN -eshell'
 alias perldoc='perldoc -n "groff -Tascii"'
 # alias spec='rspec -c -fs'
@@ -44,3 +44,4 @@ alias solarpyg='pygmentize -O full,style=solarized'
 alias key_update='ssh-add ~/.ssh/heroku_rsa'
 
 alias sb='echo "################################################################################"'
+
