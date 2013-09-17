@@ -1,4 +1,6 @@
 #----- User specific environment and startup programs
+PATH=/Applications/Postgres.app/Contents/MacOS/bin:$PATH
+PATH=$PATH:$HOME/.rbenv/bin
 PATH=$PATH:$HOME/bin
 PATH=$PATH:/sbin
 PATH=$PATH:/usr/sbin
@@ -27,3 +29,5 @@ fi
 #----- Get the aliases and functions
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 [[ -f ~/.bashrc.local ]] && . ~/.bashrc.local
+
+eval "$(rbenv init -)"
