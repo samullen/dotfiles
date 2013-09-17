@@ -28,6 +28,16 @@ function slacktime {
   sudo cp /tmp/hosts /etc/hosts
 }
 
+function heroku_import {
+  app=$1
+  database=$2
+  dumpfile="/tmp/${database}.dump"
+
+  heroku pgbackups:capture --app $app
+  curl -o $dumpfile `heroku pgbackups:url --app ${app}`
+  pg_restore --verbose --clean --no-acl --no-owner -d $database $dumpfile
+}
+
 #----- code for adding git branch to prompt -----#
 black=$'\e[0;30m'
 red=$'\e[0;31m'
