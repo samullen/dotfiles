@@ -18,6 +18,8 @@ export CLICOLOR=1
 export LSCOLORS=gxfxCxDxdxegedabagacad
 # export LSCOLORS
 
+export CDPATH=$HOME/projects
+
 [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
 
 [[ -f ~/.bash_aliases ]] && . ~/.bash_aliases
