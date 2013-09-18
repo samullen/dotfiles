@@ -1,8 +1,11 @@
-# todo aliases
-alias tdadd='cat >> ~/Dropbox/todos.txt'
-alias tdls='cat ~/Dropbox/todos.txt'
-alias tdedit='vim ~/Dropbox/todos.txt'
+function td {
+  command=$1
 
-function tds {
-  ag -i $1 ~/Dropbox/todos.txt
+  case $command in
+    add    ) cat >> ~/Dropbox/todos.txt;;
+    ls     ) cat ~/Dropbox/todos.txt;;
+    edit   ) vim ~/Dropbox/todos.txt;;
+    search ) ag -i $2 ~/Dropbox/todos.txt;;
+    *      ) echo -n "Unknown command";;
+  esac
 }
