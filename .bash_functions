@@ -35,7 +35,7 @@ function heroku_import {
 
   heroku pgbackups:capture --app $app
   curl -o $dumpfile `heroku pgbackups:url --app ${app}`
-  pg_restore --verbose --clean --no-acl --no-owner -d $database $dumpfile
+  pg_restore --verbose --clean --no-acl --no-owner --jobs 4 -d $database $dumpfile
 }
 
 #----- code for adding git branch to prompt -----#
