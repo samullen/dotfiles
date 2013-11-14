@@ -20,13 +20,9 @@ export LSCOLORS=gxfxCxDxdxegedabagacad
 
 export CDPATH=$HOME/projects
 
-[[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
-
 [[ -f ~/.bash_aliases ]] && . ~/.bash_aliases
 [[ -f ~/.bash_functions ]] && . ~/.bash_functions
 [[ -f ~/.bash_todos ]] && . ~/.bash_todos
 
 # PS1="\[$red\]\$git_branch\[$normal_colours\] \w \$ "
 PS1="${magenta}[\A]${reset_color} ${green}\w${reset_color} \$git_branch\n \$ "
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
