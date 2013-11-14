@@ -82,8 +82,7 @@ map <leader>b :CtrlPBuffer<cr>
 " map <leader>e :edit %%
 " map <leader>v :view %%
 
-let g:ruby_path = system('rvm current') " speed up vim start up using RVM
-" let g:ruby_path = system('echo $HOME/.rbenv/shims') " speed up vim start up using RVM
+let g:ruby_path = system('echo $HOME/.rbenv/shims') " speed up vim start up using RVM
 
 "----- default to unix script commenting -----"
 autocmd VimEnter *.c,*.cpp,*.pc,*.h,*.pl,*.pm,*.plx,*.html,*.htm,*.css,*.java,*.cgi set cindent
