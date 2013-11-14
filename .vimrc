@@ -1,17 +1,4 @@
-if $SHELL =~ 'bin/fish'
-  set shell=/bin/sh
-endif
-
-" set t_kb=^h<BS> alsdfj
-" fiet t_Sb=xdel
-
-"set t_Co=16
-set t_Co=256
-" set t_AF=[3%dm
-" set t_AB=[4%dm
-" set t_Sf=[3%dm
-" set t_Sb=[4%dm
-" set t_fs=
+filetype plugin indent on
 
 "------------------------------------------------------------------------------"
 " General
