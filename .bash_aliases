@@ -13,6 +13,7 @@ alias grep="grep -n -H --color=auto"
 alias egrep='egrep -n -H --color=auto'
 alias fgrep='fgrep -n -H --color=auto'
 alias gemdir='cd `gem env gemdir`'
+alias resource=". ~/.bash_profile"
 
 # Mac aliases
 alias libreoffice='open -a LibreOffice'
@@ -26,6 +27,20 @@ alias rs='rails s'
 alias cuc='bundle exec cucumber'
 alias spec='bundle exec rspec'
 alias guard='be guard --notify false'
+
+# Git aliases
+alias ga="git add"
+alias gb="git branch"
+alias gc="git commit"
+alias gcm="git commit -m"
+alias gco="git checkout"
+alias gcob="git checkout -b"
+alias gd="git diff"
+alias gf="git fetch"
+alias gm="git merge"
+alias gmx="git merge --no-ff --log"
+alias gp="git push"
+alias gs="git status"
 
 # heroku_aliases
 alias hc="heroku run script/rails console"
@@ -45,3 +60,6 @@ alias key_update='ssh-add ~/.ssh/heroku_rsa'
 
 alias sb='echo "################################################################################"'
 
+# Utility aliases
+alias tfd="tail -f log/development.log"
+alias tft="tail -f log/test.log"
