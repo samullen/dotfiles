@@ -23,14 +23,14 @@ set nocompatible     " do not make VIM compatible with VI
 filetype off
 set rtp+=~/.vim/bundle/vundle
 call vundle#rc()
-Bundle 'gmarik/vundle'
-" Bundle 'wincent/Command-T'
-Bundle 'tpope/vim-rails'
-Bundle 'vim-scripts/YankRing.vim'
-Bundle 'vim-scripts/ctrlp.vim'
+Bundle "gmarik/vundle"
+Bundle "tpope/vim-rails"
+Bundle "nelstrom/vim-textobj-rubyblock"
+Bundle "kana/vim-textobj-user"
+Bundle "vim-scripts/YankRing.vim"
+Bundle "vim-scripts/ctrlp.vim"
+Bundle "vim-scripts/matchit.zip"
 " End Vundle plugin
-
-filetype plugin indent on
 
 set autoread " automatically read files when they are changed outside of VIM.
 
