@@ -98,7 +98,14 @@ autocmd VimEnter *.md set filetype=markdown
 autocmd Bufread,BufNewFile *.feature set filetype=gherkin
 autocmd! Syntax gherkin source ~/.vim/syntax/cucumber.vim
 
-"improve autocomplete menu color
+" Comment out blocks of code
+autocmd FileType c,cpp,javascript let b:comment_leader = '// '
+autocmd FileType sh,ruby,python   let b:comment_leader = '# '
+autocmd FileType vim              let b:comment_leader = '" '
+noremap <silent> ,cc :<C-B>silent <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:nohlsearch<CR>
+noremap <silent> ,cu :<C-B>silent <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:nohlsearch<CR>
+
+" improve autocomplete menu color
 highlight Pmenu ctermbg=238 gui=bold
 
 "----- Mappings -----"
