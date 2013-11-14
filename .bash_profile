@@ -1,5 +1,6 @@
 #----- User specific environment and startup programs
 PATH=/Applications/Postgres.app/Contents/MacOS/bin:$PATH
+PATH=$HOME/.rbenv/bin:$PATH
 PATH=$PATH:$HOME/.rbenv/bin
 PATH=$PATH:$HOME/bin
 PATH=$PATH:/sbin
