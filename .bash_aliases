@@ -4,6 +4,7 @@ alias cls='clear; ls'
 alias lpr='enscript -C1 -G -M letter --mark-wrapped-lines=plus -T 3 -f fixed8'
 alias vi='/usr/local/bin/vim'
 alias vim='/usr/local/bin/vim'
+alias psql="/Applications/Postgres.app/Contents/MacOS/bin/psql"
 alias cpan='sudo perl -MCPAN -eshell'
 alias perldoc='perldoc -n "groff -Tascii"'
 # alias spec='rspec -c -fs'
@@ -27,6 +28,8 @@ alias rs='rails s'
 alias cuc='bundle exec cucumber'
 alias spec='bundle exec rspec'
 alias guard='be guard --notify false'
+
+alias powr="touch tmp/restart.txt"
 
 # Git aliases
 alias ga="git add"

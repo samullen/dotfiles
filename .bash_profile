@@ -1,12 +1,14 @@
+# Keep the path clean
+pathadd() {
+  if [[ ":$PATH:" != *":$1:"* ]]; then
+    PATH="${PATH:+"$PATH:"}$1"
+  fi
+}
+
 #----- User specific environment and startup programs
-PATH=/Applications/Postgres.app/Contents/MacOS/bin:$PATH
-PATH=$HOME/.rbenv/bin:$PATH
-PATH=$PATH:$HOME/.rbenv/bin
-PATH=$PATH:$HOME/bin
-PATH=$PATH:/sbin
-PATH=$PATH:/usr/sbin
-PATH=$PATH:$HOME
-PATH=$PATH:.
+pathadd "${HOME}/.rbenv/bin"
+pathadd "${HOME}/bin"
+pathadd $HOME
 export PATH
 
 export PS1='\h \w \$ '
