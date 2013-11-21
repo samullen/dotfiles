@@ -68,7 +68,7 @@ map <leader>ss :setlocal spell!<cr>
 map <leader>n :tabn<cr>
 map <leader>h :tabp<cr>
 map <leader>o :tabo<cr>
-map <leader>c :tabc<cr>
+map <leader>x :tabc<cr>
 
 let g:ackprg = 'ag --nogroup --nocolor --column' " use Ag instead of Ack
 map <leader>a :tabnew<cr>:Ack<space>
