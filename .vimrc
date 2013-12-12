@@ -57,30 +57,48 @@ set clipboard=unnamed
 
 syntax on
 
-cnoremap %% <C-R>=expand('%:h')<cr>
+" map ctrl-p|n to go up and down in command-mode history
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
+
+" remap ctrl-a to ctrl-z for incrementing
+nnoremap <C-z> <C-a>
+
+" split window to edit .vimrc
+nnoremap <leader>ev :split $MYVIMRC<cr>
+
+" reload .vimrc
+nnoremap <leader>sv :source $MYVIMRC<cr>
 
 " shift-tab to create a tab character
 inoremap <S-Tab> <C-V><Tab>
 
 " Toggles spell
-map <leader>ss :setlocal spell!<cr> 
+nnoremap <leader>ss :setlocal spell!<cr> 
 
-map <leader>n :tabn<cr>
-map <leader>h :tabp<cr>
-map <leader>o :tabo<cr>
-map <leader>x :tabc<cr>
+" Create tabs for all files in buffer
+nnoremap <leader>bt :argdo tabnew<cr>
+nnoremap <leader>n :tabn<cr>
+nnoremap <leader>h :tabp<cr>
+nnoremap <leader>o :tabo<cr>
+nnoremap <leader>x :tabc<cr>
+nnoremap <leader>r :!ruby %<cr>
 
 let g:ackprg = 'ag --nogroup --nocolor --column' " use Ag instead of Ack
-map <leader>a :tabnew<cr>:Ack<space>
+nnoremap <leader>a :tabnew<cr>:Ack<space>
 
-map <leader>y :YRShow<cr>
-map <leader>rt :!ctags -R `bundle show rails`/../* *<cr><cr>
+nnoremap <leader>y :YRShow<cr>
+nnoremap <leader>rt :!ctags -R `bundle show rails`/../* *<cr><cr>
 
-map <leader>t :CtrlP<cr>
-map <leader>b :CtrlPBuffer<cr>
+nnoremap <leader>t :CtrlP<cr>
+nnoremap <leader>b :CtrlPBuffer<cr>
 
-" map <leader>e :edit %%
-" map <leader>v :view %%
+" Wrap visual blocks in specified characters
+vnoremap <leader>" <esc>`>a"<esc>`<i"<esc>
+vnoremap <leader>' <esc>`>a"<esc>`<i'<esc>
+vnoremap <leader>( <esc>`>a)<esc>`<i(<esc>
+vnoremap <leader>[ <esc>`>a]<esc>`<i[<esc>
+vnoremap <leader>{ <esc>`>a}<esc>`<i{<esc>
 
 let g:ruby_path = system('echo $HOME/.rbenv/shims') " speed up vim start up using RVM
 
@@ -109,8 +127,8 @@ noremap <silent> ,cu :<C-B>silent <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<
 highlight Pmenu ctermbg=238 gui=bold
 
 "----- Mappings -----"
-map + <C-w>+
-map - <C-w>-
+nnoremap + <C-w>+
+nnoremap - <C-w>-
 
 command! Rroutes :e config/routes.rb
 command! RTroutes :tabe config/routes.rb
