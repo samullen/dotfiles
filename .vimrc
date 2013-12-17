@@ -79,6 +79,7 @@ nnoremap <leader>ss :setlocal spell!<cr>
 
 " Create tabs for all files in buffer
 nnoremap <leader>bt :argdo tabnew<cr>
+
 nnoremap <leader>n :tabn<cr>
 nnoremap <leader>h :tabp<cr>
 nnoremap <leader>o :tabo<cr>
@@ -104,17 +105,17 @@ vnoremap <leader>{ <esc>`>a}<esc>`<i{<esc>
 let g:ruby_path = system('echo $HOME/.rbenv/shims') " speed up vim start up using RVM
 
 "----- default to unix script commenting -----"
-autocmd VimEnter *.c,*.cpp,*.pc,*.h,*.pl,*.pm,*.plx,*.html,*.htm,*.css,*.java,*.cgi set cindent
-autocmd VimEnter *.txt,*.rdoc,*.markdown,*.md set textwidth=80
-autocmd VimEnter *.pc set filetype=c
-autocmd VimEnter *.sql set filetype=plsql
-autocmd VimEnter *.tt,*.tt2 set filetype=html
-autocmd VimEnter *pm,*.pxl,*plx set filetype=perl
-autocmd VimEnter *.css set filetype=css
-autocmd VimEnter *.thor set filetype=ruby
-autocmd VimEnter *.m set filetype=objc
-autocmd VimEnter *.md set filetype=markdown
-autocmd Bufread,BufNewFile *.feature set filetype=gherkin
+autocmd BufRead,BufNewFile *.c,*.cpp,*.pc,*.h,*.pl,*.pm,*.plx,*.html,*.htm,*.css,*.java,*.cgi set cindent
+autocmd BufRead,BufNewFile *.txt,*.rdoc,*.markdown,*.md set textwidth=80
+autocmd BufRead,BufNewFile *.pc set filetype=c
+autocmd BufRead,BufNewFile *.sql set filetype=plsql
+autocmd BufRead,BufNewFile *.tt,*.tt2 set filetype=html
+autocmd BufRead,BufNewFile *pm,*.pxl,*plx set filetype=perl
+autocmd BufRead,BufNewFile *.css set filetype=css
+autocmd BufRead,BufNewFile *.thor set filetype=ruby
+autocmd BufRead,BufNewFile *.m set filetype=objc
+autocmd BufRead,BufNewFile *.md set filetype=markdown
+autocmd BufRead,BufNewFile *.feature set filetype=gherkin
 autocmd! Syntax gherkin source ~/.vim/syntax/cucumber.vim
 
 " Comment out blocks of code
