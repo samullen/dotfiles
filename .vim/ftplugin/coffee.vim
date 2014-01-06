@@ -18,7 +18,7 @@ if !exists("s:coffee_compile_prev_buf")
   let s:coffee_compile_buf = -1
 endif
 
-setlocal formatoptions-=t formatoptions+=croql
+"setlocal formatoptions-=t formatoptions+=croql
 setlocal comments=:#
 setlocal commentstring=#\ %s
 
