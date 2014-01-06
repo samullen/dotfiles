@@ -50,8 +50,8 @@ set wildmode=list:longest,list:full " for finding files when opening new frames
 set wrapmargin=0
 set writebackup
 set smarttab          " inteliigently add spaces to tab stop
-set formatoptions=tcq " autowrap text, comments, and use GQ with commengs.
-set formatoptions-=or " Do not auto insert comment leader 
+set formatoptions=tcq " autowrap text, comments, and use GQ with comments.
+set formatoptions-=o  " Do not auto insert comment leader 
 set pastetoggle=<f2>
 set clipboard=unnamed
 
@@ -61,7 +61,8 @@ syntax on
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
 
-nnoremap <leader>kj <esc>
+inoremap kj <esc>
+
 " remap ctrl-a to ctrl-z for incrementing
 nnoremap <C-z> <C-a>
 
@@ -101,27 +102,37 @@ vnoremap <leader>' <esc>`>a"<esc>`<i'<esc>
 vnoremap <leader>( <esc>`>a)<esc>`<i(<esc>
 vnoremap <leader>[ <esc>`>a]<esc>`<i[<esc>
 vnoremap <leader>{ <esc>`>a}<esc>`<i{<esc>
+vnoremap <leader>% <esc>`>a %><esc>`<i<% <esc>
+vnoremap <leader>%= <esc>`>a %><esc>`<i<%= <esc>
 
 let g:ruby_path = system('echo $HOME/.rbenv/shims') " speed up vim start up using RVM
 
 "----- default to unix script commenting -----"
-autocmd BufRead,BufNewFile *.c,*.cpp,*.pc,*.h,*.pl,*.pm,*.plx,*.html,*.htm,*.css,*.java,*.cgi set cindent
-autocmd BufRead,BufNewFile *.txt,*.rdoc,*.markdown,*.md set textwidth=80
-autocmd BufRead,BufNewFile *.pc set filetype=c
-autocmd BufRead,BufNewFile *.sql set filetype=plsql
-autocmd BufRead,BufNewFile *.tt,*.tt2 set filetype=html
-autocmd BufRead,BufNewFile *pm,*.pxl,*plx set filetype=perl
-autocmd BufRead,BufNewFile *.css set filetype=css
-autocmd BufRead,BufNewFile *.thor set filetype=ruby
-autocmd BufRead,BufNewFile *.m set filetype=objc
-autocmd BufRead,BufNewFile *.md set filetype=markdown
-autocmd BufRead,BufNewFile *.feature set filetype=gherkin
-autocmd! Syntax gherkin source ~/.vim/syntax/cucumber.vim
+augroup onload
+  autocmd!
+  autocmd BufRead,BufNewFile *.c,*.cpp,*.pc,*.h,*.pl,*.pm,*.plx,*.html,*.htm,*.css,*.java,*.cgi set cindent
+  autocmd BufRead,BufNewFile *.txt,*.rdoc,*.markdown,*.md set textwidth=80
+  autocmd BufRead,BufNewFile *.pc set filetype=c
+  autocmd BufRead,BufNewFile *.sql set filetype=plsql
+  autocmd BufRead,BufNewFile *.tt,*.tt2 set filetype=html
+  autocmd BufRead,BufNewFile *pm,*.pxl,*plx set filetype=perl
+  autocmd BufRead,BufNewFile *.css set filetype=css
+  autocmd BufRead,BufNewFile *.thor set filetype=ruby
+  autocmd BufRead,BufNewFile *.m set filetype=objc
+  autocmd BufRead,BufNewFile *.md,*.markdown set filetype=markdown
+  autocmd BufRead,BufNewFile *.feature set filetype=gherkin
+  autocmd BufRead,BufNewFile * setlocal formatoptions+=tcqr
+  autocmd BufRead,BufNewFile * setlocal formatoptions-=o
+augroup END
 
-" Comment out blocks of code
-autocmd FileType c,cpp,javascript let b:comment_leader = '// '
-autocmd FileType sh,ruby,python   let b:comment_leader = '# '
-autocmd FileType vim              let b:comment_leader = '" '
+augroup filetypes
+  autocmd!
+  " Comment out blocks of code
+  autocmd FileType c,cpp,javascript let b:comment_leader = '// '
+  autocmd FileType sh,ruby,python   let b:comment_leader = '# '
+  autocmd FileType vim              let b:comment_leader = '" '
+augroup END
+
 noremap <silent> ,cc :<C-B>silent <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:nohlsearch<CR>
 noremap <silent> ,cu :<C-B>silent <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:nohlsearch<CR>
 
