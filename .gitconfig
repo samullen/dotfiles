@@ -28,12 +28,13 @@
   untracked = cyan
 [alias]
 # 	lol = log --graph --decorate --pretty=format:'%h %ci (%an) %s%d' 
-lol = log --graph --date=local --pretty=format:'%C(yellow)%h%Creset %cd %C(yellow)(%Creset%C(green)%an%Creset%C(yellow))%Creset %s%C(cyan)%d%Creset'
+  lol = log --graph --date=local --pretty=format:'%C(yellow)%h%Creset %cd %C(yellow)(%Creset%C(green)%an%Creset%C(yellow))%Creset %s%C(cyan)%d%Creset'
   type = cat-file -t
   dump = cat-file -p
   what = whatchanged --oneline
 	d = difftool
   s = status -sb
+	ctags = !~/.git_template/hooks/ctags
 [diff]
 	tool = vimdiff
 [difftool]
@@ -44,3 +45,5 @@ lol = log --graph --date=local --pretty=format:'%C(yellow)%h%Creset %cd %C(yello
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
+[init]
+	templatedir = ~/.git_template
