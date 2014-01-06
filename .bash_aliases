@@ -25,6 +25,8 @@ alias be='bundle exec'
 alias ri='ri -f ansi'
 alias rc='rails c'
 alias rs='rails s'
+alias rdbm='bundle exec rake db:migrate'
+alias rdbmt='bundle exec rake db:migrate db:test:prepare'
 alias cuc='bundle exec cucumber'
 alias spec='bundle exec rspec'
 alias guard='be guard --notify false'
@@ -40,10 +42,11 @@ alias gco="git checkout"
 alias gcob="git checkout -b"
 alias gd="git diff"
 alias gf="git fetch"
+alias gl="git lol"
 alias gm="git merge"
 alias gmx="git merge --no-ff --log"
 alias gp="git push"
-alias gs="git status"
+alias gs="git status -sb"
 
 # heroku_aliases
 alias hc="heroku run script/rails console"
