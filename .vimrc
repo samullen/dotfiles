@@ -8,15 +8,20 @@ set history=500
 " Begin Vundle plugin
 set nocompatible     " do not make VIM compatible with VI
 filetype off
-set rtp+=~/.vim/bundle/vundle
-call vundle#rc()
-Bundle "gmarik/vundle"
-Bundle "tpope/vim-rails"
-Bundle "nelstrom/vim-textobj-rubyblock"
-Bundle "kana/vim-textobj-user"
-Bundle "vim-scripts/YankRing.vim"
-Bundle "vim-scripts/ctrlp.vim"
-Bundle "vim-scripts/matchit.zip"
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'gmarik/Vundle.vim'
+Plugin 'nelstrom/vim-textobj-rubyblock'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-commentary'
+Plugin 'kana/vim-textobj-user'
+Plugin 'vim-scripts/YankRing.vim'
+Plugin 'vim-scripts/ctrlp.vim'
+Plugin 'vim-scripts/matchit.zip'
+Plugin 'rking/ag.vim'
+call vundle#end()
+filetype plugin indent on " required
+
 " End Vundle plugin
 
 set autoread " automatically read files when they are changed outside of VIM.
@@ -55,6 +60,8 @@ set formatoptions-=o  " Do not auto insert comment leader
 set pastetoggle=<f2>
 set clipboard=unnamed
 
+set grepprg=/usr/local/bin/ag\ --nogroup
+
 syntax on
 
 " map ctrl-p|n to go up and down in command-mode history
@@ -87,8 +94,8 @@ nnoremap <leader>o :tabo<cr>
 nnoremap <leader>x :tabc<cr>
 nnoremap <leader>r :!ruby %<cr>
 
-let g:ackprg = 'ag --nogroup --nocolor --column' " use Ag instead of Ack
-nnoremap <leader>a :tabnew<cr>:Ack<space>
+" let g:ackprg = 'ag --nogroup' " use Ag instead of Ack
+nnoremap <leader>a :tabnew<cr>:Ag<space>
 
 nnoremap <leader>y :YRShow<cr>
 nnoremap <leader>rt :!ctags -R `bundle show rails`/../* *<cr><cr>
@@ -117,7 +124,7 @@ augroup onload
   autocmd BufRead,BufNewFile *.tt,*.tt2 set filetype=html
   autocmd BufRead,BufNewFile *pm,*.pxl,*plx set filetype=perl
   autocmd BufRead,BufNewFile *.css set filetype=css
-  autocmd BufRead,BufNewFile *.thor set filetype=ruby
+"  autocmd BufRead,BufNewFile *.thor set filetype=ruby
   autocmd BufRead,BufNewFile *.m set filetype=objc
   autocmd BufRead,BufNewFile *.md,*.markdown set filetype=markdown
   autocmd BufRead,BufNewFile *.feature set filetype=gherkin
@@ -129,12 +136,12 @@ augroup filetypes
   autocmd!
   " Comment out blocks of code
   autocmd FileType c,cpp,javascript let b:comment_leader = '// '
-  autocmd FileType sh,ruby,python   let b:comment_leader = '# '
+"  autocmd FileType sh,ruby,python   let b:comment_leader = '# '
   autocmd FileType vim              let b:comment_leader = '" '
 augroup END
 
-noremap <silent> ,cc :<C-B>silent <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:nohlsearch<CR>
-noremap <silent> ,cu :<C-B>silent <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:nohlsearch<CR>
+"noremap <silent> ,cc :<C-B>silent <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:nohlsearch<CR>
+"noremap <silent> ,cu :<C-B>silent <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:nohlsearch<CR>
 
 " improve autocomplete menu color
 highlight Pmenu ctermbg=238 gui=bold
