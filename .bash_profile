@@ -8,6 +8,7 @@ pathadd() {
 #----- User specific environment and startup programs
 pathadd "${HOME}/.rbenv/bin"
 pathadd "${HOME}/bin"
+pathadd "/Applications/Postgres.app/Contents/MacOS/bin"
 pathadd $HOME
 export PATH
 
