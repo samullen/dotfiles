@@ -10,6 +10,10 @@ function colors {
   done
 }
 
+function ta {
+  tmux attach -t $1 || cd $1 && tmux new -s $1
+}
+
 function worktime {
   echo "# WORKTIME" | sudo tee -a /etc/hosts > /dev/null
   while read -r line; do
