@@ -1,6 +1,6 @@
 [user]
 	name = Samuel Mullen
-	email = samullen@gmail.com
+	email = samuel@samuelmullen.com
 [core]
 	editor = vim
 	excludesfile = /Users/samullen/.gitignore
@@ -35,6 +35,7 @@
 	d = difftool
   s = status -sb
 	ctags = !~/.git_template/hooks/ctags
+	g = grep --break --heading --line-number
 [diff]
 	tool = vimdiff
 [difftool]
@@ -47,3 +48,6 @@
 	trustExitCode = true
 [init]
 	templatedir = ~/.git_template
+[grep]
+	extendRegexp = true
+	lineNumber = true
