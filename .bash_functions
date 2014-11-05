@@ -11,7 +11,34 @@ function colors {
 }
 
 function ta {
-  tmux attach -t $1 || cd $1 && tmux new -s $1
+  name=$1
+
+  if [ ! $(tmux attach -t $name) ]; then
+    basepath="${HOME}/projects/${name}"
+
+    if [ -e $basepath ] && [ -d $basepath ]; then
+      echo "Changing directories to ${basepath}"
+      cd $basepath
+    fi
+
+    tmux new -s $name
+  fi
+}
+
+function spec {
+  if [ -s "bin/rspec" ]; then
+    bin/rspec $1
+  else
+    echo "Install the rspec binstub with the spring-commands-rspec gem"
+  fi
+}
+
+function rake {
+  if [ -s "bin/rake" ]; then
+    bin/rake $1
+  else
+    /usr/bin/env rake
+  fi
 }
 
 function worktime {
