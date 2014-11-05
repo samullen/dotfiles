@@ -18,6 +18,7 @@ Plugin 'kana/vim-textobj-user'
 Plugin 'vim-scripts/YankRing.vim'
 Plugin 'vim-scripts/ctrlp.vim'
 Plugin 'vim-scripts/matchit.zip'
+Plugin 'Keithbsmiley/swift.vim'
 Plugin 'rking/ag.vim'
 call vundle#end()
 filetype plugin indent on " required
@@ -124,7 +125,7 @@ augroup onload
   autocmd BufRead,BufNewFile *.tt,*.tt2 set filetype=html
   autocmd BufRead,BufNewFile *pm,*.pxl,*plx set filetype=perl
   autocmd BufRead,BufNewFile *.css set filetype=css
-"  autocmd BufRead,BufNewFile *.thor set filetype=ruby
+  autocmd BufRead,BufNewFile *.thor set filetype=ruby
   autocmd BufRead,BufNewFile *.m set filetype=objc
   autocmd BufRead,BufNewFile *.md,*.markdown set filetype=markdown
   autocmd BufRead,BufNewFile *.feature set filetype=gherkin
