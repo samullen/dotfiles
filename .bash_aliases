@@ -4,12 +4,9 @@ alias cls='clear; ls'
 alias lpr='enscript -C1 -G -M letter --mark-wrapped-lines=plus -T 3 -f fixed8'
 alias vi='/usr/local/bin/vim'
 alias vim='/usr/local/bin/vim'
-alias psql="/Applications/Postgres.app/Contents/MacOS/bin/psql"
+# alias psql="/Applications/Postgres.app/Contents/MacOS/bin/psql"
 alias cpan='sudo perl -MCPAN -eshell'
 alias perldoc='perldoc -n "groff -Tascii"'
-# alias spec='rspec -c -fs'
-alias rspec='rspec -c -fs'
-# alias watch="bundle exec watchr spec/specs.watchr"
 alias grep="grep -n -H --color=auto"
 alias egrep='egrep -n -H --color=auto'
 alias fgrep='fgrep -n -H --color=auto'
@@ -25,10 +22,10 @@ alias be='bundle exec'
 alias ri='ri -f ansi'
 alias rc='rails c'
 alias rs='rails s'
-alias rdbm='bundle exec rake db:migrate'
-alias rdbmt='bundle exec rake db:migrate db:test:prepare'
+alias rg='rails g'
+alias rdbm='rake db:migrate'
+alias rdbmt='rake db:migrate db:test:prepare'
 alias cuc='bundle exec cucumber'
-alias spec='bundle exec rspec'
 alias guard='be guard --notify false'
 
 alias powr="touch tmp/restart.txt"
