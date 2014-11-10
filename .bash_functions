@@ -59,6 +59,10 @@ function slacktime {
   sudo cp /tmp/hosts /etc/hosts
 }
 
+function q {
+  echo $@ >> "${HOME}/Dropbox/Apps/Notational Data/queue.txt"
+}
+
 function heroku_import {
   app=$1
   database=$2
