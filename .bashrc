@@ -18,7 +18,7 @@ export CLICOLOR=1
 export LSCOLORS=gxfxCxDxdxegedabagacad
 # export LSCOLORS
 
-export CDPATH=$HOME/projects
+export CDPATH=.:$HOME/projects
 
 [[ -f ~/.bash_aliases ]] && . ~/.bash_aliases
 [[ -f ~/.bash_functions ]] && . ~/.bash_functions
