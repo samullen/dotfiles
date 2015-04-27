@@ -46,7 +46,8 @@ alias gp="git push"
 alias gs="git status -sb"
 
 # heroku_aliases
-alias hc="heroku run script/rails console"
+alias hc="heroku run rails c"
+alias hpg="heroku pg:psql"
 alias hl="heroku logs"
 alias hlt="heroku logs -t"
 
