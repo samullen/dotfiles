@@ -8,6 +8,8 @@ db/*.sqlite3
 .vim/bundle
 tags
 tags.*
+.muttrc
+.mutt
 
 # OSX Specific files
 .DS_Store
