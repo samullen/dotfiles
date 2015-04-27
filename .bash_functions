@@ -42,17 +42,14 @@ function rake {
 }
 
 function worktime {
-  echo "# WORKTIME" | sudo tee -a /etc/hosts > /dev/null
   while read -r line; do
-    echo "127.0.0.1 ${line}"
+    echo "127.0.0.1 ${line} # WORKTIME"
   done < $HOME/.blocked_sites | sudo tee -a /etc/hosts > /dev/null
 }
 
 function slacktime {
-  flag=0
   while read -r line; do
-    [[ $line =~ "# WORKTIME" ]] && flag=1
-    [[ $flag -eq 1 ]] && continue
+    [[ $line =~ "# WORKTIME" ]] && continue
     echo $line
   done < /etc/hosts > /tmp/hosts
 
