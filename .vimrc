@@ -69,7 +69,7 @@ syntax on
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
 
-inoremap kj <esc>
+inoremap ;l <esc>
 
 " remap ctrl-a to ctrl-z for incrementing
 nnoremap <C-z> <C-a>
