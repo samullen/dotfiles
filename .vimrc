@@ -19,6 +19,7 @@ Plugin 'vim-scripts/YankRing.vim'
 Plugin 'vim-scripts/ctrlp.vim'
 Plugin 'vim-scripts/matchit.zip'
 Plugin 'Keithbsmiley/swift.vim'
+Plugin 'reedes/vim-wordy'
 Plugin 'rking/ag.vim'
 call vundle#end()
 filetype plugin indent on " required
@@ -114,6 +115,10 @@ vnoremap <leader>% <esc>`>a %><esc>`<i<% <esc>
 vnoremap <leader>%= <esc>`>a %><esc>`<i<%= <esc>
 
 let g:ruby_path = system('echo $HOME/.rbenv/shims') " speed up vim start up using RVM
+
+" Using NoWordy
+if !&wildcharm | set wildcharm=<C-z> | endif
+execute 'nnoremap <leader>w :Wordy<space>'.nr2char(&wildcharm)
 
 "----- default to unix script commenting -----"
 augroup onload
