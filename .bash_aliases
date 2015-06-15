@@ -53,6 +53,7 @@ alias hlt="heroku logs -t"
 
 # tmux aliases
 alias tmuxcp='tmux saveb -|pbcopy && tmux deleteb'
+alias tl="tmux ls"
 
 # pygments aliases
 alias solarpyg='pygmentize -O full,style=solarized'
