@@ -57,7 +57,11 @@ function slacktime {
 }
 
 function q {
-  echo $@ >> "${HOME}/Dropbox/Apps/Notational Data/queue.txt"
+  if [[ ${#*} > 0 ]]; then
+    echo $@ >> "${HOME}/Dropbox/Apps/Notational Data/queue.txt"
+  else
+    cat "${HOME}/Dropbox/Apps/Notational Data/queue.txt"
+  fi
 }
 
 function heroku_import {
