@@ -18,8 +18,7 @@ Plugin 'kana/vim-textobj-user'
 Plugin 'vim-scripts/YankRing.vim'
 Plugin 'vim-scripts/ctrlp.vim'
 Plugin 'vim-scripts/matchit.zip'
-Plugin 'Keithbsmiley/swift.vim'
-Plugin 'reedes/vim-wordy'
+Plugin 'mxw/vim-jsx'
 Plugin 'rking/ag.vim'
 call vundle#end()
 filetype plugin indent on " required
