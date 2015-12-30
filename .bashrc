@@ -18,7 +18,7 @@ export CLICOLOR=1
 export LSCOLORS=gxfxCxDxdxegedabagacad
 # export LSCOLORS
 
-export CDPATH=.:$HOME/projects
+export CDPATH=.:$HOME/projects:$HOME/code:$HOME/playground
 
 [[ -f ~/.bash_aliases ]] && . ~/.bash_aliases
 [[ -f ~/.bash_functions ]] && . ~/.bash_functions
@@ -26,3 +26,6 @@ export CDPATH=.:$HOME/projects
 
 # PS1="\[$red\]\$git_branch\[$normal_colours\] \w \$ "
 PS1="${magenta}[\A]${reset_color} ${green}\w${reset_color} \$git_branch\n \$ "
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
