@@ -67,11 +67,15 @@ function q {
 function heroku_import {
   app=$1
   database=$2
-  dumpfile="/tmp/${database}.dump"
 
-  heroku pg:backups capture --app $app
-  curl -o $dumpfile `heroku pg:backups public-url --app ${app}`
-  pg_restore --verbose --clean --no-acl --no-owner --jobs 4 -d $database $dumpfile
+  heroku pg:backups capture --app $app && curl `heroku pg:backups public-url --app ${app}` | pg_restore --verbose --clean --no-acl --no-owner -d $database
+}
+
+function heroku_db_copy {
+  db_a=$1
+  db_b=$2
+
+  heroku pg:backups restore $(heroku pg:backups public-url --app $db_a) DATABASE_URL --app $db_b
 }
 
 #----- code for adding git branch to prompt -----#
