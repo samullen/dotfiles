@@ -43,6 +43,7 @@ alias gl="git lol"
 alias gm="git merge"
 alias gmx="git merge --no-ff --log"
 alias gp="git push"
+alias gpr="git pull --rebase origin"
 alias gs="git status -sb"
 
 # heroku_aliases
