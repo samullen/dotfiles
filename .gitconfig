@@ -38,6 +38,7 @@
 	g = grep --break --heading --line-number
 [diff]
 	tool = vimdiff
+	compactionHeuristic = true
 [difftool]
 	prompt = false
 [difftool "sourcetree"]
