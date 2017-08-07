@@ -1,0 +1,7 @@
+--database=postgresql
+--webpack
+--skip-action-cable
+--skip-spring
+--skip-coffee
+--skip-turbolinks
+--template=~/Dropbox/dotfiles/rails_template.rb
