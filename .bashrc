@@ -18,7 +18,7 @@ export CLICOLOR=1
 export LSCOLORS=gxfxCxDxdxegedabagacad
 # export LSCOLORS
 
-export CDPATH=.:$HOME/projects:$HOME/code:$HOME/playground
+export CDPATH=.:$HOME/projects:$HOME/code:$HOME/sandbox
 
 [[ -f ~/.bash_aliases ]] && . ~/.bash_aliases
 [[ -f ~/.bash_functions ]] && . ~/.bash_functions
@@ -29,3 +29,7 @@ PS1="${magenta}[\A]${reset_color} ${green}\w${reset_color} \$git_branch\n \$ "
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
