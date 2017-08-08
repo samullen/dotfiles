@@ -12,19 +12,23 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'nelstrom/vim-textobj-rubyblock'
-Plugin 'tpope/vim-rails'
-Plugin 'tpope/vim-commentary'
-Plugin 'kana/vim-textobj-user'
 Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'vim-scripts/matchit.zip'
-Plugin 'vim-javascript'
-Plugin 'isRuslan/vim-es6'
-Plugin 'mxw/vim-jsx'
-Plugin 'rking/ag.vim'
 Plugin 'elixir-lang/vim-elixir'
+Plugin 'isRuslan/vim-es6'
 Plugin 'junegunn/fzf'
+Plugin 'kana/vim-textobj-user'
+Plugin 'mxw/vim-jsx'
+Plugin 'nelstrom/vim-textobj-rubyblock'
+Plugin 'rking/ag.vim'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-surround'
+Plugin 'vim-javascript'
+Plugin 'vim-scripts/matchit.zip'
+
 Plugin 'samullen/valt'
+
 call vundle#end()
 filetype plugin indent on " required
 
