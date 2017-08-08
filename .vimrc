@@ -25,7 +25,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-javascript'
-Plugin 'vim-scripts/matchit.zip'
+Plugin 'vim-scripts/mhatchit.zip'
 
 Plugin 'samullen/valt'
 
@@ -33,6 +33,8 @@ call vundle#end()
 filetype plugin indent on " required
 
 " End Vundle plugin
+
+syntax on
 
 set autoread " automatically read files when they are changed outside of VIM.
 
@@ -72,8 +74,6 @@ set clipboard=unnamed
 set mouse=h " only use mouse in help files
 
 set grepprg=/usr/local/bin/ag\ --nogroup
-
-syntax on
 
 " map ctrl-p|n to go up and down in command-mode history
 cnoremap <C-p> <Up>
@@ -154,6 +154,12 @@ augroup filetypes
   autocmd FileType c,cpp,javascript let b:comment_leader = '// '
 "  autocmd FileType sh,ruby,python   let b:comment_leader = '# '
   autocmd FileType vim              let b:comment_leader = '" '
+  
+  autocmd FileType ruby,eruby,yaml setlocal ai sw=2 sts=2 et
+  autocmd FileType ruby,eruby,yaml setlocal path+=lib
+  " autocmd FileType ruby,eruby,yaml setlocal colorcolumn=81
+  " Make ?s part of words
+  autocmd FileType ruby,eruby,yaml setlocal iskeyword+=?
 augroup END
 
 "noremap <silent> ,cc :<C-B>silent <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:nohlsearch<CR>
