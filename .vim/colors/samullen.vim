@@ -13,6 +13,7 @@ let s:tamedblue  = "039"
 let s:red        = "001"
 let s:yellow     = "003"
 let s:magenta    = "201"
+let s:black      = "000"
 
 hi clear
 exe "hi Comment         ctermfg=" . s:white     . "ctermbg=none cterm=bold"
@@ -62,9 +63,9 @@ exe "hi Error           ctermfg=" . s:white . "ctermbg=" . s:red . "cterm=none"
 exe "hi Todo            ctermfg=" . s:yellow . "ctermbg=none cterm=underline"
 
 hi Cursor        ctermfg=NONE ctermbg=Cyan
-hi NonText       ctermbg=Black
-hi Normal        ctermfg=LightGrey   ctermbg=Black
-hi MatchParen    ctermfg=Black       ctermbg=DarkGrey
+exe "hi NonText         ctermbg=" . s:black
+exe "hi Normal        ctermfg=LightGrey   ctermbg=" . s:black
+exe "hi MatchParen    ctermfg=" . s:black . " ctermbg=DarkGrey"
 exe "hi DiffAdd       ctermfg=" . s:white . "ctermbg=DarkGreen"
 exe "hi DiffDelete    ctermfg=" . s:white . "ctermbg=DarkRed"
 exe "hi DiffChange    ctermfg=" . s:white . "ctermbg=Brown"

@@ -15,11 +15,15 @@ Plugin 'nelstrom/vim-textobj-rubyblock'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-commentary'
 Plugin 'kana/vim-textobj-user'
-Plugin 'vim-scripts/YankRing.vim'
-Plugin 'vim-scripts/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'vim-scripts/matchit.zip'
+Plugin 'vim-javascript'
+Plugin 'isRuslan/vim-es6'
 Plugin 'mxw/vim-jsx'
 Plugin 'rking/ag.vim'
+Plugin 'elixir-lang/vim-elixir'
+Plugin 'junegunn/fzf'
+Plugin 'samullen/valt'
 call vundle#end()
 filetype plugin indent on " required
 
@@ -60,6 +64,7 @@ set formatoptions=tcq " autowrap text, comments, and use GQ with comments.
 set formatoptions-=o  " Do not auto insert comment leader 
 set pastetoggle=<f2>
 set clipboard=unnamed
+set mouse=h " only use mouse in help files
 
 set grepprg=/usr/local/bin/ag\ --nogroup
 
@@ -104,6 +109,8 @@ nnoremap <leader>rt :!ctags -R `bundle show rails`/../* *<cr><cr>
 nnoremap <leader>t :CtrlP<cr>
 nnoremap <leader>b :CtrlPBuffer<cr>
 
+nnoremap <leader>v :NV<CR>
+
 " Wrap visual blocks in specified characters
 vnoremap <leader>" <esc>`>a"<esc>`<i"<esc>
 vnoremap <leader>' <esc>`>a"<esc>`<i'<esc>
@@ -115,9 +122,8 @@ vnoremap <leader>%= <esc>`>a %><esc>`<i<%= <esc>
 
 let g:ruby_path = system('echo $HOME/.rbenv/shims') " speed up vim start up using RVM
 
-" Using NoWordy
-if !&wildcharm | set wildcharm=<C-z> | endif
-execute 'nnoremap <leader>w :Wordy<space>'.nr2char(&wildcharm)
+let g:nv_directory = '~/Dropbox/Apps/Notational Data'
+let g:nv_show_preview = 1
 
 "----- default to unix script commenting -----"
 augroup onload
