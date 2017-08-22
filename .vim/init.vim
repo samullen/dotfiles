@@ -28,6 +28,8 @@ Plugin 'ervandew/supertab'
 Plugin 'vim-scripts/YankRing.vim'
 
 Plugin 'samullen/valt'
+let g:nv_directory = '~/Dropbox/Apps/Notational Data'
+let g:nv_show_preview = 1
 
 call vundle#end()
 filetype plugin indent on
@@ -126,23 +128,17 @@ vnoremap <leader>%= <esc>`>a %><esc>`<i<%= <esc>
 
 let g:ruby_path = system('echo $HOME/.rbenv/shims') " speed up vim start up using RVM
 
-let g:nv_directory = '~/Dropbox/Apps/Notational Data'
-let g:nv_show_preview = 1
-
 "----- default to unix script commenting -----"
 augroup onload
   autocmd!
-  autocmd BufRead,BufNewFile *.c,*.cpp,*.pc,*.h,*.pl,*.pm,*.plx,*.html,*.htm,*.css,*.java,*.cgi set cindent
+  autocmd BufRead,BufNewFile *.c,*.cpp,*.pc,*.h,*.pl,*.pm,*.plx,*.html,*.htm,*.css,*.java,*.cgi set smartindent
   autocmd BufRead,BufNewFile *.txt,*.rdoc,*.markdown,*.md set textwidth=80
   autocmd BufRead,BufNewFile *.pc set filetype=c
   autocmd BufRead,BufNewFile *.sql set filetype=plsql
-  autocmd BufRead,BufNewFile *.tt,*.tt2 set filetype=html
-  autocmd BufRead,BufNewFile *pm,*.pxl,*plx set filetype=perl
-  autocmd BufRead,BufNewFile *.css set filetype=css
-  autocmd BufRead,BufNewFile *.thor set filetype=ruby
+  autocmd BufRead,BufNewFile *.css,*.scss set filetype=css
+  autocmd BufRead,BufNewFile *.thor,*.rake set filetype=ruby
   autocmd BufRead,BufNewFile *.m set filetype=objc
   autocmd BufRead,BufNewFile *.md,*.markdown set filetype=markdown
-  autocmd BufRead,BufNewFile *.feature set filetype=gherkin
   autocmd BufRead,BufNewFile * setlocal formatoptions+=tcqr
   autocmd BufRead,BufNewFile * setlocal formatoptions-=o
 augroup END
@@ -159,6 +155,7 @@ augroup filetypes
   " autocmd FileType ruby,eruby,yaml setlocal colorcolumn=81
   " Make ?s part of words
   autocmd FileType ruby,eruby,yaml setlocal iskeyword+=?
+  autocmd FileType markdown colorscheme samullen-markdown
 augroup END
 
 runtime macros/matchit.vim
