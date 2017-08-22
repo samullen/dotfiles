@@ -3,72 +3,74 @@ filetype plugin indent on
 "------------------------------------------------------------------------------"
 " General
 "------------------------------------------------------------------------------"
-set history=500 
 
 " Begin Vundle plugin
 set nocompatible     " do not make VIM compatible with VI
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-Plugin 'gmarik/Vundle.vim'
-Plugin 'nelstrom/vim-textobj-rubyblock'
-Plugin 'tpope/vim-rails'
-Plugin 'tpope/vim-commentary'
-Plugin 'kana/vim-textobj-user'
+
+Plugin 'VundleVim/Vundle.vim'
 Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'vim-scripts/matchit.zip'
-Plugin 'vim-javascript'
-Plugin 'isRuslan/vim-es6'
-Plugin 'mxw/vim-jsx'
-Plugin 'rking/ag.vim'
 Plugin 'elixir-lang/vim-elixir'
+Plugin 'isRuslan/vim-es6'
 Plugin 'junegunn/fzf'
+Plugin 'kana/vim-textobj-user'
+Plugin 'mxw/vim-jsx'
+Plugin 'nelstrom/vim-textobj-rubyblock'
+Plugin 'rking/ag.vim'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-surround'
+Plugin 'pangloss/vim-javascript'
+Plugin 'ervandew/supertab'
+Plugin 'vim-scripts/YankRing.vim'
+
 Plugin 'samullen/valt'
+
 call vundle#end()
-filetype plugin indent on " required
+filetype plugin indent on
 
 " End Vundle plugin
+syntax on
 
 set autoread " automatically read files when they are changed outside of VIM.
-
-let mapleader = ','
-
 set autowrite " automatically write to file only when editing multiple files
-set backspace=""
-set magic            " for regular expressions
+set backspace=indent,eol,start
+set backupdir=~/tmp
+set clipboard=unnamed
 set complete-=i
 set cpoptions=abABceFs$   " compatability options. Must come after nocompatible
-set expandtab        " insert appropriate number of spaces with a tab
-set filetype=on      " Enable file detection
-set ignorecase       " ignore case when searching
-set smartcase        " override ignore case if search patter contains caps
+set directory=~/tmp
+set expandtab
+set formatoptions-=o
+set formatoptions=tcq
+set grepprg=/usr/local/bin/ag\ --nogroup
+set history=500 
+set ignorecase
+set lazyredraw
+set magic
+set mouse=h " only use mouse in help files
 set noai
 set nobackup
-set nohlsearch   " do not highlight search strings
-set nolazyredraw " don't redraw while executing macros
-set noshowmatch  " Do not bounce to matching bracket
-set title             " Try to output to term titlebar
-set novisualbell
+set nohlsearch
+set noshowmatch
+set nrformats= " force numbers to use base-10
+set pastetoggle=<f2>
 set ruler
-set rulerformat=%40(%<%f%=[%l:%L,%v]%)
+set rulerformat=%40(%<%f%=[%l,%v:%L]%)
 set shiftwidth=2
-set showcmd " display # of characters/lines/area are visually highlighted
+set smartcase
+set smarttab          " inteliigently add spaces to tab stop
 set tabstop=2
-set textwidth=0
-set wildignore+=*.class,*.o
+set title
+set wildmenu
+set wildignore+=*.class,*.o,tmp/**
 set wildmode=list:longest,list:full " for finding files when opening new frames
 set wrapmargin=0
-set writebackup
-set smarttab          " inteliigently add spaces to tab stop
-set formatoptions=tcq " autowrap text, comments, and use GQ with comments.
-set formatoptions-=o  " Do not auto insert comment leader 
-set pastetoggle=<f2>
-set clipboard=unnamed
-set mouse=h " only use mouse in help files
 
-set grepprg=/usr/local/bin/ag\ --nogroup
-
-syntax on
+let mapleader = ','
 
 " map ctrl-p|n to go up and down in command-mode history
 cnoremap <C-p> <Up>
@@ -79,10 +81,8 @@ inoremap ;l <esc>
 " remap ctrl-a to ctrl-z for incrementing
 nnoremap <C-z> <C-a>
 
-" split window to edit .vimrc
+" .vimrc
 nnoremap <leader>ev :split $MYVIMRC<cr>
-
-" reload .vimrc
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
 " shift-tab to create a tab character
@@ -104,12 +104,16 @@ nnoremap <leader>r :!ruby %<cr>
 nnoremap <leader>a :tabnew<cr>:Ag<space>
 
 nnoremap <leader>y :YRShow<cr>
-nnoremap <leader>rt :!ctags -R `bundle show rails`/../* *<cr><cr>
 
 nnoremap <leader>t :CtrlP<cr>
 nnoremap <leader>b :CtrlPBuffer<cr>
 
 nnoremap <leader>v :NV<CR>
+
+nnoremap <leader>wc g<C-g>
+
+" Fugitive remaps
+nnoremap <leader>gb :Gblame<cr>
 
 " Wrap visual blocks in specified characters
 vnoremap <leader>" <esc>`>a"<esc>`<i"<esc>
@@ -149,8 +153,18 @@ augroup filetypes
   autocmd FileType c,cpp,javascript let b:comment_leader = '// '
 "  autocmd FileType sh,ruby,python   let b:comment_leader = '# '
   autocmd FileType vim              let b:comment_leader = '" '
+  
+  autocmd FileType ruby,eruby,yaml setlocal ai sw=2 sts=2 et
+  autocmd FileType ruby,eruby,yaml setlocal path+=lib
+  " autocmd FileType ruby,eruby,yaml setlocal colorcolumn=81
+  " Make ?s part of words
+  autocmd FileType ruby,eruby,yaml setlocal iskeyword+=?
 augroup END
 
+runtime macros/matchit.vim
+
+nnoremap <silent> [b :bprevious<CR>
+nnoremap <silent> ]b :bnext<CR>
 "noremap <silent> ,cc :<C-B>silent <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:nohlsearch<CR>
 "noremap <silent> ,cu :<C-B>silent <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:nohlsearch<CR>
 
@@ -161,24 +175,24 @@ highlight Pmenu ctermbg=238 gui=bold
 nnoremap + <C-w>+
 nnoremap - <C-w>-
 
-command! Rroutes :e config/routes.rb
-command! RTroutes :tabe config/routes.rb
-command! Rgemfile :e Gemfile
-command! RTgemfile :tabe Gemfile
+command! Eroutes :e config/routes.rb
+command! Troutes :tabe config/routes.rb
+command! Egemfile :e Gemfile
+command! Tgemfile :tabe Gemfile
 
 "###############################################################################
 " Functions
 "###############################################################################
 
 "----- simple same-file Tab completion -----"
-function InsertTabWrapper()
-  let col = col('.') - 1
-  if !col || getline('.')[col - 1] !~ '\k'
-    return "\<tab>"     
-  else
-    return "\<c-p>"
-  endif
-endfunction
-inoremap <tab> <c-r>=InsertTabWrapper()<cr>
+" function InsertTabWrapper()
+"   let col = col('.') - 1
+"   if !col || getline('.')[col - 1] !~ '\k'
+"     return "\<tab>"     
+"   else
+"     return "\<c-p>"
+"   endif
+" endfunction
+" inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 
 colorscheme samullen
