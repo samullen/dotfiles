@@ -10,6 +10,7 @@ pathadd "${HOME}/.rbenv/bin"
 pathadd "${HOME}/bin"
 pathadd "/Applications/Postgres.app/Contents/MacOS/bin"
 pathadd $HOME
+pathadd "/usr/local/heroku/bin"
 export PATH
 
 export PS1='\h \w \$ '

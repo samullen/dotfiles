@@ -27,9 +27,6 @@ export CDPATH=.:$HOME/projects:$HOME/code:$HOME/sandbox
 # PS1="\[$red\]\$git_branch\[$normal_colours\] \w \$ "
 PS1="${magenta}[\A]${reset_color} ${green}\w${reset_color} \$git_branch\n \$ "
 
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

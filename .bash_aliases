@@ -24,7 +24,6 @@ alias rs='rails s'
 alias rg='rails g'
 alias rdbm='rake db:migrate'
 alias rdbmt='rake db:migrate; rake db:test:prepare'
-alias cuc='bundle exec cucumber'
 alias guard='be guard --notify false'
 
 alias powr="touch tmp/restart.txt"
@@ -46,6 +45,7 @@ alias gpr="git pull --rebase origin"
 alias gs="git status -sb"
 
 # heroku_aliases
+alias heroku="/usr/local/bin/heroku"
 alias hc="heroku run rails c"
 alias hpg="heroku pg:psql"
 alias hl="heroku logs"
