@@ -11,7 +11,6 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'isRuslan/vim-es6'
 Plugin 'junegunn/fzf'
@@ -47,7 +46,7 @@ set cpoptions=abABceFs$   " compatability options. Must come after nocompatible
 set directory=~/tmp
 set expandtab
 set formatoptions-=o
-set formatoptions=tcq
+set formatoptions=tcqj
 set grepprg=/usr/local/bin/ag\ --nogroup
 set history=500 
 set ignorecase
@@ -77,6 +76,9 @@ let mapleader = ','
 " map ctrl-p|n to go up and down in command-mode history
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
+
+" Expand path to active file directory in command mode
+cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
 inoremap jj <Esc>
 inoremap ;l <Nop>
@@ -108,8 +110,9 @@ nnoremap <leader>a :tabnew<cr>:Ag<space>
 
 nnoremap <leader>y :YRShow<cr>
 
-nnoremap <leader>t :CtrlP<cr>
-nnoremap <leader>b :CtrlPBuffer<cr>
+" nnoremap <leader>t :CtrlP<cr>
+" nnoremap <leader>b :CtrlPBuffer<cr>
+nnoremap <leader>f :FZF<cr>
 
 nnoremap <leader>v :NV<CR>
 
