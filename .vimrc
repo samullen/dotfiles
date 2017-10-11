@@ -47,7 +47,8 @@ set directory=~/tmp
 set expandtab
 set formatoptions-=o
 set formatoptions=tcqj
-set grepprg=/usr/local/bin/ag\ --nogroup
+set grepprg=/usr/local/bin/ag\ --nogroup\ --column
+set grepformat=%f:%l:%c:%m
 set history=500 
 set ignorecase
 set lazyredraw
