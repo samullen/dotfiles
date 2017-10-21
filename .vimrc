@@ -14,10 +14,10 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'isRuslan/vim-es6'
 Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
 Plugin 'kana/vim-textobj-user'
 Plugin 'mxw/vim-jsx'
 Plugin 'nelstrom/vim-textobj-rubyblock'
-Plugin 'rking/ag.vim'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-rails'
@@ -25,6 +25,8 @@ Plugin 'tpope/vim-surround'
 Plugin 'pangloss/vim-javascript'
 Plugin 'ervandew/supertab'
 Plugin 'vim-scripts/YankRing.vim'
+Plugin 'SirVer/ultisnips'
+Plugin 'w0rp/ale'
 
 Plugin 'samullen/valt'
 let g:nv_directory = '~/Dropbox/Apps/Notational Data'
@@ -106,21 +108,37 @@ nnoremap <leader>o :tabo<cr>
 nnoremap <leader>x :tabc<cr>
 nnoremap <leader>r :!ruby %<cr>
 
-" let g:ackprg = 'ag --nogroup' " use Ag instead of Ack
-nnoremap <leader>a :tabnew<cr>:Ag<space>
-
 nnoremap <leader>y :YRShow<cr>
 
-" nnoremap <leader>t :CtrlP<cr>
-" nnoremap <leader>b :CtrlPBuffer<cr>
-nnoremap <leader>f :FZF<cr>
+" ALE
 
+let g:ale_enabled = 0
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\   'ruby': ['rubocop'],
+\}
+nnoremap <leader>al :ALELint<cr>
+nnoremap <leader>at :ALEToggle<cr>
+
+" FZF
+nnoremap <leader>a :Ag<cr>
+nnoremap <leader>b :Buffers<cr>
+nnoremap <leader>f :Files<cr>
+nnoremap <leader>t :Tags<cr>
+nnoremap <leader>gc :Commits<cr>
+
+" UltiSnips
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" Valt
 nnoremap <leader>v :NV<CR>
-
-nnoremap <leader>wc g<C-g>
 
 " Fugitive remaps
 nnoremap <leader>gb :Gblame<cr>
+
+nnoremap <leader>wc g<C-g>
 
 " Wrap visual blocks in specified characters
 vnoremap <leader>" <esc>`>a"<esc>`<i"<esc>
