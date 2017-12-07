@@ -83,8 +83,7 @@ cnoremap <C-n> <Down>
 " Expand path to active file directory in command mode
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
-inoremap jj <Esc>
-inoremap ;l <Nop>
+inoremap ;l <Esc>
 
 " remap ctrl-a to ctrl-z for incrementing
 nnoremap <C-z> <C-a>
@@ -128,9 +127,8 @@ nnoremap <leader>t :Tags<cr>
 nnoremap <leader>gc :Commits<cr>
 
 " UltiSnips
+let g:UltiSnipsEditSplit="horizontal"
 let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " Valt
 nnoremap <leader>v :NV<CR>
@@ -142,7 +140,7 @@ nnoremap <leader>wc g<C-g>
 
 " Wrap visual blocks in specified characters
 vnoremap <leader>" <esc>`>a"<esc>`<i"<esc>
-vnoremap <leader>' <esc>`>a"<esc>`<i'<esc>
+vnoremap <leader>' <esc>`>a'<esc>`<i'<esc>
 vnoremap <leader>( <esc>`>a)<esc>`<i(<esc>
 vnoremap <leader>[ <esc>`>a]<esc>`<i[<esc>
 vnoremap <leader>{ <esc>`>a}<esc>`<i{<esc>
@@ -178,7 +176,7 @@ augroup filetypes
   " autocmd FileType ruby,eruby,yaml setlocal colorcolumn=81
   " Make ?s part of words
   autocmd FileType ruby,eruby,yaml setlocal iskeyword+=?
-  autocmd FileType markdown colorscheme samullen-markdown
+  autocmd FileType eruby UltiSnipsAddFiletypes eruby.rails.ruby
 augroup END
 
 runtime macros/matchit.vim

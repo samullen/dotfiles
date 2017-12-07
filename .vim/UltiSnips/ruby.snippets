@@ -50,6 +50,18 @@ rescue
 end
 endsnippet
 
+snippet describe "creates a spec describe block"
+describe ${1:spec_description} do
+	$0
+end
+endsnippet
+
+snippet it "creates a spec describe block"
+it "${1:spec}" do
+	$0
+end
+endsnippet
+
 snippet For "(<from>..<to>).each { |<i>| <block> }"
 (${1:from}..${2:to}).each { |${3:i}| $0 }
 endsnippet
