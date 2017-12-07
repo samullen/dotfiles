@@ -17,6 +17,8 @@ alias libreoffice='open -a LibreOffice'
 alias preview='open -a Preview'
 
 # Rails aliases
+alias bi='bundle install -j 8'
+alias bu='bundle update -j 8'
 alias be='bundle exec'
 alias ri='ri -f ansi'
 alias rc='rails c'
@@ -42,6 +44,7 @@ alias gm="git merge"
 alias gmx="git merge --no-ff --log"
 alias gp="git push"
 alias gpr="git pull --rebase origin"
+alias gri="git rebase -i"
 alias gs="git status -sb"
 
 # heroku_aliases
