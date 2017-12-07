@@ -1,4 +1,4 @@
-# File.exists?("~/.iex.exs") && import_file("~/.iex.exs")
+# File.exists?(Path.expand("~/.iex.exs")) && import_file("~/.iex.exs")
 
 timestamp = fn -> 
   {_date, {hour, minute, _second}} = :calendar.local_time
@@ -10,9 +10,9 @@ end
 IEx.configure(
   colors: [
     syntax_colors: [
-      number: :yellow,
-      atom: :cyan,
-      string: :green,
+      number: :light_yellow,
+      atom: :light_cyan,
+      string: :light_black,
       boolean: :red, 
       nil: [:magenta, :bright],
     ],
@@ -26,17 +26,29 @@ IEx.configure(
   default_prompt: 
     "#{IO.ANSI.green}%prefix#{IO.ANSI.reset} " <>
     "[#{IO.ANSI.magenta}#{timestamp.()}#{IO.ANSI.reset} " <>
-    ":: #{IO.ANSI.cyan}%counter#{IO.ANSI.reset}]\n >",
+    ":: #{IO.ANSI.cyan}%counter#{IO.ANSI.reset}] >",
   alive_prompt: 
     "#{IO.ANSI.green}%prefix#{IO.ANSI.reset} " <>
     "(#{IO.ANSI.yellow}%node#{IO.ANSI.reset}) " <>
     "[#{IO.ANSI.magenta}#{timestamp.()}#{IO.ANSI.reset} " <>
-    ":: #{IO.ANSI.cyan}%counter#{IO.ANSI.reset}]\n >",
+    ":: #{IO.ANSI.cyan}%counter#{IO.ANSI.reset}] >",
   history_size: 50,
-  inspect: [limit: :infinity],
+  inspect: [
+    pretty: true, 
+    limit: :infinity,
+    width: 80
+  ],
   width: 80
 )
 
-test_list = fn -> Enum.map(1..10, &(&1)) end
+dwarves = ["Fili","Kili", "Oin", "Gloin", "Thorin", "Dwalin", "Balin", "Bifur",
+           "Bofur", "Bombur", "Dori", "Nori", "Ori"]
+fellowship = %{
+  hobbits: ["Frodo", "Samwise", "Merry", "Pippin"], 
+  humans: ["Aragorn", "Boromir"],
+  dwarves: ["Gimli"], 
+  elves: ["Legolas"],
+  wizards: ["Gandolf"]
+}
 
-test_hash = fn -> Enum.map(1..10, &(&1)) end
+exit = fn -> System.stop() end
