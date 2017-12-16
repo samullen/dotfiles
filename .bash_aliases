@@ -3,6 +3,7 @@ alias ls='ls -F'
 alias cls='clear; ls'
 alias lpr='enscript -C1 -G -M letter --mark-wrapped-lines=plus -T 3 -f fixed8'
 alias vi='/usr/local/bin/vim'
+alias v='/usr/local/bin/vim'
 # alias psql="/Applications/Postgres.app/Contents/MacOS/bin/psql"
 alias cpan='sudo perl -MCPAN -eshell'
 alias perldoc='perldoc -n "groff -Tascii"'
