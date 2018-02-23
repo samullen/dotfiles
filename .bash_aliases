@@ -30,6 +30,13 @@ alias rdbmt='rake db:migrate; rake db:test:prepare'
 alias guard='be guard --notify false'
 
 alias powr="touch tmp/restart.txt"
+alias prd="pronto run -c development"
+
+# Phoenix aliases
+alias mix='env $([ -f .env ] && cat .env | xargs) mix'
+alias iex='env $([ -f .env ] && cat .env | xargs) iex'
+alias mpc='iex -S mix'
+alias mps='mix phx.server'
 
 # Git aliases
 alias ga="git add"
@@ -61,8 +68,6 @@ alias tl="tmux ls"
 
 # pygments aliases
 alias solarpyg='pygmentize -O full,style=solarized'
-
-# alias irb='irb ~/Dropbox/dotfiles/.irbrc'
 
 # ssh aliases
 alias key_update='ssh-add ~/.ssh/heroku_rsa'
