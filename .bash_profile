@@ -6,7 +6,6 @@ pathadd() {
 }
 
 #----- User specific environment and startup programs
-pathadd "${HOME}/.rbenv/bin"
 pathadd "${HOME}/bin"
 pathadd "/Applications/Postgres.app/Contents/MacOS/bin"
 pathadd $HOME
@@ -34,5 +33,3 @@ fi
 #----- Get the aliases and functions
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 [[ -f ~/.bashrc.local ]] && . ~/.bashrc.local
-
-eval "$(rbenv init -)"

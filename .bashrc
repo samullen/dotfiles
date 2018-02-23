@@ -22,10 +22,8 @@ export CDPATH=.:$HOME/projects:$HOME/code:$HOME/sandbox
 
 [[ -f ~/.bash_aliases ]] && . ~/.bash_aliases
 [[ -f ~/.bash_functions ]] && . ~/.bash_functions
+[[ -f ~/.asdf/asdf.sh ]] && . ~/.asdf/asdf.sh
+[[ -f ~/.asdf/completions/asdf.bash ]] && . ~/.asdf/completions/asdf.bash
 
 # PS1="\[$red\]\$git_branch\[$normal_colours\] \w \$ "
 PS1="${magenta}[\A]${reset_color} ${green}\w${reset_color} \$git_branch\n \$ "
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
