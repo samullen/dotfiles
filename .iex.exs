@@ -22,6 +22,7 @@ IEx.configure(
     doc_inline_code: :magenta,
     doc_headings: [:cyan, :underline],
     doc_title: [:cyan, :bright, :underline],
+    eval_result: [ :cyan, :bright ]
   ],
   default_prompt: 
     "#{IO.ANSI.green}%prefix#{IO.ANSI.reset} " <>
