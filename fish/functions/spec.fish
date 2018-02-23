@@ -1,7 +1,7 @@
-function spec {
-  if [ -s "bin/rspec" ]; then
-    bin/rspec $1
+function spec
+  if test -s "bin/rspec"
+    bin/rspec $argv
   else
     echo "Install the rspec binstub with the spring-commands-rspec gem"
-  fi
-}
+  end
+end

@@ -2,9 +2,12 @@ set -U fish_user_paths $HOME/bin $HOME $HOME/.rbenv/shims $fish_user_paths
 
 set CDPATH . ~/projects ~/code ~/playground
 
-set FIGNORE .svn .swp .gitkeep # Ignore files with these suffixes
-set EDITOR vim
-set PAGER "less -I -R"
+set -x FIGNORE .svn .swp .gitkeep # Ignore files with these suffixes
+set -x EDITOR vim
+set -x PAGER "less -I -R"
+set -x PGHOST "localhost"
+
+set -g fish_prompt_pwd_dir_length 0
 
 set __fish_git_prompt_showdirtystate 'yes'
 set __fish_git_prompt_showstashstate 'no'
