@@ -51,7 +51,7 @@ set formatoptions-=o
 set formatoptions=tcqj
 set grepprg=/usr/local/bin/ag\ --nogroup\ --column
 set grepformat=%f:%l:%c:%m
-set history=500 
+set history=500
 set ignorecase
 set lazyredraw
 set magic
@@ -73,6 +73,8 @@ set wildmenu
 set wildignore+=*.class,*.o,tmp/**
 set wildmode=list:longest,list:full " for finding files when opening new frames
 set wrapmargin=0
+
+match ErrorMsg '\s\+$'
 
 let mapleader = ','
 
@@ -109,6 +111,15 @@ nnoremap <leader>r :!ruby %<cr>
 
 nnoremap <leader>y :YRShow<cr>
 
+" Easily traverse paragraphs w/ backspace and Enter
+nnoremap <BS> {
+onoremap <BS> {
+vnoremap <BS> {
+
+nnoremap <expr> <CR> empty(&buftype) ? '}' : '<CR>'
+onoremap <expr> <CR> empty(&buftype) ? '}' : '<CR>'
+vnoremap <CR> }
+
 " ALE
 
 let g:ale_enabled = 0
@@ -141,6 +152,7 @@ nnoremap <leader>wc g<C-g>
 " Wrap visual blocks in specified characters
 vnoremap <leader>" <esc>`>a"<esc>`<i"<esc>
 vnoremap <leader>' <esc>`>a'<esc>`<i'<esc>
+vnoremap <leader>` <esc>`>a`<esc>`<i`<esc>
 vnoremap <leader>( <esc>`>a)<esc>`<i(<esc>
 vnoremap <leader>[ <esc>`>a]<esc>`<i[<esc>
 vnoremap <leader>{ <esc>`>a}<esc>`<i{<esc>
