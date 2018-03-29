@@ -22,15 +22,15 @@ alias bi='bundle install -j 8'
 alias bu='bundle update -j 8'
 alias be='bundle exec'
 alias ri='ri -f ansi'
-alias rc='rails c'
-alias rs='rails s'
-alias rg='rails g'
-alias rdbm='rake db:migrate'
-alias rdbmt='rake db:migrate; rake db:test:prepare'
+alias rc='be rails c'
+alias rs='be rails s'
+alias rg='be rails g'
+alias rdbm='be rake db:migrate'
+alias rdbmt='be rake db:migrate; rake db:test:prepare'
 alias guard='be guard --notify false'
 
 alias powr="touch tmp/restart.txt"
-alias prd="pronto run -c development"
+alias prd="be pronto run -c development"
 
 # Phoenix aliases
 alias mix='env $([ -f .env ] && cat .env | xargs) mix'

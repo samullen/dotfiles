@@ -27,3 +27,6 @@ export CDPATH=.:$HOME/projects:$HOME/code:$HOME/sandbox
 
 # PS1="\[$red\]\$git_branch\[$normal_colours\] \w \$ "
 PS1="${magenta}[\A]${reset_color} ${green}\w${reset_color} \$git_branch\n \$ "
+
+# added by Anaconda3 5.1.0 installer
+export PATH="/anaconda3/bin:$PATH"
