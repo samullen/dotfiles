@@ -1,6 +1,6 @@
 # File.exists?(Path.expand("~/.iex.exs")) && import_file("~/.iex.exs")
 
-timestamp = fn -> 
+timestamp = fn ->
   {_date, {hour, minute, _second}} = :calendar.local_time
   [hour, minute]
   |> Enum.map(&(String.pad_leading(Integer.to_string(&1), 2, "0")))
@@ -13,7 +13,7 @@ IEx.configure(
       number: :light_yellow,
       atom: :light_cyan,
       string: :light_black,
-      boolean: :red, 
+      boolean: :red,
       nil: [:magenta, :bright],
     ],
     ls_directory: :cyan,
@@ -24,18 +24,18 @@ IEx.configure(
     doc_title: [:cyan, :bright, :underline],
     eval_result: [ :cyan, :bright ]
   ],
-  default_prompt: 
+  default_prompt:
     "#{IO.ANSI.green}%prefix#{IO.ANSI.reset} " <>
     "[#{IO.ANSI.magenta}#{timestamp.()}#{IO.ANSI.reset} " <>
     ":: #{IO.ANSI.cyan}%counter#{IO.ANSI.reset}] >",
-  alive_prompt: 
+  alive_prompt:
     "#{IO.ANSI.green}%prefix#{IO.ANSI.reset} " <>
     "(#{IO.ANSI.yellow}%node#{IO.ANSI.reset}) " <>
     "[#{IO.ANSI.magenta}#{timestamp.()}#{IO.ANSI.reset} " <>
     ":: #{IO.ANSI.cyan}%counter#{IO.ANSI.reset}] >",
   history_size: 50,
   inspect: [
-    pretty: true, 
+    pretty: true,
     limit: :infinity,
     width: 80
   ],
@@ -45,11 +45,13 @@ IEx.configure(
 dwarves = ["Fili","Kili", "Oin", "Gloin", "Thorin", "Dwalin", "Balin", "Bifur",
            "Bofur", "Bombur", "Dori", "Nori", "Ori"]
 fellowship = %{
-  hobbits: ["Frodo", "Samwise", "Merry", "Pippin"], 
+  hobbits: ["Frodo", "Samwise", "Merry", "Pippin"],
   humans: ["Aragorn", "Boromir"],
-  dwarves: ["Gimli"], 
+  dwarves: ["Gimli"],
   elves: ["Legolas"],
   wizards: ["Gandolf"]
 }
 
 exit = fn -> System.stop() end
+ls = fn -> Code.loaded_files() end
+vars = fn -> binding end
