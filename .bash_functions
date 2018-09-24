@@ -1,7 +1,8 @@
 # functions
 #------------------------------------------------------------------------------#
 function f {
-	find . -name "*$1*" -print 2> /dev/null
+  echo "use fd"
+	# find . -name "*$1*" -print 2> /dev/null
 }
 
 function colors {
@@ -61,9 +62,9 @@ function slacktime {
 
 function q {
   if [[ ${#*} > 0 ]]; then
-    echo $@ >> "${HOME}/Dropbox/Apps/Notational Data/queue.txt"
+    echo $@ >> "${HOME}/Dropbox/Apps/Notational Data/queue.md"
   else
-    cat "${HOME}/Dropbox/Apps/Notational Data/queue.txt"
+    cat "${HOME}/Dropbox/Apps/Notational Data/queue.md"
   fi
 }
 
