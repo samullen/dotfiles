@@ -1,20 +1,14 @@
 # alias ls='ls -F --color=auto'
 alias ls='ls -F'
 alias cls='clear; ls'
-alias lpr='enscript -C1 -G -M letter --mark-wrapped-lines=plus -T 3 -f fixed8'
+alias cat='bat'
 alias vi='/usr/local/bin/vim'
 alias v='/usr/local/bin/vim'
-# alias psql="/Applications/Postgres.app/Contents/MacOS/bin/psql"
-alias cpan='sudo perl -MCPAN -eshell'
-alias perldoc='perldoc -n "groff -Tascii"'
-alias grep="grep -n -H --color=auto"
-alias egrep='egrep -n -H --color=auto'
-alias fgrep='fgrep -n -H --color=auto'
+alias vimf='vim $(fzf)'
 alias gemdir='cd `gem env gemdir`'
 alias resource=". ~/.bash_profile"
 
 # Mac aliases
-alias libreoffice='open -a LibreOffice'
 alias preview='open -a Preview'
 
 # Rails aliases
@@ -65,9 +59,6 @@ alias hlt="heroku logs -t"
 # tmux aliases
 alias tmuxcp='tmux saveb -|pbcopy && tmux deleteb'
 alias tl="tmux ls"
-
-# pygments aliases
-alias solarpyg='pygmentize -O full,style=solarized'
 
 # ssh aliases
 alias key_update='ssh-add ~/.ssh/heroku_rsa'
