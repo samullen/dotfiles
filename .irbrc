@@ -11,7 +11,7 @@ end
 
 class Array
   def self.test_list(x=10)
-    (1..x).to_a    
+    (1..x).to_a
   end
 end
 class Hash
@@ -27,4 +27,3 @@ end
 def clear
   system 'clear'
 end
-

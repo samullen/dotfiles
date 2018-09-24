@@ -12,6 +12,7 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'elixir-lang/vim-elixir'
+Plugin 'mhinz/vim-mix-format'
 Plugin 'isRuslan/vim-es6'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
@@ -21,6 +22,7 @@ Plugin 'nelstrom/vim-textobj-rubyblock'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-projectionist'
 Plugin 'tpope/vim-surround'
 Plugin 'pangloss/vim-javascript'
 Plugin 'ervandew/supertab'
@@ -149,6 +151,22 @@ nnoremap <leader>gb :Gblame<cr>
 
 nnoremap <leader>wc g<C-g>
 
+" projectionist
+let g:projectionist_heuristics = {
+      \ "lib/*/endpoint.ex": {
+      \   "lib/**_web/controllers/*.ex": {"type": "controller"},
+      \   "lib/**_web/views/*.ex": {"type": "view"},
+      \   "lib/**_web/templates/*.html.eex": {"type": "template"},
+      \ },
+      \ "mix.exs": {
+      \   "lib/*.ex": {"type": "lib"}
+      \ }}
+
+" Matchup settings
+let g:matchup_matchparen_deferred = 1
+let g:matchup_matchparen_deferred_show_delay = 200
+let g:matchup_matchparen_deferred_hide_delay = 300
+
 " Wrap visual blocks in specified characters
 vnoremap <leader>" <esc>`>a"<esc>`<i"<esc>
 vnoremap <leader>' <esc>`>a'<esc>`<i'<esc>
@@ -191,8 +209,6 @@ augroup filetypes
   autocmd FileType eruby UltiSnipsAddFiletypes eruby.rails.ruby
 augroup END
 
-runtime macros/matchit.vim
-
 nnoremap <silent> [b :bprevious<CR>
 nnoremap <silent> ]b :bnext<CR>
 "noremap <silent> ,cc :<C-B>silent <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:nohlsearch<CR>
@@ -209,20 +225,5 @@ command! Eroutes :e config/routes.rb
 command! Troutes :tabe config/routes.rb
 command! Egemfile :e Gemfile
 command! Tgemfile :tabe Gemfile
-
-"###############################################################################
-" Functions
-"###############################################################################
-
-"----- simple same-file Tab completion -----"
-" function InsertTabWrapper()
-"   let col = col('.') - 1
-"   if !col || getline('.')[col - 1] !~ '\k'
-"     return "\<tab>"     
-"   else
-"     return "\<c-p>"
-"   endif
-" endfunction
-" inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 
 colorscheme samullen
