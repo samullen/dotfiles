@@ -1,36 +1,46 @@
 extends html
 
 snippet %
-	<% ${0} %>
+<% ${0} %>
+endsnippet
 snippet =
-	<%= ${0} %>
+<%= ${0} %>
+endsnippet
 snippet end
-	<% end %>
+<% end %>
+endsnippet
 snippet for
-	<%= for ${1:item} <- ${2:items} ${3:@conn} do %>
-		${0}
-	<% end %>
+<%= for ${1:item} <- ${2:items} ${3:@conn} do %>
+	${0}
+<% end %>
+endsnippet
 snippet if
-	<%= if ${1} do %>
-		${0:${VISUAL}}
-	<% end %>
+<%= if ${1} do %>
+	${0:${VISUAL}}
+<% end %>
+endsnippet
 snippet ife
-	<%= if ${1} do %>
-		${2:${VISUAL}}
-	<%= else %>
-		${0}
-	<% end %>
+<%= if ${1} do %>
+	${2:${VISUAL}}
+<%= else %>
+	${0}
+<% end %>
+endsnippet
 snippet ft
-	<%= form_tag(${1:"/users"}, method: ${2::post}) %>
-		${0}
-	</form>
-snippet lin
-	<%= link "${1:Submit}", to: ${2:"/users"}, method: ${3::delete} %>
+<%= form_tag(${1:"/users"}, method: ${2::post}) %>
+	${0}
+</form>
+endsnippet
+snippet link
+<%= link "${1:label}", to: ${2:"/path"} %>
+endsnippet
 snippet ff
-	<%= form_for @changeset, ${1:"/users"}, fn f -> %>
-			${0}
+<%= form_for @changeset, ${1:"/path"}, fn f -> %>
+		${0}
 
-		<%= submit "Submit" %>
-	<% end %>
+	<%= submit "Submit" %>
+<% end %>
+endsnippet
 snippet pry
-	<% require IEx; IEx.pry %>
+<% require IEx; IEx.pry %>
+endsnippet
