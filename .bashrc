@@ -20,6 +20,9 @@ export LSCOLORS=gxfxCxDxdxegedabagacad
 
 export CDPATH=.:$HOME/projects:$HOME/code:$HOME/sandbox
 
+# use `fd` for finding files. respects .gitignore
+export FZF_DEFAULT_COMMAND='fd --type f'
+
 [[ -f ~/.bash_aliases ]] && . ~/.bash_aliases
 [[ -f ~/.bash_functions ]] && . ~/.bash_functions
 [[ -f ~/.asdf/asdf.sh ]] && . ~/.asdf/asdf.sh
@@ -30,3 +33,5 @@ PS1="${magenta}[\A]${reset_color} ${green}\w${reset_color} \$git_branch\n \$ "
 
 # added by Anaconda3 5.1.0 installer
 export PATH="/anaconda3/bin:$PATH"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
