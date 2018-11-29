@@ -2,9 +2,10 @@
 alias ls='ls -F'
 alias cls='clear; ls'
 alias cat='bat'
-alias vi='/usr/local/bin/vim'
-alias v='/usr/local/bin/vim'
-alias vimf='vim $(fzf)'
+alias vim='/usr/local/bin/nvim'
+alias vi='/usr/local/bin/nvim'
+alias v='/usr/local/bin/nvim'
+alias vimf='nvim $(fzf)'
 alias gemdir='cd `gem env gemdir`'
 alias resource=". ~/.bash_profile"
 
