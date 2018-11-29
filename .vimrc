@@ -1,11 +1,8 @@
-filetype plugin indent on
-
 "------------------------------------------------------------------------------"
 " General
 "------------------------------------------------------------------------------"
 
 " Begin Vundle plugin
-set nocompatible     " do not make VIM compatible with VI
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -17,20 +14,17 @@ Plugin 'isRuslan/vim-es6'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 Plugin 'kana/vim-textobj-user'
-Plugin 'mxw/vim-jsx'
 Plugin 'nelstrom/vim-textobj-rubyblock'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-rails'
-Plugin 'tpope/vim-projectionist'
 Plugin 'tpope/vim-surround'
 Plugin 'pangloss/vim-javascript'
 Plugin 'ervandew/supertab'
 Plugin 'vim-scripts/YankRing.vim'
 Plugin 'SirVer/ultisnips'
-Plugin 'w0rp/ale'
-
 Plugin 'samullen/valt'
+
 let g:nv_directory = '~/Dropbox/Apps/Notational Data'
 let g:nv_show_preview = 1
 
@@ -38,6 +32,7 @@ call vundle#end()
 filetype plugin indent on
 
 " End Vundle plugin
+
 syntax on
 
 set autoread " automatically read files when they are changed outside of VIM.
@@ -103,7 +98,7 @@ inoremap <S-Tab> <C-V><Tab>
 nnoremap <leader>ss :setlocal spell!<cr> 
 
 " Create tabs for all files in buffer
-nnoremap <leader>bt :argdo tabnew<cr>
+nnoremap <leader>p :argdo tabnew<cr>
 
 nnoremap <leader>n :tabn<cr>
 nnoremap <leader>h :tabp<cr>
@@ -122,16 +117,6 @@ nnoremap <expr> <CR> empty(&buftype) ? '}' : '<CR>'
 onoremap <expr> <CR> empty(&buftype) ? '}' : '<CR>'
 vnoremap <CR> }
 
-" ALE
-
-let g:ale_enabled = 0
-let g:ale_linters = {
-\   'javascript': ['eslint'],
-\   'ruby': ['rubocop'],
-\}
-nnoremap <leader>al :ALELint<cr>
-nnoremap <leader>at :ALEToggle<cr>
-
 " FZF
 nnoremap <leader>a :Ag<cr>
 nnoremap <leader>b :Buffers<cr>
@@ -148,19 +133,6 @@ nnoremap <leader>v :NV<CR>
 
 " Fugitive remaps
 nnoremap <leader>gb :Gblame<cr>
-
-nnoremap <leader>wc g<C-g>
-
-" projectionist
-let g:projectionist_heuristics = {
-      \ "lib/*/endpoint.ex": {
-      \   "lib/**_web/controllers/*.ex": {"type": "controller"},
-      \   "lib/**_web/views/*.ex": {"type": "view"},
-      \   "lib/**_web/templates/*.html.eex": {"type": "template"},
-      \ },
-      \ "mix.exs": {
-      \   "lib/*.ex": {"type": "lib"}
-      \ }}
 
 " Matchup settings
 let g:matchup_matchparen_deferred = 1
