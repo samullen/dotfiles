@@ -2,10 +2,10 @@
 alias ls='ls -F'
 alias cls='clear; ls'
 alias cat='bat'
-alias vim='/usr/local/bin/nvim'
-alias vi='/usr/local/bin/nvim'
-alias v='/usr/local/bin/nvim'
-alias vimf='nvim $(fzf)'
+alias vim='/usr/local/bin/vim'
+alias vi='/usr/local/bin/vim'
+alias v='/usr/local/bin/vim'
+alias vimf='vim $(fzf)'
 alias gemdir='cd `gem env gemdir`'
 alias resource=". ~/.bash_profile"
 
@@ -41,6 +41,7 @@ alias gcm="git commit -m"
 alias gco="git checkout"
 alias gcob="git checkout -b"
 alias gd="git diff"
+alias gdc="git diff --cached"
 alias gf="git fetch"
 alias gl="git lol"
 alias gm="git merge"

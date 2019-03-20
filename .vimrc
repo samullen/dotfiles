@@ -19,6 +19,7 @@ Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-surround'
+Plugin 'andymass/vim-matchup'
 Plugin 'pangloss/vim-javascript'
 Plugin 'ervandew/supertab'
 Plugin 'vim-scripts/YankRing.vim'
@@ -41,7 +42,7 @@ set backspace=indent,eol,start
 set backupdir=~/tmp
 set clipboard=unnamed
 set complete-=i
-set cpoptions=abABceFs$   " compatability options. Must come after nocompatible
+set cpoptions=abABceFs$
 set directory=~/tmp
 set expandtab
 set formatoptions-=o
