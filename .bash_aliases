@@ -35,6 +35,7 @@ alias mps='mix phx.server'
 
 # Git aliases
 alias ga="git add"
+alias gaf='git add $(gs | fzf)'
 alias gb="git branch"
 alias gc="git commit"
 alias gcm="git commit -m"
