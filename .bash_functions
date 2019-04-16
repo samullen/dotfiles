@@ -83,6 +83,10 @@ fh() {
   eval $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed 's/ *[0-9]* *//')
 }
 
+function fga() {
+  git add $(git status -s | cut -c 4- | fzf -m --bind "space:toggle+beginning-of-line+kill-line")
+}
+
 function heroku_import {
   app=$1
   database=$2
