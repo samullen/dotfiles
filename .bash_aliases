@@ -1,6 +1,6 @@
 # alias ls='ls -F --color=auto'
 alias ls='ls -F'
-alias cls='clear; ls'
+alias c='clear'
 alias cat='bat'
 alias vim='/usr/local/bin/vim'
 alias vi='/usr/local/bin/vim'
@@ -35,7 +35,7 @@ alias mps='mix phx.server'
 
 # Git aliases
 alias ga="git add"
-alias gaf='git add $(gs | fzf)'
+alias fga="git add $(git status -s | cut -c 4- | fzf -m --bind 'space:toggle+beginning-of-line+kill-line')"
 alias gb="git branch"
 alias gc="git commit"
 alias gcm="git commit -m"
