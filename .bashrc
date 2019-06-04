@@ -1,8 +1,15 @@
 # ssh-copy-id remote-machine/
 
+# Bash settings
+shopt -s histappend
+
 # Global Variables
 export FIGNORE=.svn:.swp:.gitkeep # Ignore files with these suffixes
+export HISTFILESIZE=10000
+export HISTSIZE=10000
 export HISTCONTROL=ignoredups
+export HISTIGNORE="ls:bg:fg:history"
+export HISTTIMEFORMAT="%F %T"
 export EDITOR=vim
 export PAGER="less -I -R"
 
@@ -33,5 +40,8 @@ PS1="${magenta}[\A]${reset_color} ${green}\w${reset_color} \$git_branch\n \$ "
 
 # added by Anaconda3 5.1.0 installer
 export PATH="/anaconda3/bin:$PATH"
+
+# keep IEx history between sessions
+export ERL_AFLAGS="-kernel shell_history enabled"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
