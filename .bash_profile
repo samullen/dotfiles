@@ -7,7 +7,7 @@ pathadd() {
 
 #----- User specific environment and startup programs
 pathadd "${HOME}/bin"
-pathadd "/Applications/Postgres.app/Contents/MacOS/bin"
+pathadd "/Applications/Postgres.app/Contents/Versions/latest/bin"
 pathadd $HOME
 pathadd "/usr/local/heroku/bin"
 export PATH
