@@ -87,6 +87,7 @@ inoremap ;l <Esc>
 
 " remap ctrl-a to ctrl-z for incrementing
 nnoremap <C-z> <C-a>
+vnoremap <C-z> <C-a>
 
 " .vimrc
 nnoremap <leader>ev :split $MYVIMRC<cr>
