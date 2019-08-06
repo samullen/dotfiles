@@ -120,7 +120,7 @@ onoremap <expr> <CR> empty(&buftype) ? '}' : '<CR>'
 vnoremap <CR> }
 
 " FZF
-nnoremap <leader>a :Ag<cr>
+nnoremap <leader>a :Rg<cr>
 nnoremap <leader>b :Buffers<cr>
 nnoremap <leader>f :Files<cr>
 nnoremap <leader>t :Tags<cr>
