@@ -1,5 +1,8 @@
 # alias ls='ls -F --color=auto'
-alias ls='ls -F'
+alias ls='gls --color -F --group-directories-first'
+alias lk='ls -lS'
+alias ll='ls -l'
+alias la='ll -A'
 alias c='clear'
 alias cat='bat'
 alias vim='/usr/local/bin/vim'
@@ -8,6 +11,10 @@ alias v='/usr/local/bin/vim'
 alias vimf='vim $(fzf)'
 alias gemdir='cd `gem env gemdir`'
 alias resource=". ~/.bash_profile"
+
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
 
 # Mac aliases
 alias preview='open -a Preview'
