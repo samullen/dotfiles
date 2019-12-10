@@ -61,11 +61,13 @@ set noshowmatch
 set nrformats= " force numbers to use base-10
 set pastetoggle=<f2>
 set ruler
-set rulerformat=%40(%<%f%=[%l,%v:%L]%)
+set rulerformat=%40(%<%f%=[%l:%L,%v]%)
+" set statusline
 set shiftwidth=2
 set smartcase
 set smarttab          " inteliigently add spaces to tab stop
 set tabstop=2
+set tags^=./.git/tags
 set title
 set wildmenu
 set wildignore+=*.class,*.o,tmp/**
@@ -97,16 +99,15 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 inoremap <S-Tab> <C-V><Tab>
 
 " Toggles spell
-nnoremap <leader>ss :setlocal spell!<cr> 
+nnoremap <leader>ss :setlocal spell!<cr>
 
 " Create tabs for all files in buffer
 nnoremap <leader>p :argdo tabnew<cr>
 
-nnoremap <leader>n :tabn<cr>
 nnoremap <leader>h :tabp<cr>
+nnoremap <leader>l :tabn<cr>
 nnoremap <leader>o :tabo<cr>
 nnoremap <leader>x :tabc<cr>
-nnoremap <leader>r :!ruby %<cr>
 
 nnoremap <leader>y :YRShow<cr>
 
@@ -135,6 +136,8 @@ nnoremap <leader>v :NV<CR>
 
 " Fugitive remaps
 nnoremap <leader>gb :Gblame<cr>
+nnoremap <leader>gc :Gcommit<cr>
+nnoremap <leader>gl :Glog<cr>
 
 " Matchup settings
 let g:matchup_matchparen_deferred = 1
@@ -166,7 +169,16 @@ augroup onload
   autocmd BufRead,BufNewFile *.md,*.markdown set filetype=markdown
   autocmd BufRead,BufNewFile * setlocal formatoptions+=tcqr
   autocmd BufRead,BufNewFile * setlocal formatoptions-=o
+
 augroup END
+
+fun! TrimWhitespace()
+    let l:save = winsaveview()
+    keeppatterns %s/\s\+$//e
+    call winrestview(l:save)
+endfun
+
+autocmd BufWritePre * call TrimWhitespace()
 
 augroup filetypes
   autocmd!
@@ -174,7 +186,7 @@ augroup filetypes
   autocmd FileType c,cpp,javascript let b:comment_leader = '// '
 "  autocmd FileType sh,ruby,python   let b:comment_leader = '# '
   autocmd FileType vim              let b:comment_leader = '" '
-  
+
   autocmd FileType ruby,eruby,yaml setlocal ai sw=2 sts=2 et
   autocmd FileType ruby,eruby,yaml setlocal path+=lib
   " autocmd FileType ruby,eruby,yaml setlocal colorcolumn=81
