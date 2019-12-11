@@ -102,7 +102,7 @@ function heroku_db_copy {
 }
 
 function w {
-  location=$1 || "66226"
+  location=${1:-"66226"}
   curl "wttr.in/${location}"
 }
 
