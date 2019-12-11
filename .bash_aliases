@@ -1,8 +1,14 @@
+alias rbp='. ~/.bash_profile'
+alias rbr='. ~/.bashrc'
+alias rba='. ~/.bash_aliases'
+alias rbf='. ~/.bash_functions'
+
 # alias ls='ls -F --color=auto'
 alias ls='gls --color -F --group-directories-first'
 alias lk='ls -lS'
 alias ll='ls -l'
 alias la='ll -A'
+alias lsf='ls $(fzf)'
 alias c='clear'
 alias cat='bat'
 alias vim='/usr/local/bin/vim'
@@ -51,12 +57,14 @@ alias gd="git diff"
 alias gdc="git diff --cached"
 alias gf="git fetch"
 alias gl="git lol"
+alias glf="git log -p --follow --stat --all --"
 alias gm="git merge"
 alias gmx="git merge --no-ff --log"
 alias gp="git push"
 alias gpr="git pull --rebase origin"
 alias gri="git rebase -i"
 alias gs="git status -sb"
+alias gw="git show"
 
 # heroku_aliases
 alias heroku="/usr/local/bin/heroku"
@@ -70,7 +78,7 @@ alias tmuxcp='tmux saveb -|pbcopy && tmux deleteb'
 alias tl="tmux ls"
 
 # ssh aliases
-alias key_update='ssh-add ~/.ssh/heroku_rsa'
+alias key_update='ssh-add -K ~/.ssh/id_rsa'
 
 alias sb='echo "################################################################################"'
 
