@@ -10,6 +10,7 @@ tags
 tags.*
 .muttrc
 .mutt
+.gitconfig
 
 # OSX Specific files
 .DS_Store
