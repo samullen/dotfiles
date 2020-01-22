@@ -11,6 +11,7 @@ tags.*
 .muttrc
 .mutt
 .gitconfig
+.projections.json
 
 # OSX Specific files
 .DS_Store

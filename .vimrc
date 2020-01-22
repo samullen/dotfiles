@@ -17,6 +17,7 @@ Plugin 'kana/vim-textobj-user'
 Plugin 'nelstrom/vim-textobj-rubyblock'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-projectionist'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-surround'
 Plugin 'andymass/vim-matchup'
@@ -64,6 +65,7 @@ set ruler
 set rulerformat=%40(%<%f%=[%l:%L,%v]%)
 " set statusline
 set shiftwidth=2
+set showcmd           " show line count in visual mode
 set smartcase
 set smarttab          " inteliigently add spaces to tab stop
 set tabstop=2
@@ -154,7 +156,7 @@ vnoremap <leader>{ <esc>`>a}<esc>`<i{<esc>
 vnoremap <leader>% <esc>`>a %><esc>`<i<% <esc>
 vnoremap <leader>%= <esc>`>a %><esc>`<i<%= <esc>
 
-let g:ruby_path = system('echo $HOME/.rbenv/shims') " speed up vim start up using RVM
+let g:ruby_path = system('echo $HOME/.asdc/shims') " speed up vim start up using asdf
 
 "----- default to unix script commenting -----"
 augroup onload
