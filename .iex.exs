@@ -37,9 +37,9 @@ IEx.configure(
   inspect: [
     pretty: true,
     limit: :infinity,
-    width: 80
+    # width: 80
   ],
-  width: 80
+  # width: 80
 )
 
 dwarves = ["Fili","Kili", "Oin", "Gloin", "Thorin", "Dwalin", "Balin", "Bifur",

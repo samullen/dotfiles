@@ -2,38 +2,41 @@
 " General
 "------------------------------------------------------------------------------"
 
-" Begin Vundle plugin
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" Begin Vim-Plug plugin
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'elixir-lang/vim-elixir'
-Plugin 'mhinz/vim-mix-format'
-Plugin 'isRuslan/vim-es6'
-Plugin 'junegunn/fzf'
-Plugin 'junegunn/fzf.vim'
-Plugin 'kana/vim-textobj-user'
-Plugin 'nelstrom/vim-textobj-rubyblock'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-projectionist'
-Plugin 'tpope/vim-rails'
-Plugin 'tpope/vim-surround'
-Plugin 'andymass/vim-matchup'
-Plugin 'pangloss/vim-javascript'
-Plugin 'ervandew/supertab'
-Plugin 'vim-scripts/YankRing.vim'
-Plugin 'SirVer/ultisnips'
-Plugin 'samullen/valt'
+call plug#begin('~/.vim/plugged')
+
+Plug 'elixir-lang/vim-elixir'
+Plug 'mhinz/vim-mix-format'
+Plug 'isRuslan/vim-es6'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'kana/vim-textobj-user'
+Plug 'nelstrom/vim-textobj-rubyblock'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-projectionist'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-surround'
+Plug 'andymass/vim-matchup'
+Plug 'pangloss/vim-javascript'
+Plug 'ervandew/supertab'
+Plug 'vim-scripts/YankRing.vim'
+Plug 'SirVer/ultisnips'
+Plug 'arcticicestudio/nord-vim'
+" Plug 'mhartington/oceanic-next'
+Plug 'samullen/valt'
+
+call plug#end()
+" End Vim-Plug plugin
 
 let g:nv_directory = '~/Dropbox/Apps/Notational Data'
 let g:nv_show_preview = 1
-
-call vundle#end()
-filetype plugin indent on
-
-" End Vundle plugin
 
 syntax on
 
@@ -175,9 +178,9 @@ augroup onload
 augroup END
 
 fun! TrimWhitespace()
-    let l:save = winsaveview()
-    keeppatterns %s/\s\+$//e
-    call winrestview(l:save)
+  let l:save = winsaveview()
+  keeppatterns %s/\s\+$//e
+  call winrestview(l:save)
 endfun
 
 autocmd BufWritePre * call TrimWhitespace()
@@ -214,4 +217,6 @@ command! Troutes :tabe config/routes.rb
 command! Egemfile :e Gemfile
 command! Tgemfile :tabe Gemfile
 
-colorscheme samullen
+colorscheme nord
+
+source ~/.vim/plugins/statusline.vim
