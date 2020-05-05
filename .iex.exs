@@ -1,12 +1,3 @@
-# File.exists?(Path.expand("~/.iex.exs")) && import_file("~/.iex.exs")
-
-timestamp = fn ->
-  {_date, {hour, minute, _second}} = :calendar.local_time
-  [hour, minute]
-  |> Enum.map(&(String.pad_leading(Integer.to_string(&1), 2, "0")))
-  |> Enum.join(":")
-end
-
 IEx.configure(
   colors: [
     syntax_colors: [
@@ -26,21 +17,23 @@ IEx.configure(
   ],
   default_prompt:
     "#{IO.ANSI.green}%prefix#{IO.ANSI.reset} " <>
-    "[#{IO.ANSI.magenta}#{timestamp.()}#{IO.ANSI.reset} " <>
-    ":: #{IO.ANSI.cyan}%counter#{IO.ANSI.reset}] >",
+    ":: #{IO.ANSI.cyan}%counter#{IO.ANSI.reset} >",
   alive_prompt:
     "#{IO.ANSI.green}%prefix#{IO.ANSI.reset} " <>
     "(#{IO.ANSI.yellow}%node#{IO.ANSI.reset}) " <>
-    "[#{IO.ANSI.magenta}#{timestamp.()}#{IO.ANSI.reset} " <>
-    ":: #{IO.ANSI.cyan}%counter#{IO.ANSI.reset}] >",
+    ":: #{IO.ANSI.cyan}%counter#{IO.ANSI.reset} >",
   history_size: 50,
   inspect: [
     pretty: true,
     limit: :infinity,
-    # width: 80
-  ],
+    charlists: :as_lists,
+    binaries: :as_strings,
+    printable_limit: :infinity
+  ]
   # width: 80
 )
+
+import_if_available(Ecto.Query)
 
 dwarves = ["Fili","Kili", "Oin", "Gloin", "Thorin", "Dwalin", "Balin", "Bifur",
            "Bofur", "Bombur", "Dori", "Nori", "Ori"]
