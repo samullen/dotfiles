@@ -62,16 +62,16 @@ function! ActiveLine()
   let statusline .= "%#Mode# %{ModeCurrent()}"
 
   " Current git branch
-  let statusline .= "%#Git# %{GitBranch(fugitive#head())} %m"
+  let statusline .= "%#Git# %{GitBranch(fugitive#head())} "
 
-  let statusline .= "%#Base# %t "
+  let statusline .= "%#Base# %t %m"
 
   let statusline .= "%="
 
-  let statusline .= "[%{CheckFT(&filetype)}] "
+  let statusline .= "%{CheckFT(&filetype)} "
 
   " Current line and column
-  let statusline .= "%#Git# %p%% %#Mode# %l/%L :: %v "
+  let statusline .= "%#Git# %p%% %#Mode# %l:%L+%v "
 
   return statusline
 endfunction

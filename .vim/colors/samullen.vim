@@ -2,17 +2,18 @@
 "
 " ( x=`tput op` y=`printf %$((${COLUMNS}-6))s`;for i in {0..256};do o=00$i;echo -e ${o:${#o}-3:3} `tput setaf $i;tput setab $i`${y// /=}$x;done; )
 
-set background=dark
+" set background=dark
 
 let s:black     = "232 "
 let s:cyan      = "014 "
 let s:darkcyan  = "006 "
-let s:darkgrey  = "238 "
+let s:darkgrey  = "240 "
 let s:darkred   = "124 "
+let s:blue      = "004 "
 let s:brightgreen = "010 "
-let s:green     = "040 "
+let s:green     = "002 "
 let s:grey      = "243 "
-let s:magenta   = "201 "
+let s:magenta   = "013 "
 let s:red       = "009 "
 let s:softblue  = "039 "
 let s:tamedblue = "039 "
@@ -35,7 +36,7 @@ exe "hi Function        ctermfg=" . s:green     . "ctermbg=none cterm=none"
 exe "hi Statement       ctermfg=" . s:softblue  . "ctermbg=none cterm=none"
 exe "hi Keyword         ctermfg=" . s:softblue  . "ctermbg=none cterm=none"
 
-exe "hi Conditional     ctermfg=" . s:darkred   . "ctermbg=none cterm=none"
+exe "hi Conditional     ctermfg=" . s:blue      . "ctermbg=none cterm=none"
 exe "hi Repeat          ctermfg=" . s:darkred   . "ctermbg=none cterm=none"
 exe "hi Label           ctermfg=" . s:darkred   . "ctermbg=none cterm=none"
 
@@ -48,10 +49,10 @@ exe "hi Define          ctermfg=" . s:magenta   . "ctermbg=none cterm=none"
 exe "hi Macro           ctermfg=" . s:magenta   . "ctermbg=none cterm=none"
 exe "hi PreCondit       ctermfg=" . s:magenta   . "ctermbg=none cterm=none"
 
-exe "hi Type            ctermfg=" . s:darkred   . "ctermbg=none cterm=none"
-exe "hi StorageClass    ctermfg=" . s:darkred   . "ctermbg=none cterm=none"
-exe "hi Structure       ctermfg=" . s:darkred   . "ctermbg=none cterm=none"
-exe "hi Typedef         ctermfg=" . s:darkred   . "ctermbg=none cterm=none"
+exe "hi Type            ctermfg=" . s:red   . "ctermbg=none cterm=none"
+exe "hi StorageClass    ctermfg=" . s:red   . "ctermbg=none cterm=none"
+exe "hi Structure       ctermfg=" . s:red   . "ctermbg=none cterm=none"
+exe "hi Typedef         ctermfg=" . s:red   . "ctermbg=none cterm=none"
 
 exe "hi Special         ctermfg=" . s:yellow    . "ctermbg=none cterm=none"
 exe "hi SpecialKey      ctermfg=" . s:yellow    . "ctermbg=none cterm=none"
@@ -67,8 +68,8 @@ exe "hi Error           ctermfg=" . s:white . "ctermbg=" . s:red . "cterm=none"
 exe "hi Todo            ctermfg=" . s:yellow    . "ctermbg=none cterm=bold"
 
 hi Cursor        ctermfg=NONE ctermbg=Cyan
-exe "hi NonText       ctermbg=" . s:black
-exe "hi Normal        ctermfg=LightGrey   ctermbg=" . s:black
+exe "hi NonText       ctermbg=none"
+exe "hi Normal        ctermfg=LightGrey   ctermbg=none"
 exe "hi MatchParen    ctermfg=" . s:black . "ctermbg=DarkGrey"
 exe "hi DiffAdd       ctermfg=" . s:white . "ctermbg=DarkGreen"
 exe "hi DiffDelete    ctermfg=" . s:white . "ctermbg=DarkRed"
@@ -79,5 +80,5 @@ hi perlStatementSub ctermfg=magenta cterm=NONE
 hi perlMatchStartEnd ctermfg=magenta cterm=NONE
 
 hi TabLine     ctermfg=LightGrey ctermbg=237 cterm=underline
-hi TabLineSel  ctermfg=255     ctermbg=Black cterm=underline
+hi TabLineSel  ctermfg=255     ctermbg=none cterm=underline
 hi TabLineFill ctermfg=LightGrey ctermbg=237 cterm=underline

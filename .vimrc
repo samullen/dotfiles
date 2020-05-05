@@ -217,6 +217,6 @@ command! Troutes :tabe config/routes.rb
 command! Egemfile :e Gemfile
 command! Tgemfile :tabe Gemfile
 
-colorscheme nord
+colorscheme samullen
 
 source ~/.vim/plugins/statusline.vim
