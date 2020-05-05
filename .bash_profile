@@ -10,6 +10,7 @@ pathadd "${HOME}/bin"
 pathadd "/Applications/Postgres.app/Contents/Versions/latest/bin"
 pathadd $HOME
 pathadd "/usr/local/heroku/bin"
+pathadd "${HOME}/Library/Python/2.7/bin" # temporary
 export PATH
 
 export PS1='\h \w \$ '
