@@ -83,6 +83,7 @@ fh() {
   eval $(fc -l 1 | cut -f 2 | fzf +s --tac)
 }
 
+# Git add and FZF
 function fga() {
   git add $(git status -s | cut -c 4- | fzf -m --bind "space:toggle+beginning-of-line+kill-line")
 }
@@ -99,11 +100,6 @@ function heroku_db_copy {
   db_b=$2
 
   heroku pg:backups restore $(heroku pg:backups public-url --app $db_a) DATABASE_URL --app $db_b
-}
-
-function w {
-  location=${1:-"66226"}
-  curl "wttr.in/${location}"
 }
 
 #----- code for adding git branch to prompt -----#

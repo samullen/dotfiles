@@ -9,8 +9,7 @@ pathadd() {
 pathadd "${HOME}/bin"
 pathadd "/Applications/Postgres.app/Contents/Versions/latest/bin"
 pathadd $HOME
-pathadd "/usr/local/heroku/bin"
-pathadd "${HOME}/Library/Python/2.7/bin" # temporary
+pathadd "/opt/homebrew/opt/openjdk/bin"
 export PATH
 
 export PS1='\h \w \$ '
@@ -18,6 +17,9 @@ export HISTCONTROL=ignoredups
 export EDITOR=vim
 export CVSEDITOR=vim
 export CVSROOT=/cvs
+
+# Mac Only
+export BASH_SILENCE_DEPRECATION_WARNING=1
 
 #----- Prepare DIRSTACK for cd function in .bashrc -----#
 #unset DIRSTACK[@]

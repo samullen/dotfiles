@@ -24,7 +24,7 @@ export LSCOLORS=gxfxCxDxdxegedabagacad
 
 export CDPATH=.:$HOME/projects:$HOME/code:$HOME/sandbox
 
-# use `fd` for finding files. respects .gitignore
+# use `fd` for finding files. respects .gitignore: just type fzf
 export FZF_DEFAULT_COMMAND='fd --type f'
 
 [[ -f ~/.bash_aliases ]] && . ~/.bash_aliases
