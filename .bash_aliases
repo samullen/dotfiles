@@ -23,6 +23,10 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 
+# delta aliases
+alias d="delta"
+alias ds="delta --side-by-side"
+
 # Mac aliases
 alias preview='open -a Preview'
 
@@ -54,8 +58,10 @@ alias gc="git commit"
 alias gcm="git commit -m"
 alias gco="git checkout"
 alias gcob="git checkout -b"
+alias gco-="git checkout -"
 alias gd="git diff"
 alias gdc="git diff --cached"
+alias gds="git ds"
 alias gf="git fetch"
 alias ghist="git log -p --"
 alias gl="git lol"
