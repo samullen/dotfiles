@@ -29,13 +29,13 @@ Plug 'ervandew/supertab'
 Plug 'vim-scripts/YankRing.vim'
 Plug 'SirVer/ultisnips'
 Plug 'arcticicestudio/nord-vim'
-" Plug 'mhartington/oceanic-next'
 Plug 'samullen/valt'
 
 call plug#end()
 " End Vim-Plug plugin
 
-let g:nv_directory = '~/Dropbox/Apps/Notational Data'
+" let g:nv_directory = '~/Dropbox/Apps/Notational Data'
+let g:nv_directory = '~/Library/Mobile Documents/iCloud~co~fluder~fsnotes/Documents'
 let g:nv_show_preview = 1
 
 syntax on
@@ -68,6 +68,7 @@ set ruler
 set rulerformat=%40(%<%f%=[%l:%L,%v]%)
 " set statusline
 set shiftwidth=2
+set shortmess-=S
 set showcmd           " show line count in visual mode
 set smartcase
 set smarttab          " inteliigently add spaces to tab stop
