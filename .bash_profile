@@ -10,6 +10,7 @@ pathadd "${HOME}/bin"
 pathadd "/Applications/Postgres.app/Contents/Versions/latest/bin"
 pathadd $HOME
 pathadd "/opt/homebrew/opt/openjdk/bin"
+pathadd "/opt/homebrew/bin"
 export PATH
 
 export PS1='\h \w \$ '

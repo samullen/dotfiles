@@ -141,9 +141,9 @@ let g:UltiSnipsExpandTrigger="<tab>"
 nnoremap <leader>v :NV<CR>
 
 " Fugitive remaps
-nnoremap <leader>gb :Gblame<cr>
-nnoremap <leader>gc :Gcommit<cr>
-nnoremap <leader>gl :Glog<cr>
+nnoremap <leader>gb :Git blame<cr>
+nnoremap <leader>gc :Git commit<cr>
+nnoremap <leader>gl :Git log<cr>
 
 " Matchup settings
 let g:matchup_matchparen_deferred = 1
