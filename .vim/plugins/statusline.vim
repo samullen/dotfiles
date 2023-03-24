@@ -62,7 +62,7 @@ function! ActiveLine()
   let statusline .= "%#Mode# %{ModeCurrent()}"
 
   " Current git branch
-  let statusline .= "%#Git# %{GitBranch(fugitive#head())} "
+  let statusline .= "%#Git# %{GitBranch(FugitiveHead())} "
 
   let statusline .= "%#Base# %t %m"
 

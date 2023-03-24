@@ -1,39 +1,34 @@
 "------------------------------------------------------------------------------"
 " General
 "------------------------------------------------------------------------------"
+packadd minpac
 
-" Begin Vim-Plug plugin
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
+call minpac#init()
 
-call plug#begin('~/.vim/plugged')
+" minpac must have {'type': 'opt'} so that it can be loaded with `packadd`.
+call minpac#add('k-takata/minpac', {'type': 'opt'})
 
-Plug 'elixir-editors/vim-elixir'
-Plug 'mhinz/vim-mix-format'
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-projectionist'
-Plug 'tpope/vim-rails'
-Plug 'tpope/vim-surround'
-Plug 'andymass/vim-matchup'
-Plug 'pangloss/vim-javascript'
-Plug 'godlygeek/tabular'
-Plug 'ervandew/supertab'
-Plug 'rust-lang/rust.vim'
-Plug 'vim-scripts/YankRing.vim'
-Plug 'SirVer/ultisnips'
-Plug 'vimwiki/vimwiki'
-Plug 'samullen/valt'
+" Add other plugins here.
+call minpac#add('vim-jp/syntax-vim-ex')
+call minpac#add('elixir-editors/vim-elixir')
+call minpac#add('mhinz/vim-mix-format')
+call minpac#add('junegunn/fzf')
+call minpac#add('junegunn/fzf.vim')
+call minpac#add('tpope/vim-commentary')
+call minpac#add('tpope/vim-fugitive')
+call minpac#add('tpope/vim-projectionist')
+call minpac#add('tpope/vim-rails')
+call minpac#add('tpope/vim-surround')
+call minpac#add('andymass/vim-matchup')
+call minpac#add('pangloss/vim-javascript')
+call minpac#add('godlygeek/tabular')
+call minpac#add('ervandew/supertab')
+call minpac#add('rust-lang/rust.vim')
+call minpac#add('vim-scripts/YankRing.vim')
+call minpac#add('SirVer/ultisnips')
+call minpac#add('vimwiki/vimwiki')
+call minpac#add('github/copilot.vim')
 
-call plug#end()
-" End Vim-Plug plugin
-
-" let g:nv_directory = '~/Dropbox/Apps/Notational Data'
 let g:nv_directory = '~/Library/Mobile Documents/iCloud~co~fluder~fsnotes/Documents'
 let g:nv_show_preview = 1
 
@@ -99,8 +94,8 @@ nnoremap <C-z> <C-a>
 vnoremap <C-z> <C-a>
 
 " .vimrc
-nnoremap <leader>ev :split $MYVIMRC<cr>
-nnoremap <leader>sv :source $MYVIMRC<cr>
+nnoremap <leader>ev :split ~/.config/nvim/init.vim<cr>
+nnoremap <leader>sv :source ~/.config/nvim/init.vim<cr>
 
 " shift-tab to create a tab character
 inoremap <S-Tab> <C-V><Tab>
@@ -178,6 +173,19 @@ nnoremap wlx :VimwikiToggleListItem<cr>
 
 " Disable vimwiki tabs
 let g:vimwiki_table_mappings = 0
+
+augroup VimwikiRemaps
+    autocmd!
+    " unmap tab in insert mode
+    autocmd Filetype vimwiki silent! iunmap <buffer> <Tab>
+    " remap table tab mappings to M-n M-p
+    autocmd Filetype vimwiki inoremap <silent><expr><buffer> <M-n> vimwiki#tbl#kbd_tab()
+    autocmd Filetype vimwiki inoremap <silent><expr><buffer> <M-p> vimwiki#tbl#kbd_shift_tab()
+    " on enter if completion is open, complete first element otherwise use
+    " default vimwiki mapping
+    autocmd Filetype vimwiki inoremap <silent><expr><buffer> <cr> pumvisible() ? coc#_select_confirm()
+                              \: "<C-]><Esc>:VimwikiReturn 1 5<CR>"
+augroup end
 
 "----- default to unix script commenting -----"
 augroup onload

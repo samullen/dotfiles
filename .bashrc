@@ -10,15 +10,23 @@ export HISTSIZE=10000
 export HISTCONTROL=ignoredups
 export HISTIGNORE="ls:bg:fg:history"
 export HISTTIMEFORMAT="%F %T"
+export VISUAL=vim
 export EDITOR=vim
 export PAGER="less -I -R"
 
 export HOMEBREW_PREFIX="/opt/homebrew";
 export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
 export HOMEBREW_REPOSITORY="/opt/homebrew";
-export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}";
-export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:";
-export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
+
+if [ -d  "/opt/homebrew/bin" ]; then
+  export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}";
+  export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:";
+  export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
+else
+  export PATH="/usr/local/bin:/opt/homebrew/sbin${PATH+:$PATH}";
+  export MANPATH="/usr/local/share/man${MANPATH+:$MANPATH}:";
+  export INFOPATH="/usr/local/share/info:${INFOPATH:-}";
+fi
 
 # Settings
 #------------------------------------------------------------------------------#
@@ -36,12 +44,23 @@ export FZF_DEFAULT_COMMAND='fd --type f'
 
 [[ -f ~/.bash_aliases ]] && . ~/.bash_aliases
 [[ -f ~/.bash_functions ]] && . ~/.bash_functions
-[[ -f ~/.asdf/asdf.sh ]] && . ~/.asdf/asdf.sh
 [[ -f ~/.asdf/completions/asdf.bash ]] && . ~/.asdf/completions/asdf.bash
+
+if [[ -f ~/.npmrc ]]; then
+  NPM_TOKEN=`ag "authToken=npm" ~/.npmrc | cut -d'=' -f2`
+  export NPM_TOKEN
+fi
 
 PS1="${magenta}[\A]${reset_color} ${green}\w${reset_color} \$git_branch\n \$ "
 
 # keep IEx history between sessions
 export ERL_AFLAGS="-kernel shell_history enabled"
 
+# asdf
+. "$(brew --prefix asdf)/libexec/asdf.sh"
+
+# Rust
+. "$HOME/.cargo/env"
+
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+

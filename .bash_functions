@@ -102,6 +102,24 @@ function heroku_db_copy {
   heroku pg:backups restore $(heroku pg:backups public-url --app $db_a) DATABASE_URL --app $db_b
 }
 
+function backup {
+  message=${1:-"Daily backup"}
+
+  echo "Changing to FSNotes directory"
+  cd ~/Library/Mobile\ Documents/iCloud~co~fluder~fsnotes/Documents
+
+  echo "Committing changes"
+  ga .
+
+  gc
+
+  echo "Pushing changes"
+  gp
+
+  echo "Returning to working directory"
+  cd -
+}
+
 #----- code for adding git branch to prompt -----#
 black=$'\e[0;30m'
 red=$'\e[0;31m'

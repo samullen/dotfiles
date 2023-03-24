@@ -4,18 +4,20 @@ alias rba='. ~/.bash_aliases'
 alias rbf='. ~/.bash_functions'
 
 # alias ls='ls -F --color=auto'
-alias ls='gls --color -F --group-directories-first'
+alias ls='exa -F --group-directories-first'
+# alias ls='gls --color -F --group-directories-first'
 alias lk='ls -lS'
 alias ll='ls -l'
 alias la='ll -A'
+alias lt='ls -al -snew'
 alias lsf='ls $(fzf)'
 alias c='clear'
 alias cat='bat'
-alias vimp='/opt/homebrew/bin/vim -p'
-alias vim='/opt/homebrew/bin/vim'
-alias vi='/opt/homebrew/bin/vim'
-alias v='/opt/homebrew/bin/vim'
-alias vimf='vim $(fzf)'
+alias vimp='/opt/homebrew/bin/nvim -p'
+alias vim='/opt/homebrew/bin/nvim'
+alias vi='/opt/homebrew/bin/nvim'
+alias v='/opt/homebrew/bin/nvim'
+alias vimf='nvim $(fzf)'
 alias gemdir='cd `gem env gemdir`'
 alias resource=". ~/.bash_profile"
 
@@ -74,22 +76,28 @@ alias gri="git rebase -i"
 alias gs="git status -sb"
 alias gw="git show"
 
-# heroku_aliases
-alias heroku="/usr/local/bin/heroku"
-alias hc="heroku run rails c"
-alias hpg="heroku pg:psql"
-alias hl="heroku logs"
-alias hlt="heroku logs -t"
-
 # tmux aliases
 alias tmuxcp='tmux saveb -|pbcopy && tmux deleteb'
 alias tl="tmux ls"
 
+# rust aliases
+# alias rc="rustc"
+alias cb="cargo build"
+alias cbr="cargo build --release"
+alias cc="cargo check"
+alias cr="cargo run"
+
 # ssh aliases
 alias key_update='ssh-add -K ~/.ssh/id_rsa'
+
+# npm aliases
+alias rnpm='rm -fr node_modules/ && npm install'
 
 alias sb='echo "################################################################################"'
 
 # Utility aliases
 alias tfd="tail -f log/development.log"
 alias tft="tail -f log/test.log"
+
+# For M1 macs
+alias x86="env /usr/bin/arch -x86_64 /bin/bash --login"

@@ -37,3 +37,4 @@ fi
 #----- Get the aliases and functions
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 [[ -f ~/.bashrc.local ]] && . ~/.bashrc.local
+. "$HOME/.cargo/env"
