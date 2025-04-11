@@ -120,6 +120,13 @@ function backup {
   cd -
 }
 
+# Dependecy Graph
+
+function dg {
+  # https://www.netlify.com/blog/2018/08/23/how-to-easily-visualize-a-projects-dependency-graph-with-dependency-cruiser/
+  depcruise --exclude "^node_modules" --max-depth 2 --output-type dot $1 | dot -Tpng > $2
+}
+
 #----- code for adding git branch to prompt -----#
 black=$'\e[0;30m'
 red=$'\e[0;31m'

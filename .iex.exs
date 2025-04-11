@@ -35,7 +35,7 @@ IEx.configure(
 
 import_if_available(Ecto.Query)
 
-File.exists?(Path.expand("~/.iex/beholder.exs")) && import_file(("~/.iex/beholder.exs"))
+# File.exists?(Path.expand("~/.iex/beholder.exs")) && import_file(("~/.iex/beholder.exs"))
 
 dwarves = ["Fili","Kili", "Oin", "Gloin", "Thorin", "Dwalin", "Balin", "Bifur",
            "Bofur", "Bombur", "Dori", "Nori", "Ori"]
@@ -49,4 +49,4 @@ fellowship = %{
 
 exit = fn -> System.stop() end
 ls = fn -> Code.required_files() end
-vars = fn -> binding end
+# vars = fn -> binding end

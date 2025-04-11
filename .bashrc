@@ -10,8 +10,8 @@ export HISTSIZE=10000
 export HISTCONTROL=ignoredups
 export HISTIGNORE="ls:bg:fg:history"
 export HISTTIMEFORMAT="%F %T"
-export VISUAL=vim
-export EDITOR=vim
+export VISUAL=nvim
+export EDITOR=nvim
 export PAGER="less -I -R"
 
 export HOMEBREW_PREFIX="/opt/homebrew";
@@ -19,11 +19,11 @@ export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
 export HOMEBREW_REPOSITORY="/opt/homebrew";
 
 if [ -d  "/opt/homebrew/bin" ]; then
-  export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}";
+  export PATH="/opt/homebrew/sbin${PATH+:$PATH}";
   export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:";
   export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
 else
-  export PATH="/usr/local/bin:/opt/homebrew/sbin${PATH+:$PATH}";
+  export PATH="/usr/local/sbin${PATH+:$PATH}";
   export MANPATH="/usr/local/share/man${MANPATH+:$MANPATH}:";
   export INFOPATH="/usr/local/share/info:${INFOPATH:-}";
 fi
@@ -62,5 +62,13 @@ export ERL_AFLAGS="-kernel shell_history enabled"
 # Rust
 . "$HOME/.cargo/env"
 
+# Turn off Alacritty icon bounce
+printf "\e[?1042l"
+
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
+if command -v zoxide &> /dev/null; then
+  eval "$(zoxide init bash)"
+else
+  echo "zoxide not found. Install it with 'brew install zoxide'"
+fi

@@ -9,8 +9,13 @@ pathadd() {
 pathadd "${HOME}/bin"
 pathadd "/Applications/Postgres.app/Contents/Versions/latest/bin"
 pathadd $HOME
-pathadd "/opt/homebrew/opt/openjdk/bin"
-pathadd "/opt/homebrew/bin"
+if [ -d  "/opt/homebrew/bin" ]; then
+  pathadd "/opt/homebrew/opt/openjdk/bin"
+  pathadd "/opt/homebrew/bin"
+else
+  pathadd "/usr/local/opt/openjdk/bin"
+  pathadd "/usr/local/bin"
+fi
 export PATH
 
 export PS1='\h \w \$ '

@@ -4,8 +4,8 @@ alias rba='. ~/.bash_aliases'
 alias rbf='. ~/.bash_functions'
 
 # alias ls='ls -F --color=auto'
-alias ls='exa -F --group-directories-first'
-# alias ls='gls --color -F --group-directories-first'
+
+alias ls='gls --color -F --group-directories-first'
 alias lk='ls -lS'
 alias ll='ls -l'
 alias la='ll -A'
@@ -13,10 +13,17 @@ alias lt='ls -al -snew'
 alias lsf='ls $(fzf)'
 alias c='clear'
 alias cat='bat'
-alias vimp='/opt/homebrew/bin/nvim -p'
-alias vim='/opt/homebrew/bin/nvim'
-alias vi='/opt/homebrew/bin/nvim'
-alias v='/opt/homebrew/bin/nvim'
+if [ -d  "/opt/homebrew/bin" ]; then
+  alias vimp='/opt/homebrew/bin/nvim -p'
+  alias vim='/opt/homebrew/bin/nvim'
+  alias vi='/opt/homebrew/bin/nvim'
+  alias v='/opt/homebrew/bin/nvim'
+else
+  alias vimp='/usr/local/bin/nvim -p'
+  alias vim='/usr/local/bin/nvim'
+  alias vi='/usr/local/bin/nvim'
+  alias v='/usr/local/bin/nvim'
+fi
 alias vimf='nvim $(fzf)'
 alias gemdir='cd `gem env gemdir`'
 alias resource=". ~/.bash_profile"
@@ -60,7 +67,6 @@ alias gc="git commit"
 alias gcm="git commit -m"
 alias gco="git checkout"
 alias gcob="git checkout -b"
-alias gco-="git checkout -"
 alias gd="git diff"
 alias gdc="git diff --cached"
 alias gds="git ds"
@@ -80,6 +86,10 @@ alias gw="git show"
 alias tmuxcp='tmux saveb -|pbcopy && tmux deleteb'
 alias tl="tmux ls"
 
+# AI/ML aliases
+alias ai='ollama run llama3.2'
+alias aim='ollama run'
+
 # rust aliases
 # alias rc="rustc"
 alias cb="cargo build"
@@ -98,6 +108,7 @@ alias sb='echo "################################################################
 # Utility aliases
 alias tfd="tail -f log/development.log"
 alias tft="tail -f log/test.log"
+alias swp_clean="find ~/tmp -maxdepth 1 -type f -name '*.sw?' -mtime +7 -delete"
 
 # For M1 macs
 alias x86="env /usr/bin/arch -x86_64 /bin/bash --login"
