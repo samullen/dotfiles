@@ -1,0 +1,28 @@
+font-family = "Hack"
+font-family-bold = "JetBrains Mono"
+font-family-italic = "JetBrains Mono"
+font-family-bold-italic = "JetBrains Mono"
+font-size = 10
+
+scrollback-limit = 0
+
+background = "#0d1117"
+foreground = "#cfd6e4"
+cursor-color = "#ff8c00"
+
+palette = "0=#1d1f21"
+palette = "1=#bf616a"
+palette = "2=#93b379"
+palette = "3=#e5c179"
+palette = "4=#6f8fb4"
+palette = "5=#a4799d"
+palette = "6=#88c0d0"
+palette = "7=#e5e9f0"
+palette = "8=#4c566a"
+palette = "9=#bf616a"
+palette = "10=#a3be8c"
+palette = "11=#ebcb8b"
+palette = "12=#81a1c1"
+palette = "13=#b48ead"
+palette = "14=#8fbcbb"
+palette = "15=#eceff4"

@@ -1,0 +1,13 @@
+color = ''
+project-name = 'default'
+[default]
+account_id = 'acct_1PQq1I09OGA4jKuO'
+device_name = 'samuelmullenmbp.lan'
+display_name = 'Makerplans'
+live_mode_api_key = 'rk_live_***********************************************************************************************Ra96'
+live_mode_key_expires_at = '2024-09-14'
+live_mode_pub_key = 'pk_live_51PQq1I09OGA4jKuOeottcMalfFR5rKbOacvbwXyTinKT7c7LhtU6n2BTqkiZ4Z3QzVQ3uFipktz4Nbo7Ajf8ahcW00DtafCShC'
+test_mode_api_key = 'rk_test_51PQq1I09OGA4jKuOaBeHNfSdQb9Td6kQAgxCgAbAV3ifvelKfw934tjcIrxUS5REJcczw7mHhHS1wnWuNwrjjM3g007OGfF8cl'
+test_mode_key_expires_at = '2024-09-14'
+test_mode_pub_key = 'pk_test_51PQq1I09OGA4jKuOZExxmGkC8DKNG29N6GrIO3Mr5IFqRR66R3rBPTeBDjOo41yws3GSpoAyu8DZhcnUWhlWbdKO00kGs8RBJU'
+

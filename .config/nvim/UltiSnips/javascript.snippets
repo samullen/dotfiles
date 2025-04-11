@@ -1,0 +1,44 @@
+snippet fn
+function ${1:name}(${2:arguments}) {
+  ${0}
+}
+
+endsnippet
+
+# Documentation
+
+snippet doc
+/**
+ * ${1:description}
+ *
+ * @param  {${2:type}} ${3:argument}
+ * @return {${4:type}}
+ */
+endsnippet
+
+# Testing
+
+snippet desc
+describe('${1:test group subject}', () => {
+	${0}
+});
+endsnippet
+
+snippet it
+it('${1:test case}', () => {
+	${0}
+});
+endsnippet
+
+snippet ita
+it('${1:test case}', async () => {
+	${0}
+});
+endsnippet
+
+# Utilities
+
+snippet cl
+console.log(${1:text});
+endsnippet
+
