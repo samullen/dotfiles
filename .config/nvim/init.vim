@@ -161,6 +161,9 @@ vnoremap <leader>{ <esc>`>a}<esc>`<i{<esc>
 vnoremap <leader>% <esc>`>a %><esc>`<i<% <esc>
 vnoremap <leader>%= <esc>`>a %><esc>`<i<%= <esc>
 
+imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
+let g:copilot_no_tab_map = v:true
+
 " vim-markdown settings
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_new_list_item_indent = 2
@@ -243,6 +246,6 @@ command! Troutes :tabe config/routes.rb
 command! Egemfile :e Gemfile
 command! Tgemfile :tabe Gemfile
 
-colorscheme samullen
+colorscheme ghdark
 
 source ~/.vim/plugins/statusline.vim
