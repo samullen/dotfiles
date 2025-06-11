@@ -19,18 +19,4 @@ tags.*
 *.lock
 !Gemfile.lock
 
-# Xcode temp files
-*~.nib
-
-# Xcode build files
-DerivedData/
-build/
-
-# Xcode private settings
-*.pbxuser
-*.mode1v3
-*.mode2v3
-*.perspectivev3
-
-# Xcode 4 - semi-personal settings
-xcuserdata
+.config/github-copilot/hosts.json
