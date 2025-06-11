@@ -1,0 +1,73 @@
+// Zed settings
+//
+// For information off how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+   "buffer_font_family": "Hack",
+   "buffer_font_size": 10,
+   // "ui_font_family": "Hack",
+   // "ui_font_size": 10,
+   "telemetry": {
+      "metrics": true,
+      "diagnostics": true
+   },
+   "vim_mode": true,
+   "active_pane_modifiers": {
+      "magnification": 2.0,
+      "border_size": 1.0,
+      "inactive_opacity": 2.0
+   },
+   "centered_layout": {
+      "left_padding": 1.0,
+      "right_padding": 1.0
+   },
+   "cursor_blink": false,
+   "scrollbar": { "show": "never" },
+   "git": {
+      "git_gutter": "hide"
+   },
+   "gutter": {
+      "line_numbers": false
+   },
+   "preferred_line_length": 80,
+   "show_wrap_guides": false,
+   "wrap_guides": [80],
+   "tab_size": 3,
+   "theme": {
+      "mode": "system",
+      "light": "One Light",
+      "dark": "One Dark"
+   },
+   "terminal": {
+      "alternate_scroll": "on",
+      "blinking": "terminal_controlled",
+      "copy_off_select": true,
+      "dock": "bottom",
+      "default_width": 641,
+      "default_height": 321,
+      // "detect_venv": {
+      // "off": {
+      // "directories": [".env", "env", ".venv", "venv"],
+      // "activate_script": "default"
+      // }
+      // },
+      "env": {},
+      "font_family": "Hack",
+      "font_size": 10,
+      "line_height": "comfortable",
+      "option_as_meta": true,
+      "button": false,
+      "shell": "system",
+      "toolbar": {
+         "breadcrumbs": false
+      },
+      "working_directory": "current_project_directory",
+      "scrollbar": {
+         "show": null
+      }
+   }
+}
