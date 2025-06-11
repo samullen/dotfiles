@@ -18,6 +18,9 @@ export HOMEBREW_PREFIX="/opt/homebrew";
 export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
 export HOMEBREW_REPOSITORY="/opt/homebrew";
 
+export TMUXAI_OPENROUTER_API_KEY="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"
+
+
 if [ -d  "/opt/homebrew/bin" ]; then
   export PATH="/opt/homebrew/sbin${PATH+:$PATH}";
   export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:";
