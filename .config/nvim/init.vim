@@ -3,32 +3,6 @@
 "------------------------------------------------------------------------------"
 call plug#begin('~/.config/nvim/plugged')
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-call minpac#init()
-||||||| parent of f345031 (nvim plugin updates)
-" List your plugins here
-Plug 'tpope/vim-sensible'
-Plug 'vim-jp/syntax-vim-ex'
-Plug 'elixir-editors/vim-elixir'
-Plug 'mhinz/vim-mix-format'
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-projectionist'
-Plug 'tpope/vim-rails'
-Plug 'tpope/vim-surround'
-Plug 'andymass/vim-matchup'
-Plug 'pangloss/vim-javascript'
-Plug 'ervandew/supertab'
-Plug 'rust-lang/rust.vim'
-Plug 'vim-scripts/YankRing.vim'
-Plug 'SirVer/ultisnips'
-Plug 'vimwiki/vimwiki'
-Plug 'github/copilot.vim'
-Plug 'samullen/valt'
-=======
 " List your plugins here
 Plug 'tpope/vim-sensible'
 Plug 'vim-jp/syntax-vim-ex'
@@ -53,32 +27,6 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'CopilotC-Nvim/CopilotChat.nvim'
 Plug 'nickeb96/fish.vim'
 Plug 'samullen/valt'
->>>>>>> f345031 (nvim plugin updates)
-||||||| parent of 4910dfe (so many changes)
-call minpac#init()
-=======
-" List your plugins here
-Plug 'tpope/vim-sensible'
-Plug 'vim-jp/syntax-vim-ex'
-Plug 'elixir-editors/vim-elixir'
-Plug 'mhinz/vim-mix-format'
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-projectionist'
-Plug 'tpope/vim-rails'
-Plug 'tpope/vim-surround'
-Plug 'andymass/vim-matchup'
-Plug 'pangloss/vim-javascript'
-Plug 'ervandew/supertab'
-Plug 'rust-lang/rust.vim'
-Plug 'vim-scripts/YankRing.vim'
-Plug 'SirVer/ultisnips'
-Plug 'vimwiki/vimwiki'
-Plug 'github/copilot.vim'
-Plug 'samullen/valt'
->>>>>>> 4910dfe (so many changes)
 
 call plug#end()
 
