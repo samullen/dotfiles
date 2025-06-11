@@ -3,7 +3,56 @@
 "------------------------------------------------------------------------------"
 packadd minpac
 
+<<<<<<< HEAD
 call minpac#init()
+||||||| parent of f345031 (nvim plugin updates)
+" List your plugins here
+Plug 'tpope/vim-sensible'
+Plug 'vim-jp/syntax-vim-ex'
+Plug 'elixir-editors/vim-elixir'
+Plug 'mhinz/vim-mix-format'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-projectionist'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-surround'
+Plug 'andymass/vim-matchup'
+Plug 'pangloss/vim-javascript'
+Plug 'ervandew/supertab'
+Plug 'rust-lang/rust.vim'
+Plug 'vim-scripts/YankRing.vim'
+Plug 'SirVer/ultisnips'
+Plug 'vimwiki/vimwiki'
+Plug 'github/copilot.vim'
+Plug 'samullen/valt'
+=======
+" List your plugins here
+Plug 'tpope/vim-sensible'
+Plug 'vim-jp/syntax-vim-ex'
+Plug 'elixir-editors/vim-elixir'
+Plug 'mhinz/vim-mix-format'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-projectionist'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-surround'
+Plug 'andymass/vim-matchup'
+Plug 'pangloss/vim-javascript'
+Plug 'ervandew/supertab'
+Plug 'rust-lang/rust.vim'
+Plug 'vim-scripts/YankRing.vim'
+Plug 'SirVer/ultisnips'
+Plug 'vimwiki/vimwiki'
+Plug 'github/copilot.vim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'CopilotC-Nvim/CopilotChat.nvim'
+Plug 'nickeb96/fish.vim'
+Plug 'samullen/valt'
+>>>>>>> f345031 (nvim plugin updates)
 
 " minpac must have {'type': 'opt'} so that it can be loaded with `packadd`.
 call minpac#add('k-takata/minpac', {'type': 'opt'})
@@ -29,6 +78,12 @@ call minpac#add('SirVer/ultisnips')
 call minpac#add('vimwiki/vimwiki')
 call minpac#add('github/copilot.vim')
 
+lua << EOF
+require("CopilotChat").setup {
+  -- See Configuration section for options
+}
+EOF
+
 let g:nv_directory = '~/Library/Mobile Documents/iCloud~co~fluder~fsnotes/Documents'
 let g:nv_show_preview = 1
 
@@ -40,7 +95,7 @@ set backspace=indent,eol,start
 set backupdir=~/tmp
 set clipboard=unnamed
 set complete-=i
-set cpoptions=abABceFs$
+set cpoptions=abABceFs_$
 set directory=~/tmp
 set expandtab
 set formatoptions-=o
@@ -57,7 +112,6 @@ set nobackup
 set nohlsearch
 set noshowmatch
 set nrformats= " force numbers to use base-10
-set pastetoggle=<f2>
 set ruler
 set rulerformat=%40(%<%f%=[%l:%L,%v]%)
 " set statusline
@@ -73,6 +127,7 @@ set wildmenu
 set wildignore+=*.class,*.o,tmp/**
 set wildmode=list:longest,list:full " for finding files when opening new frames
 set wrapmargin=0
+set completeopt=menuone,noinsert,noselect,popup
 
 filetype plugin on
 
@@ -162,7 +217,9 @@ vnoremap <leader>% <esc>`>a %><esc>`<i<% <esc>
 vnoremap <leader>%= <esc>`>a %><esc>`<i<%= <esc>
 
 imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
+imap <C-L> <Plug>(copilot-accept-word)
 let g:copilot_no_tab_map = v:true
+let g:copilot_filetypes = { 'markdown': v:false, 'vimwiki': v:false }
 
 " vim-markdown settings
 let g:vim_markdown_folding_disabled = 1
@@ -178,16 +235,16 @@ nnoremap wlx :VimwikiToggleListItem<cr>
 let g:vimwiki_table_mappings = 0
 
 augroup VimwikiRemaps
-    autocmd!
-    " unmap tab in insert mode
-    autocmd Filetype vimwiki silent! iunmap <buffer> <Tab>
-    " remap table tab mappings to M-n M-p
-    autocmd Filetype vimwiki inoremap <silent><expr><buffer> <M-n> vimwiki#tbl#kbd_tab()
-    autocmd Filetype vimwiki inoremap <silent><expr><buffer> <M-p> vimwiki#tbl#kbd_shift_tab()
-    " on enter if completion is open, complete first element otherwise use
-    " default vimwiki mapping
-    autocmd Filetype vimwiki inoremap <silent><expr><buffer> <cr> pumvisible() ? coc#_select_confirm()
-                              \: "<C-]><Esc>:VimwikiReturn 1 5<CR>"
+  autocmd!
+  " unmap tab in insert mode
+  autocmd Filetype vimwiki silent! iunmap <buffer> <Tab>
+  " remap table tab mappings to M-n M-p
+  autocmd Filetype vimwiki inoremap <silent><expr><buffer> <M-n> vimwiki#tbl#kbd_tab()
+  autocmd Filetype vimwiki inoremap <silent><expr><buffer> <M-p> vimwiki#tbl#kbd_shift_tab()
+  " on enter if completion is open, complete first element otherwise use
+  " default vimwiki mapping
+  autocmd Filetype vimwiki inoremap <silent><expr><buffer> <cr> pumvisible() ? coc#_select_confirm()
+    \: "<C-]><Esc>:VimwikiReturn 1 5<CR>"
 augroup end
 
 "----- default to unix script commenting -----"
@@ -240,11 +297,6 @@ highlight Pmenu ctermbg=238 gui=bold
 "----- Mappings -----"
 nnoremap + <C-w>+
 nnoremap - <C-w>-
-
-command! Eroutes :e config/routes.rb
-command! Troutes :tabe config/routes.rb
-command! Egemfile :e Gemfile
-command! Tgemfile :tabe Gemfile
 
 colorscheme ghdark
 
