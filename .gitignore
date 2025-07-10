@@ -20,3 +20,4 @@ tags.*
 !Gemfile.lock
 
 .config/github-copilot/hosts.json
+.config/github-copilot/apps.json
