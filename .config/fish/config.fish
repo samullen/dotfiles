@@ -57,114 +57,107 @@ bind --mode insert ctrl-l forward-word
 
 # bind --mode insert ctrl-lctrll complete
 
-abbr -a cd z
-abbr -a ls eza -F --group-directories-first
-abbr -a lk eza -lS
-abbr -a ll eza -l
-abbr -a la eza -A
-abbr -a lt eza -al -snew
-abbr -a lsf eza '$(fzf)'
-abbr -a c clear
-abbr -a cat bat -p -P
+alias lk="eza -lS"
+alias ll="eza -l"
+alias la="eza -A"
+alias lt="eza -al -snew"
+# alias lsf="eza '$(fzf)'"
+alias c="clear"
+alias cat="bat -p -P"
 
 if [ -d  "/opt/homebrew/bin" ]
-  abbr -a vimp /opt/homebrew/bin/nvim -p
-  abbr -a vim /opt/homebrew/bin/nvim
-  abbr -a vi /opt/homebrew/bin/nvim
-  abbr -a v /opt/homebrew/bin/nvim
+  alias vimp="/opt/homebrew/bin/nvim -p"
+  alias vim="/opt/homebrew/bin/nvim"
+  alias vi="/opt/homebrew/bin/nvim"
+  alias v="/opt/homebrew/bin/nvim"
 else
-  abbr -a vimp /usr/local/bin/nvim -p
-  abbr -a vim /usr/local/bin/nvim
-  abbr -a vi /usr/local/bin/nvim
-  abbr -a v /usr/local/bin/nvim
+  alias vimp="/usr/local/bin/nvim -p"
+  alias vim="/usr/local/bin/nvim"
+  alias vi="/usr/local/bin/nvim"
+  alias v="/usr/local/bin/nvim"
 end
 
-abbr -a vimf nvim '$(fzf)'
-abbr -a gemdir cd '`gem env gemdir`'
+alias gemdir="cd '`gem env gemdir`'"
 
-abbr -a .. cd ..
-abbr -a ... cd ../..
-abbr -a .... cd ../../..
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
 
 # delta abbr -aes
-abbr -a d delta
-abbr -a ds delta --side-by-side
+alias d="delta"
+alias ds="delta --side-by-side"
 
 # Mac abbr -aes
-abbr -a preview open -a Preview
+alias preview="open -a Preview"
 
 # Rails abbr -aes
-abbr -a bi bundle install -j 8
-abbr -a bu bundle update -j 8
-abbr -a be bundle exec
-abbr -a ri ri -f ansi
-abbr -a rc be rails c
-abbr -a rs be rails s
+alias bi="bundle install -j 8"
+alias bu="bundle update -j 8"
+# alias be="bundle exec"
+alias ri="ri -f ansi"
+# alias rc="be rails c"
+alias rs="be rails s"
 # abbr -a rg be rails g
-abbr -a rdbm be rake db:migrate
-abbr -a rdbmt be 'rake db:migrate; rake db:test:prepare'
-abbr -a guard be guard --notify false
+alias rdbm="be rake db:migrate"
+alias rdbmt="be 'rake db:migrate; rake db:test:prepare'"
+alias guard="bundle exec guard --notify false"
 
-abbr -a powr touch tmp/restart.txt
-abbr -a prd be pronto run -c development
+alias powr="touch tmp/restart.txt"
+alias prd="be pronto run -c development"
 
-# # Phoenix abbr -aes
-abbr -a mix env $([ -f .env ] && cat .env | xargs) mix
-abbr -a iex env $([ -f .env ] && cat .env | xargs) iex
-abbr -a mpc iex -S mix
-abbr -a mps mix phx.server
+# Phoenix abbr -aes
+alias mix="env $([ -f .env ] && cat .env | xargs) mix"
+alias iex="env $([ -f .env ] && cat .env | xargs) iex"
+alias mpc="iex -S mix"
+alias mps="mix phx.server"
 
 # Git abbr -aes
-abbr -a ga git add
-abbr -a gb git branch
-abbr -a gc git commit
-abbr -a gcm git commit -m
-abbr -a gco git checkout
-abbr -a gcob git checkout -b
-abbr -a gd git diff
-abbr -a gdc git diff --cached
-abbr -a gds git ds
-abbr -a gf git fetch
-abbr -a ghist git log -p --
-abbr -a gl git lol
-abbr -a glf git log -p --follow --stat --all --
-abbr -a gm git merge
-abbr -a gmx git merge --no-ff --log
-abbr -a gp git push
-abbr -a gpr git pull --rebase origin
-abbr -a gri git rebase -i
-abbr -a gs git status -sb
-abbr -a gw git show
+alias ga="git add"
+alias gb="git branch"
+alias gc="git commit"
+alias gcm="git commit -m"
+alias gco="git checkout"
+alias gcob="git checkout -b"
+alias gd="git diff"
+alias gdc="git diff --cached"
+alias gds="git ds"
+alias gf="git fetch"
+alias ghist="git log -p --"
+alias gl="git lol"
+alias glf="git log -p --follow --stat --all --"
+alias gm="git merge"
+alias gmx="git merge --no-ff --log"
+alias gp="git push"
+alias gpr="git pull --rebase origin"
+alias gri="git rebase -i"
+alias gs="git status -sb"
+alias gw="git show"
 
 # tmux abbr -aes
-abbr -a tmuxcp tmux saveb -|pbcopy && tmux deleteb
-abbr -a tl tmux ls
-
-# AI/ML abbr -aes
-abbr -a ai ollama run llama3.2
-abbr -a aim ollama run
+alias tmuxcp="tmux saveb -|pbcopy && tmux deleteb"
+alias tl="tmux ls"
 
 # ssh abbr -aes
-abbr -a key_update ssh-add -K ~/.ssh/id_rsa
+alias key_update="ssh-add -K ~/.ssh/id_rsa"
 
 # npm abbr -aes
 # abbr -a rnpm rm -fr node_modules/ && npm install
 
-abbr -a sb echo "################################################################################"
+alias sb="echo '################################################################################'"
 
 # Utility abbr -aes
-abbr -a tfd tail -f log/development.log
-abbr -a tft tail -f log/test.log
-abbr -a swp_clean find ~/tmp -maxdepth 1 -type f -name '*.sw?' -mtime +7 -delete
+alias tfd="tail -f log/development.log"
+alias tft="tail -f log/test.log"
+alias swp_clean="find ~/tmp -maxdepth 1 -type f -name '*.sw?' -mtime +7 -delete"
 
 # For M1 macs
-abbr -a x86 env /usr/bin/arch -x86_64 /bin/bash --login
+alias x86="env /usr/bin/arch -x86_64 /bin/bash --login"
 
-abbr -a be doppler run bundle exec
-abbr -a rs doppler run bundle exec rails s
-abbr -a rc doppler run bundle exec rails c
-abbr -a rt doppler run bundle exec rails test
+# alias be="doppler run bundle exec"
+alias rs="doppler run bundle exec rails s"
+# alias rc="doppler run bundle exec rails c"
+alias rt="doppler run bundle exec rails test"
 
-abbr -a gemdir cd `gem env gemdir`
+alias gemdir="cd `gem env gemdir`"
 
 zoxide init fish | source

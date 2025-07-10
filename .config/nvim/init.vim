@@ -32,6 +32,9 @@ call plug#end()
 
 lua << EOF
 require("CopilotChat").setup {
+  window = {
+    layout = "horizontal"
+  }
   -- See Configuration section for options
 }
 EOF
@@ -135,6 +138,8 @@ nnoremap <leader>b :Buffers<cr>
 nnoremap <leader>f :Files<cr>
 nnoremap <leader>t :Tags<cr>
 nnoremap <leader>gc :Commits<cr>
+
+nnoremap <leader>cc :CopilotChatToggle<cr>
 
 " SuperTab
 " let g:SuperTabDefaultCompletionType = '<C-n>'
