@@ -40,7 +40,7 @@ set -gx LSCOLORS gxfxCxDxdxegedabagacad
 set -gx FZF_DEFAULT_COMMAND 'fd --type f'
 
 if test -f ~/.npmrc
-  set -gx NPM_TOKEN `ag "authToken=npm" ~/.npmrc | cut -d'=' -f2`
+  set -gx NPM_TOKEN $(rg "authToken=npm" ~/.npmrc | cut -d'=' -f2)
 end
 
 # keep IEx history between sessions
