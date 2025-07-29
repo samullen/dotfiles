@@ -1,4 +1,3 @@
-function be --wraps='bundle exec' --wraps='doppler run bundle exec' --description 'alias be=doppler run bundle exec'
-  doppler run bundle exec $argv
-        
+function be --wraps='bundle exec' --wraps='bundle exec' --description 'alias be=bundle exec'
+  bundle exec $argv
 end

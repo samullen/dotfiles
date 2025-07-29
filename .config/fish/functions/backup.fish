@@ -1,6 +1,6 @@
 function backup
   echo "Changing to FSNotes directory"
-  cd ~/Library/Mobile\ Documents/iCloud~co~fluder~fsnotes/Documents
+  cd ~/projects/notes
 
   echo "Committing changes"
   git add .

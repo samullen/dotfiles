@@ -8,9 +8,6 @@ db/*.sqlite3
 .vim/bundle
 tags
 tags.*
-.muttrc
-.mutt
-.gitconfig
 .projections.json
 
 # OSX Specific files

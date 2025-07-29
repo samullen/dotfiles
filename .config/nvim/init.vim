@@ -39,7 +39,7 @@ require("CopilotChat").setup {
 }
 EOF
 
-let g:nv_directory = '~/Library/Mobile Documents/iCloud~co~fluder~fsnotes/Documents'
+let g:nv_directory = '~/projects/notes'
 let g:nv_show_preview = 1
 
 syntax on
@@ -185,7 +185,7 @@ let g:vim_markdown_new_list_item_indent = 2
 let g:ruby_path = system('echo $HOME/.asdc/shims') " speed up vim start up using asdf
 
 " vimwiki settings
-let g:vimwiki_list = [{'path': '~/Library/Mobile Documents/iCloud~co~fluder~fsnotes/Documents', 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_list = [{'path': '~/projects/notes', 'syntax': 'markdown', 'ext': '.md'}]
 nnoremap wlx :VimwikiToggleListItem<cr>
 
 " Disable vimwiki tabs
@@ -257,4 +257,4 @@ nnoremap - <C-w>-
 
 colorscheme ghdark
 
-source ~/.vim/plugins/statusline.vim
+source ~/.config/nvim/plugins/statusline.vim

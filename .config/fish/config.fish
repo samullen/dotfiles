@@ -21,7 +21,7 @@ set -gx HOMEBREW_REPOSITORY "/opt/homebrew";
 
 set -gx TMUXAI_OPENROUTER_API_KEY "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"
 
-
+# Homebrew
 if test -d  "/opt/homebrew/bin"
   set -gx PATH "/opt/homebrew/sbin:$PATH";
   set -gx MANPATH "/opt/homebrew/share/man:$MANPATH";
@@ -31,6 +31,20 @@ else
   set -gx MANPATH "/usr/local/share/man:$MANPATH";
   set -gx INFOPATH "/usr/local/share/info:$INFOPATH";
 end
+
+# ASDF configuration code
+if test -z $ASDF_DATA_DIR
+    set _asdf_shims "$HOME/.asdf/shims"
+else
+    set _asdf_shims "$ASDF_DATA_DIR/shims"
+end
+
+# Do not use fish_add_path (added in Fish 3.2) because it
+# potentially changes the order of items in PATH
+if not contains $_asdf_shims $PATH
+    set -gx --prepend PATH $_asdf_shims
+end
+set --erase _asdf_shims
 
 set -gx LS_COLORS 'no=00:fi=00:di=00;36:ln=01;37:pi=40;33:so=00;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:su=37;41:sg=30;43:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.gz=01;31:*.bz2=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.avi=01;35:*.fli=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.flac=01;35:*.mp3=01;35:*.mpc=01;35:*.ogg=01;35:*.wav=01;35:';
 set -gx CLICOLOR 1
@@ -153,10 +167,10 @@ alias swp_clean="find ~/tmp -maxdepth 1 -type f -name '*.sw?' -mtime +7 -delete"
 # For M1 macs
 alias x86="env /usr/bin/arch -x86_64 /bin/bash --login"
 
-# alias be="doppler run bundle exec"
-alias rs="doppler run bundle exec rails s"
-# alias rc="doppler run bundle exec rails c"
-alias rt="doppler run bundle exec rails test"
+alias be="bundle exec"
+alias rs="bundle exec rails s"
+alias rc="bundle exec rails c"
+alias rt="bundle exec rails test"
 
 alias gemdir="cd `gem env gemdir`"
 
