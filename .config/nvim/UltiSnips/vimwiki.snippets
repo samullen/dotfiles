@@ -1,0 +1,26 @@
+snippet aside "one on ones"
+<aside class="panel panel-default pull-right col-md-4">
+${1}
+</aside>
+endsnippet
+
+snippet frontmatter "front matter"
+---
+title:
+date: `!v strftime("%Y-%m-%dT00:00-05:00")`
+draft: false
+description: ""
+image: /assets/images/
+comments: false
+post: true
+categories: []
+---
+endsnippet
+
+snippet rimg "right image"
+<img src="{{ site.url }}{{ page.image }}/assets/images/${0}" class="img-thumbnail img-right">
+endsnippet
+
+snippet limg "left image"
+<img src="{{ site.url }}{{ page.image }}/assets/images/${0}" class="img-thumbnail img-left">
+endsnippet
