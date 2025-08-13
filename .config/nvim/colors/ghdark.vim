@@ -180,6 +180,8 @@ call s:ghhl("VertSplit", "base1", "base1")
 call s:ghhl("Visual", "none", "base0", "reverse")
 call s:ghhl("WarningMsg", "orange", "base1")
 
+call s:ghhl("SpellBad", "red", "base0", "undercurl")
+
 "########################################
 " links
 
