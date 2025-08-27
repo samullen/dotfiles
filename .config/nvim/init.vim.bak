@@ -18,7 +18,6 @@ Plug 'tpope/vim-surround'
 Plug 'andymass/vim-matchup'
 Plug 'pangloss/vim-javascript'
 Plug 'ervandew/supertab'
-Plug 'rust-lang/rust.vim'
 Plug 'vim-scripts/YankRing.vim'
 Plug 'SirVer/ultisnips'
 Plug 'vimwiki/vimwiki'
@@ -217,6 +216,8 @@ augroup onload
   autocmd BufRead,BufNewFile *.md,*.markdown set filetype=markdown
   autocmd BufRead,BufNewFile * setlocal formatoptions+=tcqr
   autocmd BufRead,BufNewFile * setlocal formatoptions-=o
+  au BufRead,BufNewFile *.eex,*.heex,*.leex,*.sface,*.lexs set filetype=eelixir
+  au BufRead,BufNewFile mix.lock set filetype=elixir
 
 augroup END
 
