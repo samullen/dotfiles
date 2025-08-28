@@ -1,5 +1,3 @@
--- init.lua
-
 require("config.lazy")
 
 -- Options
@@ -99,10 +97,6 @@ filetype plugin on
 match ErrorMsg '\s\+$'
 ]])
 
--- Leader key
-vim.g.mapleader = ','
-vim.g.maplocalleader = "\\"
-
 -- Key Mappings
 local map = vim.keymap.set
 
@@ -144,11 +138,12 @@ map("n", "<BS>", "{")
 map("o", "<BS>", "{")
 map("v", "<BS>", "{")
 
-vim.cmd([[
-  nnoremap <expr> <CR> empty(&buftype) ? '}' : '<CR>'
-  onoremap <expr> <CR> empty(&buftype) ? '}' : '<CR>'
-  vnoremap <CR> }
-]])
+map("n", "<expr> <CR>", "empty(&buftype) ? '}' : '<CR>'")
+map("o", "<expr> <CR>", "empty(&buftype) ? '}' : '<CR>'")
+map("v", "<CR>", "}")
+
+map("n", "+", "<C-w>+")
+map("n", "-", "<C-w>-")
 
 -- FZF
 map("n", "<leader>a", ":Rg<cr>")
@@ -157,11 +152,8 @@ map("n", "<leader>f", ":Files<cr>")
 map("n", "<leader>t", ":Tags<cr>")
 map("n", "<leader>gc", ":Commits<cr>")
 
--- CopilotChat
-map("n", "<leader>cc", ":CopilotChatToggle<cr>")
-
 -- SuperTab
--- let g:SuperTabDefaultCompletionType = '<C-n>'
+vim.g.SuperTabDefaultCompletionType = '<C-n>'
 
 -- Valt
 map("n", "<leader>v", ":NV<CR>")
@@ -203,6 +195,7 @@ vim.g.javascript_plugin_flow = 1
 
 -- emmet-vim
 vim.g.user_emmet_leader_key = '<C-Z>'
+
 
 -- General
 -- map('n', '<leader>w', ':w<CR>')
@@ -377,3 +370,4 @@ autocmd("FileType", {
 -- Colorscheme
 vim.cmd('colorscheme ghdark')
 
+vim.cmd('source ' .. vim.fn.stdpath('config') .. '/plugins/statusline.vim')

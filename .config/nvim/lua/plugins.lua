@@ -71,6 +71,7 @@ return {
       vim.keymap.set('i', '<C-L>', '<Plug>(copilot-accept-word)', {
         expr = true,
       })
+      vim.keymap.set('i', '<C-M>', '<Cmd>Copilot panel<cr>')
     end,
   },
   {
@@ -78,6 +79,11 @@ return {
     init = function()
       vim.g.copilot_chat_filetypes = { markdown = false, vimwiki = false }
       vim.keymap.set("n", "<leader>cc", "<cmd>CopilotChatToggle<cr>", { desc = "Open Copilot Chat" })
+      vim.keymap.set("v", "<leader>cc", "<cmd>CopilotChat <input>?<cr>", { desc = "Open Copilot Chat" })
+      vim.keymap.set("n", "<localleader>m", "<cmd>CopilotChatModels<cr>", { desc = "View/select available models" })
+      vim.keymap.set("n", "<localleader>p", "<cmd>CopilotChatPrompts<cr>", { desc = "View/select prompt templates" })
+      vim.keymap.set("n", "<localleader>r", "<cmd>CopilotChatReset<cr>", { desc = "Reset chat window" })
+      vim.keymap.set("n", "<localleader>s", "<cmd>CopilotChatStop<cr>", { desc = "Stop current output" })
     end,
 
     dependencies = {
