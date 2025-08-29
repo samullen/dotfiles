@@ -71,7 +71,7 @@ return {
       vim.keymap.set('i', '<C-L>', '<Plug>(copilot-accept-word)', {
         expr = true,
       })
-      vim.keymap.set('i', '<C-M>', '<Cmd>Copilot panel<cr>')
+      vim.keymap.set('i', '<C-P>', '<Cmd>Copilot panel<cr>')
     end,
   },
   {
