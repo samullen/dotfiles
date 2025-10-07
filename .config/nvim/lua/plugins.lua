@@ -2,7 +2,6 @@ return {
   "tpope/vim-sensible",
   "vim-jp/syntax-vim-ex",
   "elixir-editors/vim-elixir",
-  "mhinz/vim-mix-format",
   "junegunn/fzf",
   "junegunn/fzf.vim",
   "tpope/vim-commentary",
@@ -72,6 +71,7 @@ return {
         expr = true,
       })
       vim.keymap.set('i', '<C-P>', '<Cmd>Copilot panel<cr>')
+      vim.keymap.set('n', '<leader>cd', '<Cmd>Copilot disable<cr>', { desc = "Disable Copilot" })
     end,
   },
   {
@@ -86,6 +86,7 @@ return {
       vim.keymap.set("n", "<localleader>s", "<cmd>CopilotChatStop<cr>", { desc = "Stop current output" })
     end,
 
+    -- model = "gemini-2.5-pro",
     dependencies = {
       { "nvim-lua/plenary.nvim", branch = "master" },
     },

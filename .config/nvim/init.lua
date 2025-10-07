@@ -187,14 +187,14 @@ vim.g.ruby_path = "~/.asdf/shims" -- speed up vim start up using asdf
 ---
 
 -- vim-mix-format
-vim.g.mix_format_on_save = 1
+-- vim.g.mix_format_on_save = 1
 
 -- vim-javascript-syntax
 vim.g.javascript_plugin_jsdoc = 1
 vim.g.javascript_plugin_flow = 1
 
 -- emmet-vim
-vim.g.user_emmet_leader_key = '<C-Z>'
+-- vim.g.user_emmet_leader_key = '<C-Z>'
 
 
 -- General

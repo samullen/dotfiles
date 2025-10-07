@@ -451,6 +451,7 @@ hi! link markdownBold GhBold
 hi! link markdownItalic GhItalic
 
 " VimWiki
+
 hi! link VimwikiLink GhBlueUnder
 hi! link VimwikiHeaderChar GhBlueBold
 hi! link VimwikiListTodo GhGreen
