@@ -68,6 +68,7 @@ set -g fish_key_bindings fish_vi_key_bindings
 
 # ctrl-n accepts tab completion
 bind --mode insert ctrl-l forward-word
+bind --mode insert ctrl-j accept-autosuggestion
 
 # bind --mode insert ctrl-lctrll complete
 
@@ -103,6 +104,9 @@ alias ds="delta --side-by-side"
 
 # Mac abbr -aes
 alias preview="open -a Preview"
+
+# Copy current working directory to clipboard
+alias cpwd="pbcopy < pwd"
 
 # Rails abbr -aes
 alias bi="bundle install -j 8"
