@@ -38,6 +38,8 @@ vim.cmd([["set wildignore+=*.class,*.o,tmp/**"]])
 vim.opt.wildmode = "list:longest,list:full" -- for finding files when opening new frames
 vim.opt.wrapmargin = 0
 vim.opt.completeopt = "menuone,noinsert,noselect,popup"
+vim.opt.foldenable = false
+vim.opt.foldmethod = "manual"
 
 -- vim.opt.cursorline = true
 -- vim.opt.scrolloff = 5
@@ -153,7 +155,7 @@ map("n", "<leader>t", ":Tags<cr>")
 map("n", "<leader>gc", ":Commits<cr>")
 
 -- SuperTab
-vim.g.SuperTabDefaultCompletionType = '<C-n>'
+-- vim.g.SuperTabDefaultCompletionType = '<C-n>'
 
 -- Valt
 map("n", "<leader>v", ":NV<CR>")
@@ -184,6 +186,8 @@ vim.g.vim_markdown_new_list_item_indent = 2
 
 vim.g.ruby_path = "~/.asdf/shims" -- speed up vim start up using asdf
 
+-- Elixir settings
+map("n", "<leader>mf", ":! mix format %<CR>")
 ---
 
 -- vim-mix-format

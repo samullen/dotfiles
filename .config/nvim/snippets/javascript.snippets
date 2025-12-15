@@ -1,0 +1,28 @@
+snippet cl
+  console.log(${1:text});
+snippet fn
+  function ${1:name}(${2:arguments}) {
+    ${0}
+  }
+
+snippet doc
+  /**
+   * ${1:description}
+   *
+   * @param  {${2:type}} ${3:argument}
+   * @return {${4:type}}
+   */
+  endsnippet
+
+snippet desc
+  describe('${1:test group subject}', () => {
+    ${0}
+  });
+snippet it
+  it('${1:test case}', () => {
+    ${0}
+  });
+snippet ita
+  it('${1:test case}', async () => {
+    ${0}
+  });

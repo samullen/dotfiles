@@ -11,16 +11,32 @@ return {
   "tpope/vim-surround",
   "andymass/vim-matchup",
   "pangloss/vim-javascript",
-  "ervandew/supertab",
+  -- "ervandew/supertab",
   "vim-scripts/YankRing.vim",
   {
-    "SirVer/ultisnips",
+    "L3MON4D3/LuaSnip", version = "v2.*", build = "make install_jsregexp",
+
     init = function()
-      vim.g.UltiSnipsEditSplit = "horizontal"
-      vim.g.UltiSnipsExpandTrigger = "<tab>"
-      vim.g.UltiSnipsJumpForwardTrigger = "<tab>"
-      vim.g.UltiSnipsJumpBackwardTrigger = "<s-tab>"
-    end
+      local ls = require("luasnip")
+
+      require("luasnip.loaders.from_snipmate").lazy_load()
+
+      vim.keymap.set({"i"}, "<Tab>", function()
+        ls.expand()
+      end, {silent = true})
+      vim.keymap.set({"i", "s"}, "<C-L>", function()
+        ls.jump( 1)
+      end, {silent = true})
+      vim.keymap.set({"i", "s"}, "<C-J>", function()
+        ls.jump(-1)
+      end, {silent = true})
+
+      vim.keymap.set({"i", "s"}, "<C-E>", function()
+        if ls.choice_active() then
+          ls.change_choice(1)
+        end
+      end, {silent = true})
+    end,
   },
   {
     "vimwiki/vimwiki",
@@ -76,6 +92,9 @@ return {
   },
   {
     "CopilotC-Nvim/CopilotChat.nvim",
+    opts = {
+      model = "gpt-4o", -- or "claude-3.5-sonnet", "gemini-1.5-pro", "o1-preview"
+    },
     init = function()
       vim.g.copilot_chat_filetypes = { markdown = false, vimwiki = false }
       vim.keymap.set("n", "<leader>cc", "<cmd>CopilotChatToggle<cr>", { desc = "Open Copilot Chat" })
@@ -85,8 +104,6 @@ return {
       vim.keymap.set("n", "<localleader>r", "<cmd>CopilotChatReset<cr>", { desc = "Reset chat window" })
       vim.keymap.set("n", "<localleader>s", "<cmd>CopilotChatStop<cr>", { desc = "Stop current output" })
     end,
-
-    -- model = "gemini-2.5-pro",
     dependencies = {
       { "nvim-lua/plenary.nvim", branch = "master" },
     },
