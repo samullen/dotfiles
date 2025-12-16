@@ -1,894 +1,563 @@
 priority -50
-
 snippet anaf "accepts_nested_attributes_for"
-accepts_nested_attributes_for :${1:association_name}${2:${3:, :allow_destroy => true}${4:, :reject_if => proc \{ |obj| ${5:obj.blank?} \}}}
-
-endsnippet
-
+  accepts_nested_attributes_for :${1:association_name}${2:${3:, :allow_destroy => true}${4:, :reject_if => proc \{ |obj| ${5:obj.blank?} \}}}
+  
 snippet tcbi "Create binary column"
-t.binary :${1:title}${2:, :limit => ${3:2}.megabytes}
-$0
-endsnippet
-
+  t.binary :${1:title}${2:, :limit => ${3:2}.megabytes}
+  $0
 snippet tcb "Create boolean column"
-t.boolean :${1:title}
-$0
-endsnippet
-
+  t.boolean :${1:title}
+  $0
 snippet clac "Create controller class"
-class ${1:Model}Controller < ApplicationController
-	before_filter :find_${2:model}
-
-	$0
-
-	private
-	def find_$2
-		@$2 = ${3:$1}.find(params[:id]) if params[:id]
-	end
-end
-endsnippet
-
+  class ${1:Model}Controller < ApplicationController
+  	before_filter :find_${2:model}
+  
+  	$0
+  
+  	private
+  	def find_$2
+  		@$2 = ${3:$1}.find(params[:id]) if params[:id]
+  	end
+  end
 snippet tcda "Create date column"
-t.date :${1:title}
-$0
-endsnippet
-
+  t.date :${1:title}
+  $0
 snippet tcdt "Create datetime column"
-t.datetime :${1:title}
-$0
-endsnippet
-
+  t.datetime :${1:title}
+  $0
 snippet tcd "Create decimal column"
-t.decimal :${1:title}${2:${3:, :precision => ${4:10}}${5:, :scale => ${6:2}}}
-$0
-endsnippet
-
+  t.decimal :${1:title}${2:${3:, :precision => ${4:10}}${5:, :scale => ${6:2}}}
+  $0
 snippet tcf "Create float column"
-t.float :${1:title}
-$0
-endsnippet
-
+  t.float :${1:title}
+  $0
 snippet clact "Create functional test class"
-require 'test_helper'
-
-class ${1:Model}ControllerTest < ActionController::TestCase
-	test$0
-end
-
-endsnippet
-
+  require 'test_helper'
+  
+  class ${1:Model}ControllerTest < ActionController::TestCase
+  	test$0
+  end
+  
 snippet tci "Create integer column"
-t.integer :${1:title}
-$0
-endsnippet
-
+  t.integer :${1:title}
+  $0
 snippet tcl "Create lock_version column"
-t.integer :lock_version, :null => false, :default => 0
-$0
-endsnippet
-
+  t.integer :lock_version, :null => false, :default => 0
+  $0
 # FIXME: handling literal bracket pair inside of nested tab groups?
 snippet tcr "Create references column"
-t.references :${1:taggable}${2:, :polymorphic => ${3:{ :default => '${4:Photo}' \}}}
-$0
-endsnippet
-
+  t.references :${1:taggable}${2:, :polymorphic => ${3:{ :default => '${4:Photo}' \}}}
+  $0
 snippet resources "Create resources controller class"
-class ${1:Model}sController < ApplicationController
-	before_filter :find_${1/./\l$0/}, :only => [:show, :edit, :update, :destroy]
-
-	# GET /${1/./\l$0/}s
-	# GET /${1/./\l$0/}s.xml
-	def index
-		@${1/./\l$0/}s = ${1:Model}.all
-
-		respond_to do |wants|
-			wants.html # index.html.erb
-			wants.xml  { render :xml => @${1/./\l$0/}s }
-		end
-	end
-
-	# GET /${1/./\l$0/}s/1
-	# GET /${1/./\l$0/}s/1.xml
-	def show
-		respond_to do |wants|
-			wants.html # show.html.erb
-			wants.xml  { render :xml => @${1/./\l$0/} }
-		end
-	end
-
-	# GET /${1/./\l$0/}s/new
-	# GET /${1/./\l$0/}s/new.xml
-	def new
-		@${1/./\l$0/} = ${1:Model}.new
-
-		respond_to do |wants|
-			wants.html # new.html.erb
-			wants.xml  { render :xml => @${1/./\l$0/} }
-		end
-	end
-
-	# GET /${1/./\l$0/}s/1/edit
-	def edit
-	end
-
-	# POST /${1/./\l$0/}s
-	# POST /${1/./\l$0/}s.xml
-	def create
-		@${1/./\l$0/} = ${1:Model}.new(params[:${1/./\l$0/}])
-
-		respond_to do |wants|
-			if @${1/./\l$0/}.save
-				flash[:notice] = '${1:Model} was successfully created.'
-				wants.html { redirect_to(@${1/./\l$0/}) }
-				wants.xml  { render :xml => @${1/./\l$0/}, :status => :created, :location => @${1/./\l$0/} }
-			else
-				wants.html { render :action => "new" }
-				wants.xml  { render :xml => @${1/./\l$0/}.errors, :status => :unprocessable_entity }
-			end
-		end
-	end
-
-	# PUT /${1/./\l$0/}s/1
-	# PUT /${1/./\l$0/}s/1.xml
-	def update
-		respond_to do |wants|
-			if @${1/./\l$0/}.update(params[:${1/./\l$0/}])
-				flash[:notice] = '${1:Model} was successfully updated.'
-				wants.html { redirect_to(@${1/./\l$0/}) }
-				wants.xml  { head :ok }
-			else
-				wants.html { render :action => "edit" }
-				wants.xml  { render :xml => @${1/./\l$0/}.errors, :status => :unprocessable_entity }
-			end
-		end
-	end
-
-	# DELETE /${1/./\l$0/}s/1
-	# DELETE /${1/./\l$0/}s/1.xml
-	def destroy
-		@${1/./\l$0/}.destroy
-
-		respond_to do |wants|
-			wants.html { redirect_to(${1/./\l$0/}s_url) }
-			wants.xml  { head :ok }
-		end
-	end
-
-	private
-		def find_${1/./\l$0/}
-			@${1/./\l$0/} = ${1:Model}.find(params[:id])
-		end
-
-end
-
-endsnippet
-
+  class ${1:Model}sController < ApplicationController
+  	before_filter :find_${1/./\l$0/}, :only => [:show, :edit, :update, :destroy]
+  
+  	# GET /${1/./\l$0/}s
+  	# GET /${1/./\l$0/}s.xml
+  	def index
+  		@${1/./\l$0/}s = ${1:Model}.all
+  
+  		respond_to do |wants|
+  			wants.html # index.html.erb
+  			wants.xml  { render :xml => @${1/./\l$0/}s }
+  		end
+  	end
+  
+  	# GET /${1/./\l$0/}s/1
+  	# GET /${1/./\l$0/}s/1.xml
+  	def show
+  		respond_to do |wants|
+  			wants.html # show.html.erb
+  			wants.xml  { render :xml => @${1/./\l$0/} }
+  		end
+  	end
+  
+  	# GET /${1/./\l$0/}s/new
+  	# GET /${1/./\l$0/}s/new.xml
+  	def new
+  		@${1/./\l$0/} = ${1:Model}.new
+  
+  		respond_to do |wants|
+  			wants.html # new.html.erb
+  			wants.xml  { render :xml => @${1/./\l$0/} }
+  		end
+  	end
+  
+  	# GET /${1/./\l$0/}s/1/edit
+  	def edit
+  	end
+  
+  	# POST /${1/./\l$0/}s
+  	# POST /${1/./\l$0/}s.xml
+  	def create
+  		@${1/./\l$0/} = ${1:Model}.new(params[:${1/./\l$0/}])
+  
+  		respond_to do |wants|
+  			if @${1/./\l$0/}.save
+  				flash[:notice] = '${1:Model} was successfully created.'
+  				wants.html { redirect_to(@${1/./\l$0/}) }
+  				wants.xml  { render :xml => @${1/./\l$0/}, :status => :created, :location => @${1/./\l$0/} }
+  			else
+  				wants.html { render :action => "new" }
+  				wants.xml  { render :xml => @${1/./\l$0/}.errors, :status => :unprocessable_entity }
+  			end
+  		end
+  	end
+  
+  	# PUT /${1/./\l$0/}s/1
+  	# PUT /${1/./\l$0/}s/1.xml
+  	def update
+  		respond_to do |wants|
+  			if @${1/./\l$0/}.update(params[:${1/./\l$0/}])
+  				flash[:notice] = '${1:Model} was successfully updated.'
+  				wants.html { redirect_to(@${1/./\l$0/}) }
+  				wants.xml  { head :ok }
+  			else
+  				wants.html { render :action => "edit" }
+  				wants.xml  { render :xml => @${1/./\l$0/}.errors, :status => :unprocessable_entity }
+  			end
+  		end
+  	end
+  
+  	# DELETE /${1/./\l$0/}s/1
+  	# DELETE /${1/./\l$0/}s/1.xml
+  	def destroy
+  		@${1/./\l$0/}.destroy
+  
+  		respond_to do |wants|
+  			wants.html { redirect_to(${1/./\l$0/}s_url) }
+  			wants.xml  { head :ok }
+  		end
+  	end
+  
+  	private
+  		def find_${1/./\l$0/}
+  			@${1/./\l$0/} = ${1:Model}.find(params[:id])
+  		end
+  
+  end
+  
 snippet tcs "Create string column"
-t.string :${1:title}
-$0
-endsnippet
-
+  t.string :${1:title}
+  $0
 snippet tct "Create text column"
-t.text :${1:title}
-$0
-endsnippet
-
+  t.text :${1:title}
+  $0
 snippet tcti "Create time column"
-t.time :${1:title}
-$0
-endsnippet
-
+  t.time :${1:title}
+  $0
 snippet tcts "Create timestamp column"
-t.timestamp :${1:title}
-$0
-endsnippet
-
+  t.timestamp :${1:title}
+  $0
 snippet tctss "Create timestamps columns"
-t.timestamps
-$0
-endsnippet
-
+  t.timestamps
+  $0
 snippet mcol "Migration Create Column (mcc)"
-t.column ${1:title}, :${2:string}
-$0
-endsnippet
-
+  t.column ${1:title}, :${2:string}
+  $0
 snippet mccc "Migration Create Column Continue (mccc)"
-t.column ${1:title}, :${2:string}
-mccc$0
-endsnippet
-
+  t.column ${1:title}, :${2:string}
+  mccc$0
 snippet mtab "Migration Drop Create Table (mdct)"
-drop_table :${1:table}${2: [press tab twice to generate create_table]}
-endsnippet
-
+  drop_table :${1:table}${2: [press tab twice to generate create_table]}
 snippet mcol "Migration Remove and Add Column (mrac)"
-remove_column :${1:table}, :${2:column}${3: [press tab twice to generate add_column]}
-endsnippet
-
+  remove_column :${1:table}, :${2:column}${3: [press tab twice to generate add_column]}
 snippet rdb "RAILS_DEFAULT_LOGGER.debug (rdb)"
-RAILS_DEFAULT_LOGGER.debug "${1:message}"$0
-endsnippet
-
+  RAILS_DEFAULT_LOGGER.debug "${1:message}"$0
 snippet tre "Table column(s) rename"
-t.rename(:${1:old_column_name}, :${2:new_column_name})
-$0
-endsnippet
-
+  t.rename(:${1:old_column_name}, :${2:new_column_name})
+  $0
 snippet art "Test Assert Redirected To (art)"
-assert_redirected_to ${2::action => "${1:index}"}
-endsnippet
-
+  assert_redirected_to ${2::action => "${1:index}"}
 snippet asre "Test Assert Response (are)"
-assert_response :${1:success}, @response.body$0
-endsnippet
-
+  assert_response :${1:success}, @response.body$0
 snippet aftc "after_create"
-after_create $0
-endsnippet
-
+  after_create $0
 snippet aftd "after_destroy"
-after_destroy $0
-endsnippet
-
+  after_destroy $0
 snippet afts "after_save"
-after_save $0
-endsnippet
-
+  after_save $0
 snippet aftu "after_update"
-after_update $0
-endsnippet
-
+  after_update $0
 snippet aftv "after_validation"
-after_validation $0
-endsnippet
-
+  after_validation $0
 snippet aftvoc "after_validation_on_create"
-after_validation_on_create $0
-endsnippet
-
+  after_validation_on_create $0
 snippet aftvou "after_validation_on_update"
-after_validation_on_update $0
-endsnippet
-
+  after_validation_on_update $0
 snippet asg "assert(var = assigns(:var))"
-assert(${1:var} = assigns(:$1), "Cannot find @$1")
-$0
-endsnippet
-
+  assert(${1:var} = assigns(:$1), "Cannot find @$1")
+  $0
 snippet asd "assert_difference"
-assert_difference "${1:Model}.${2:count}", ${3:1} do
-	$0
-end
-endsnippet
-
+  assert_difference "${1:Model}.${2:count}", ${3:1} do
+  	$0
+  end
 snippet asnd "assert_no_difference"
-assert_no_difference "${1:Model}.${2:count}" do
-	$0
-end
-endsnippet
-
+  assert_no_difference "${1:Model}.${2:count}" do
+  	$0
+  end
 snippet artnpp "assert_redirected_to (nested path plural)"
-assert_redirected_to ${10:${2:parent}_${3:child}_path(${4:@}${5:$2})}
-endsnippet
-
+  assert_redirected_to ${10:${2:parent}_${3:child}_path(${4:@}${5:$2})}
 snippet artnp "assert_redirected_to (nested path)"
-assert_redirected_to ${2:${12:parent}_${13:child}_path(${14:@}${15:$12}, ${16:@}${17:$13})}
-endsnippet
-
+  assert_redirected_to ${2:${12:parent}_${13:child}_path(${14:@}${15:$12}, ${16:@}${17:$13})}
 snippet artpp "assert_redirected_to (path plural)"
-assert_redirected_to ${10:${2:model}s_path}
-endsnippet
-
+  assert_redirected_to ${10:${2:model}s_path}
 snippet artp "assert_redirected_to (path)"
-assert_redirected_to ${2:${12:model}_path(${13:@}${14:$12})}
-endsnippet
-
+  assert_redirected_to ${2:${12:model}_path(${13:@}${14:$12})}
 snippet asrj "assert_rjs"
-assert_rjs :${1:replace}, ${2:"${3:dom id}"}
-endsnippet
-
+  assert_rjs :${1:replace}, ${2:"${3:dom id}"}
 snippet ass "assert_select"
-assert_select '${1:path}'${2:, :${3:text} => ${4:'${5:inner_html}'}}${6: do
-	$0
-end}
-endsnippet
-
+  assert_select '${1:path}'${2:, :${3:text} => ${4:'${5:inner_html}'}}${6: do
+  	$0
+  end}
 snippet befc "before_create"
-before_create $0
-endsnippet
-
+  before_create $0
 snippet befd "before_destroy"
-before_destroy $0
-endsnippet
-
+  before_destroy $0
 snippet befs "before_save"
-before_save $0
-endsnippet
-
+  before_save $0
 snippet befu "before_update"
-before_update $0
-endsnippet
-
+  before_update $0
 snippet befv "before_validation"
-before_validation $0
-endsnippet
-
+  before_validation $0
 snippet befvoc "before_validation_on_create"
-before_validation_on_create $0
-endsnippet
-
+  before_validation_on_create $0
 snippet befvou "before_validation_on_update"
-before_validation_on_update
-endsnippet
-
+  before_validation_on_update
 snippet bt "belongs_to (bt)"
-belongs_to :${1:object}${2:, :class_name => "${3:${1/[[:alpha:]]+|(_)/(?1::\u$0)/g}}", :foreign_key => "${4:$1_id}"}
-endsnippet
-
+  belongs_to :${1:object}${2:, :class_name => "${3:${1/[[:alpha:]]+|(_)/(?1::\u$0)/g}}", :foreign_key => "${4:$1_id}"}
 snippet crw "cattr_accessor"
-cattr_accessor :${0:attr_names}
-endsnippet
-
+  cattr_accessor :${0:attr_names}
 snippet defcreate "def create - resource"
-def create
-	@${1:model} = ${2:${1/[[:alpha:]]+|(_)/(?1::\u$0)/g}}.new(params[:$1])
-	$0
-	respond_to do |wants|
-		if @$1.save
-			flash[:notice] = '$2 was successfully created.'
-			wants.html { redirect_to(@$1) }
-			wants.xml { render :xml => @$1, :status => :created, :location => @$1 }
-		else
-			wants.html { render :action => "new" }
-			wants.xml { render :xml => @$1.errors, :status => :unprocessable_entity }
-		end
-	end
-end
-
-endsnippet
-
+  def create
+  	@${1:model} = ${2:${1/[[:alpha:]]+|(_)/(?1::\u$0)/g}}.new(params[:$1])
+  	$0
+  	respond_to do |wants|
+  		if @$1.save
+  			flash[:notice] = '$2 was successfully created.'
+  			wants.html { redirect_to(@$1) }
+  			wants.xml { render :xml => @$1, :status => :created, :location => @$1 }
+  		else
+  			wants.html { render :action => "new" }
+  			wants.xml { render :xml => @$1.errors, :status => :unprocessable_entity }
+  		end
+  	end
+  end
+  
 snippet test "test do..end"
-test "${1:something interesting}" do
-	$0
-end
-endsnippet
-
+  test "${1:something interesting}" do
+  	$0
+  end
 snippet deftg "def get request"
-def test_should_get_${1:action}
-	${2:@${3:model} = ${4:$3s}(:${5:fixture_name})
-	}get :$1${6:, :id => @$3.to_param}
-	assert_response :success
-	$0
-end
-endsnippet
-
+  def test_should_get_${1:action}
+  	${2:@${3:model} = ${4:$3s}(:${5:fixture_name})
+  	}get :$1${6:, :id => @$3.to_param}
+  	assert_response :success
+  	$0
+  end
 snippet deftp "def post request"
-def test_should_post_${1:action}
-	${3:@$2 = ${4:$2s}(:${5:fixture_name})
-	}post :$1${6:, :id => @$2.to_param}, :${2:model} => { $0 }
-	assert_response :redirect
-
-end
-endsnippet
-
+  def test_should_post_${1:action}
+  	${3:@$2 = ${4:$2s}(:${5:fixture_name})
+  	}post :$1${6:, :id => @$2.to_param}, :${2:model} => { $0 }
+  	assert_response :redirect
+  
+  end
 snippet fina "find(:all)"
-find(:all${1:, :conditions => ['${2:${3:field} = ?}', ${5:true}]})
-endsnippet
-
+  find(:all${1:, :conditions => ['${2:${3:field} = ?}', ${5:true}]})
 snippet finf "find(:first)"
-find(:first${1:, :conditions => ['${2:${3:field} = ?}', ${5:true}]})
-endsnippet
-
+  find(:first${1:, :conditions => ['${2:${3:field} = ?}', ${5:true}]})
 snippet fini "find(id)"
-find(${1:id})
-endsnippet
-
+  find(${1:id})
 snippet fine "find_each"
-find_each(${1::conditions => {:${2:field} => ${3:true}\}}) do |${4:${TM_CURRENT_WORD/(\w+)\./\L$1/g}}|
-	$0
-end
-endsnippet
-
+  find_each(${1::conditions => {:${2:field} => ${3:true}\}}) do |${4:${TM_CURRENT_WORD/(\w+)\./\L$1/g}}|
+  	$0
+  end
 snippet finb "find_in_batches"
-find_in_batches(${1::conditions => {:${2:field} => ${3:true}\}}) do |${4:${TM_CURRENT_WORD/(\w+)\./\L$1/g}}s|
-	$4s.each do |$4|
-		$0
-	end
-end
-endsnippet
-
+  find_in_batches(${1::conditions => {:${2:field} => ${3:true}\}}) do |${4:${TM_CURRENT_WORD/(\w+)\./\L$1/g}}s|
+  	$4s.each do |$4|
+  		$0
+  	end
+  end
 snippet habtm "has_and_belongs_to_many (habtm)"
-has_and_belongs_to_many :${1:object}${2:, :join_table => "${3:table_name}", :foreign_key => "${4:$1_id}"}
-endsnippet
-
+  has_and_belongs_to_many :${1:object}${2:, :join_table => "${3:table_name}", :foreign_key => "${4:$1_id}"}
 snippet hm "has_many (hm)"
-has_many :${1:object}s${2:, :class_name => "$1", :foreign_key => "${4:reference}_id"}
-endsnippet
-
+  has_many :${1:object}s${2:, :class_name => "$1", :foreign_key => "${4:reference}_id"}
 snippet hmt "has_many (through)"
-has_many :${1:objects}, :through => :${2:join_association}${3:, :source => :${4:$2_table_foreign_key_to_$1_table}}
-endsnippet
-
+  has_many :${1:objects}, :through => :${2:join_association}${3:, :source => :${4:$2_table_foreign_key_to_$1_table}}
 snippet hmd "has_many :dependent => :destroy"
-has_many :${1:object}s${2:, :class_name => "$1", :foreign_key => "${4:reference}_id"}, :dependent => :destroy$0
-endsnippet
-
+  has_many :${1:object}s${2:, :class_name => "$1", :foreign_key => "${4:reference}_id"}, :dependent => :destroy$0
 snippet ho "has_one (ho)"
-has_one :${1:object}${2:, :class_name => "${3:${1/[[:alpha:]]+|(_)/(?1::\u$0)/g}}", :foreign_key => "${4:$1_id}"}
-endsnippet
-
+  has_one :${1:object}${2:, :class_name => "${3:${1/[[:alpha:]]+|(_)/(?1::\u$0)/g}}", :foreign_key => "${4:$1_id}"}
 snippet logd "logger.debug"
-${1:Rails.}logger.debug { "${1:message}" }$0
-endsnippet
-
+  ${1:Rails.}logger.debug { "${1:message}" }$0
 snippet loge "logger.error"
-logger.error { "${1:message}" }$0
-endsnippet
-
+  logger.error { "${1:message}" }$0
 snippet logf "logger.fatal"
-logger.fatal { "${1:message}" }$0
-endsnippet
-
+  logger.fatal { "${1:message}" }$0
 snippet logi "logger.info"
-logger.info { "${1:message}" }$0
-endsnippet
-
+  logger.info { "${1:message}" }$0
 snippet logw "logger.warn"
-logger.warn { "${1:message}" }$0
-endsnippet
-
+  logger.warn { "${1:message}" }$0
 snippet mp "map(&:sym_proc)"
-map(&:${1:id})
-endsnippet
-
+  map(&:${1:id})
 snippet mapca "map.catch_all"
-${1:map}.catch_all "*${2:anything}", :controller => "${3:default}", :action => "${4:error}"
-
-endsnippet
-
+  ${1:map}.catch_all "*${2:anything}", :controller => "${3:default}", :action => "${4:error}"
+  
 snippet map "map.named_route"
-${1:map}.${2:connect} '${3::controller/:action/:id}'
-endsnippet
-
+  ${1:map}.${2:connect} '${3::controller/:action/:id}'
 snippet mapr "map.resource"
-${1:map}.resource :${2:resource}${10: do |${11:$2}|
-	$0
-end}
-endsnippet
-
+  ${1:map}.resource :${2:resource}${10: do |${11:$2}|
+  	$0
+  end}
 snippet maprs "map.resources"
-${1:map}.resources :${2:resource}${10: do |${11:$2}|
-	$0
-end}
-endsnippet
-
+  ${1:map}.resources :${2:resource}${10: do |${11:$2}|
+  	$0
+  end}
 snippet mapwo "map.with_options"
-${1:map}.with_options :${2:controller} => '${3:thing}' do |${4:$3}|
-	$0
-end
-
-endsnippet
-
+  ${1:map}.with_options :${2:controller} => '${3:thing}' do |${4:$3}|
+  	$0
+  end
+  
 snippet mrw "mattr_accessor"
-mattr_accessor :${0:attr_names}
-endsnippet
-
+  mattr_accessor :${0:attr_names}
 snippet ncl "named_scope lambda"
-named_scope :name, lambda { |${1:param}| { :conditions => ${3:['${4:${5:field} = ?}', ${6:$1}]} } }
-
-endsnippet
-
+  named_scope :name, lambda { |${1:param}| { :conditions => ${3:['${4:${5:field} = ?}', ${6:$1}]} } }
+  
 snippet nc "named_scope"
-named_scope :name${1:, :joins => :${2:table}}, :conditions => ${3:['${4:${5:field} = ?}', ${6:true}]}
-
-endsnippet
-
+  named_scope :name${1:, :joins => :${2:table}}, :conditions => ${3:['${4:${5:field} = ?}', ${6:true}]}
+  
 snippet dscope "default_scope"
-default_scope ${1:order(${2:'${3:created_at DESC}'})}
-endsnippet
-
+  default_scope ${1:order(${2:'${3:created_at DESC}'})}
 snippet flash "flash[...]"
-flash[:${1:notice}] = "${2:Successfully created...}"$0
-endsnippet
-
+  flash[:${1:notice}] = "${2:Successfully created...}"$0
 snippet rea "redirect_to (action)"
-redirect_to :action => "${1:index}"
-endsnippet
-
+  redirect_to :action => "${1:index}"
 snippet reai "redirect_to (action, id)"
-redirect_to :action => "${1:show}", :id => ${0:@item}
-endsnippet
-
+  redirect_to :action => "${1:show}", :id => ${0:@item}
 snippet rec "redirect_to (controller)"
-redirect_to :controller => "${1:items}"
-endsnippet
-
+  redirect_to :controller => "${1:items}"
 snippet reca "redirect_to (controller, action)"
-redirect_to :controller => "${1:items}", :action => "${2:list}"
-endsnippet
-
+  redirect_to :controller => "${1:items}", :action => "${2:list}"
 snippet recai "redirect_to (controller, action, id)"
-redirect_to :controller => "${1:items}", :action => "${2:show}", :id => ${0:@item}
-endsnippet
-
+  redirect_to :controller => "${1:items}", :action => "${2:show}", :id => ${0:@item}
 snippet renpp "redirect_to (nested path plural)"
-redirect_to(${2:${10:parent}_${11:child}_path(${12:@}${13:$10})})
-endsnippet
-
+  redirect_to(${2:${10:parent}_${11:child}_path(${12:@}${13:$10})})
 snippet renp "redirect_to (nested path)"
-redirect_to(${2:${12:parent}_${13:child}_path(${14:@}${15:$12}, ${16:@}${17:$13})})
-endsnippet
-
+  redirect_to(${2:${12:parent}_${13:child}_path(${14:@}${15:$12}, ${16:@}${17:$13})})
 snippet repp "redirect_to (path plural)"
-redirect_to(${2:${10:model}s_path})
-endsnippet
-
+  redirect_to(${2:${10:model}s_path})
 snippet rep "redirect_to (path)"
-redirect_to(${2:${12:model}_path(${13:@}${14:$12})})
-endsnippet
-
+  redirect_to(${2:${12:model}_path(${13:@}${14:$12})})
 snippet reb "redirect_to :back"
-redirect_to :back
-endsnippet
-
+  redirect_to :back
 snippet ra "render (action)... (ra)"
-render :action => "${1:action}"
-endsnippet
-
+  render :action => "${1:action}"
 snippet ral "render (action,layout) (ral)"
-render :action => "${1:action}", :layout => "${2:layoutname}"
-endsnippet
-
+  render :action => "${1:action}", :layout => "${2:layoutname}"
 snippet rf "render (file) (rf)"
-render :file => "${1:filepath}"
-endsnippet
-
+  render :file => "${1:filepath}"
 snippet rfu "render (file,use_full_path) (rfu)"
-render :file => "${1:filepath}", :use_full_path => ${2:false}
-endsnippet
-
+  render :file => "${1:filepath}", :use_full_path => ${2:false}
 snippet ri "render (inline) (ri)"
-render :inline => "${1:<%= 'hello' %>}"
-endsnippet
-
+  render :inline => "${1:<%= 'hello' %>}"
 snippet ril "render (inline,locals) (ril)"
-render :inline => "${1:<%= 'hello' %>}", :locals => { ${2::name} => "${3:value}"$4 }
-endsnippet
-
+  render :inline => "${1:<%= 'hello' %>}", :locals => { ${2::name} => "${3:value}"$4 }
 snippet rit "render (inline,type) (rit)"
-render :inline => "${1:<%= 'hello' %>}", :type => ${2::rxml}
-endsnippet
-
+  render :inline => "${1:<%= 'hello' %>}", :type => ${2::rxml}
 snippet rl "render (layout) (rl)"
-render :layout => "${1:layoutname}"
-endsnippet
-
+  render :layout => "${1:layoutname}"
 snippet rn "render (nothing) (rn)"
-render :nothing => ${1:true}
-endsnippet
-
+  render :nothing => ${1:true}
 snippet rns "render (nothing,status) (rns)"
-render :nothing => ${1:true}, :status => ${2:401}
-endsnippet
-
+  render :nothing => ${1:true}, :status => ${2:401}
 snippet rt "render (text) (rt)"
-render :text => "${1:text to render...}"
-endsnippet
-
+  render :text => "${1:text to render...}"
 snippet rtl "render (text,layout) (rtl)"
-render :text => "${1:text to render...}", :layout => "${2:layoutname}"
-endsnippet
-
+  render :text => "${1:text to render...}", :layout => "${2:layoutname}"
 snippet rtlt "render (text,layout => true) (rtlt)"
-render :text => "${1:text to render...}", :layout => ${2:true}
-endsnippet
-
+  render :text => "${1:text to render...}", :layout => ${2:true}
 snippet rts "render (text,status) (rts)"
-render :text => "${1:text to render...}", :status => ${2:401}
-endsnippet
-
+  render :text => "${1:text to render...}", :status => ${2:401}
 snippet ru "render (update)"
-render :update do |${2:page}|
-	$2.$0
-end
-endsnippet
-
+  render :update do |${2:page}|
+  	$2.$0
+  end
 snippet rest "respond_to"
-respond_to do |wants|
-	wants.${1:html}${2: { $0 \}}
-end
-endsnippet
-
+  respond_to do |wants|
+  	wants.${1:html}${2: { $0 \}}
+  end
 # FIXME
 snippet returning "returning do |variable| ... end"
-returning ${1:variable} do${2/(^(?<var>\s*[a-z_][a-zA-Z0-9_]*\s*)(,\g<var>)*,?\s*$)|.*/(?1: |)/}${2:v}${2/(^(?<var>\s*[a-z_][a-zA-Z0-9_]*\s*)(,\g<var>)*,?\s*$)|.*/(?1:|)/}
-	$0
-end
-endsnippet
-
+  returning ${1:variable} do${2/(^(?<var>\s*[a-z_][a-zA-Z0-9_]*\s*)(,\g<var>)*,?\s*$)|.*/(?1: |)/}${2:v}${2/(^(?<var>\s*[a-z_][a-zA-Z0-9_]*\s*)(,\g<var>)*,?\s*$)|.*/(?1:|)/}
+  	$0
+  end
 snippet t. "t.binary (tcbi)"
-t.binary :${1:title}${2:, :limit => ${3:2}.megabytes}
-t.$0
-endsnippet
-
+  t.binary :${1:title}${2:, :limit => ${3:2}.megabytes}
+  t.$0
 snippet t. "t.boolean (tcb)"
-t.boolean :${1:title}
-t.$0
-endsnippet
-
+  t.boolean :${1:title}
+  t.$0
 snippet t. "t.date (tcda)"
-t.date :${1:title}
-t.$0
-endsnippet
-
+  t.date :${1:title}
+  t.$0
 snippet t. "t.datetime (tcdt)"
-t.datetime :${1:title}
-t.$0
-endsnippet
-
+  t.datetime :${1:title}
+  t.$0
 snippet t. "t.decimal (tcd)"
-t.decimal :${1:title}${2:${3:, :precision => ${4:10}}${5:, :scale => ${6:2}}}
-t.$0
-endsnippet
-
+  t.decimal :${1:title}${2:${3:, :precision => ${4:10}}${5:, :scale => ${6:2}}}
+  t.$0
 snippet t. "t.float (tcf)"
-t.float :${1:title}
-t.$0
-endsnippet
-
+  t.float :${1:title}
+  t.$0
 snippet t. "t.integer (tci)"
-t.integer :${1:title}
-t.$0
-endsnippet
-
+  t.integer :${1:title}
+  t.$0
 snippet t. "t.lock_version (tcl)"
-t.integer :lock_version, :null => false, :default => 0
-t.$0
-endsnippet
-
+  t.integer :lock_version, :null => false, :default => 0
+  t.$0
 snippet t. "t.references (tcr)"
-t.references :${1:taggable}${2:, :polymorphic => ${3:{ :default => '${4:Photo}' \}}}
-t.$0
-endsnippet
-
+  t.references :${1:taggable}${2:, :polymorphic => ${3:{ :default => '${4:Photo}' \}}}
+  t.$0
 snippet t. "t.rename (tre)"
-t.rename(:${1:old_column_name}, :${2:new_column_name})
-t.$0
-endsnippet
-
+  t.rename(:${1:old_column_name}, :${2:new_column_name})
+  t.$0
 snippet t. "t.string (tcs)"
-t.string :${1:title}
-t.$0
-endsnippet
-
+  t.string :${1:title}
+  t.$0
 snippet t. "t.text (tct)"
-t.text :${1:title}
-t.$0
-endsnippet
-
+  t.text :${1:title}
+  t.$0
 snippet t. "t.time (tcti)"
-t.time :${1:title}
-t.$0
-endsnippet
-
+  t.time :${1:title}
+  t.$0
 snippet t. "t.timestamp (tcts)"
-t.timestamp :${1:title}
-t.$0
-endsnippet
-
+  t.timestamp :${1:title}
+  t.$0
 snippet t. "t.timestamps (tctss)"
-t.timestamps
-t.$0
-endsnippet
-
+  t.timestamps
+  t.$0
 snippet vaoif "validates_acceptance_of if"
-validates_acceptance_of :${1:terms}${2:${3:, :accept => "${4:1}"}${5:, :message => "${6:You must accept the terms of service}"}}, :if => proc { |obj| ${7:obj.condition?} }}
-endsnippet
-
+  validates_acceptance_of :${1:terms}${2:${3:, :accept => "${4:1}"}${5:, :message => "${6:You must accept the terms of service}"}}, :if => proc { |obj| ${7:obj.condition?} }}
 snippet vao "validates_acceptance_of"
-validates_acceptance_of :${1:terms}${2:${3:, :accept => "${4:1}"}${5:, :message => "${6:You must accept the terms of service}"}}
-endsnippet
-
+  validates_acceptance_of :${1:terms}${2:${3:, :accept => "${4:1}"}${5:, :message => "${6:You must accept the terms of service}"}}
 snippet va "validates_associated (va)"
-validates_associated :${1:attribute}${2:, :on => :${3:create}}
-endsnippet
-
+  validates_associated :${1:attribute}${2:, :on => :${3:create}}
 snippet vaif "validates_associated if (vaif)"
-validates_associated :${1:attribute}${2:, :on => :${3:create}, :if => proc { |obj| ${5:obj.condition?} }}
-endsnippet
-
+  validates_associated :${1:attribute}${2:, :on => :${3:create}, :if => proc { |obj| ${5:obj.condition?} }}
 snippet vc "validates_confirmation_of (vc)"
-validates_confirmation_of :${1:attribute}${2:, :on => :${3:create}, :message => "${4:should match confirmation}"}
-endsnippet
-
+  validates_confirmation_of :${1:attribute}${2:, :on => :${3:create}, :message => "${4:should match confirmation}"}
 snippet vcif "validates_confirmation_of if (vcif)"
-validates_confirmation_of :${1:attribute}${2:, :on => :${3:create}, :message => "${4:should match confirmation}", :if => proc { |obj| ${5:obj.condition?} }}
-endsnippet
-
+  validates_confirmation_of :${1:attribute}${2:, :on => :${3:create}, :message => "${4:should match confirmation}", :if => proc { |obj| ${5:obj.condition?} }}
 snippet ve "validates_exclusion_of (ve)"
-validates_exclusion_of :${1:attribute}${2:, :in => ${3:%w( ${4:mov avi} )}, :on => :${5:create}, :message => "${6:extension %s is not allowed}"}
-endsnippet
-
+  validates_exclusion_of :${1:attribute}${2:, :in => ${3:%w( ${4:mov avi} )}, :on => :${5:create}, :message => "${6:extension %s is not allowed}"}
 snippet veif "validates_exclusion_of if (veif)"
-validates_exclusion_of :${1:attribute}${2:, :in => ${3:%w( ${4:mov avi} )}, :on => :${5:create}, :message => "${6:extension %s is not allowed}"}, :if => proc { |obj| ${7:obj.condition?} }}
-endsnippet
-
+  validates_exclusion_of :${1:attribute}${2:, :in => ${3:%w( ${4:mov avi} )}, :on => :${5:create}, :message => "${6:extension %s is not allowed}"}, :if => proc { |obj| ${7:obj.condition?} }}
 snippet vfif "validates_format_of if"
-validates_format_of :${1:attribute}, :with => /${2:^[${3:\w\d}]+\$}/${4:, :on => :${5:create}, :message => "${6:is invalid}"}, :if => proc { |obj| ${7:obj.condition?} }}
-endsnippet
-
+  validates_format_of :${1:attribute}, :with => /${2:^[${3:\w\d}]+\$}/${4:, :on => :${5:create}, :message => "${6:is invalid}"}, :if => proc { |obj| ${7:obj.condition?} }}
 snippet vf "validates_format_of"
-validates_format_of :${1:attribute}, :with => /${2:^[${3:\w\d}]+\$}/${4:, :on => :${5:create}, :message => "${6:is invalid}"}
-endsnippet
-
+  validates_format_of :${1:attribute}, :with => /${2:^[${3:\w\d}]+\$}/${4:, :on => :${5:create}, :message => "${6:is invalid}"}
 snippet viif "validates_inclusion_of if"
-validates_inclusion_of :${1:attribute}${2:, :in => ${3:%w( ${4:mov avi} )}, :on => :${5:create}, :message => "${6:extension %s is not included in the list}"}, :if => proc { |obj| ${7:obj.condition?} }}
-endsnippet
-
+  validates_inclusion_of :${1:attribute}${2:, :in => ${3:%w( ${4:mov avi} )}, :on => :${5:create}, :message => "${6:extension %s is not included in the list}"}, :if => proc { |obj| ${7:obj.condition?} }}
 snippet vi "validates_inclusion_of"
-validates_inclusion_of :${1:attribute}${2:, :in => ${3:%w( ${4:mov avi} )}, :on => :${5:create}, :message => "${6:extension %s is not included in the list}"}
-endsnippet
-
+  validates_inclusion_of :${1:attribute}${2:, :in => ${3:%w( ${4:mov avi} )}, :on => :${5:create}, :message => "${6:extension %s is not included in the list}"}
 snippet vl "validates_length_of (vl)"
-validates_length_of :${1:attribute}, :within => ${2:3..20}${3:, :on => :${4:create}, :message => "${5:must be present}"}
-endsnippet
-
+  validates_length_of :${1:attribute}, :within => ${2:3..20}${3:, :on => :${4:create}, :message => "${5:must be present}"}
 snippet vlif "validates_length_of if"
-validates_length_of :${1:attribute}, :within => ${2:3..20}${3:, :on => :${4:create}, :message => "${5:must be present}"}, :if => proc { |obj| ${6:obj.condition?} }}
-endsnippet
-
+  validates_length_of :${1:attribute}, :within => ${2:3..20}${3:, :on => :${4:create}, :message => "${5:must be present}"}, :if => proc { |obj| ${6:obj.condition?} }}
 snippet vnif "validates_numericality_of if"
-validates_numericality_of :${1:attribute}${2:, :on => :${3:create}, :message => "${4:is not a number}"}, :if => proc { |obj| ${5:obj.condition?} }}
-endsnippet
-
+  validates_numericality_of :${1:attribute}${2:, :on => :${3:create}, :message => "${4:is not a number}"}, :if => proc { |obj| ${5:obj.condition?} }}
 snippet vn "validates_numericality_of"
-validates_numericality_of :${1:attribute}${2:, :on => :${3:create}, :message => "${4:is not a number}"}
-endsnippet
-
+  validates_numericality_of :${1:attribute}${2:, :on => :${3:create}, :message => "${4:is not a number}"}
 snippet vp "validates_presence_of (vp)"
-validates_presence_of :${1:attribute}${2:, :on => :${3:create}, :message => "${4:can't be blank}"}
-endsnippet
-
+  validates_presence_of :${1:attribute}${2:, :on => :${3:create}, :message => "${4:can't be blank}"}
 snippet vpif "validates_presence_of if (vpif) 2"
-validates_presence_of :${1:attribute}${2:, :on => :${3:create}, :message => "${4:can't be blank}"}, :if => proc { |obj| ${5:obj.condition?} }}
-endsnippet
-
+  validates_presence_of :${1:attribute}${2:, :on => :${3:create}, :message => "${4:can't be blank}"}, :if => proc { |obj| ${5:obj.condition?} }}
 snippet vu "validates_uniqueness_of (vu)"
-validates_uniqueness_of :${1:attribute}${2:, :on => :${3:create}, :message => "${4:must be unique}"}
-endsnippet
-
+  validates_uniqueness_of :${1:attribute}${2:, :on => :${3:create}, :message => "${4:must be unique}"}
 snippet vuif "validates_uniqueness_of if (vuif)"
-validates_uniqueness_of :${1:attribute}${2:, :on => :${3:create}, :message => "${4:must be unique}", :if => proc { |obj| ${6:obj.condition?} }}
-endsnippet
-
+  validates_uniqueness_of :${1:attribute}${2:, :on => :${3:create}, :message => "${4:must be unique}", :if => proc { |obj| ${6:obj.condition?} }}
 snippet verify "verify -- render"
-verify :only => [:$1], :method => :post, :render => {:status => 500, :text => "use HTTP-POST"}
-
-endsnippet
-
+  verify :only => [:$1], :method => :post, :render => {:status => 500, :text => "use HTTP-POST"}
+  
 snippet verify "verify -- redirect"
-verify :only => [:$1], :session => :user, :params => :id, :redirect_to => {:action => '${2:index}'}
-
-endsnippet
-
+  verify :only => [:$1], :session => :user, :params => :id, :redirect_to => {:action => '${2:index}'}
+  
 snippet wants "wants_format"
-wants.${1:js|xml|html}${2: { $0 \}}
-endsnippet
-
+  wants.${1:js|xml|html}${2: { $0 \}}
 snippet xdelete "xhr delete"
-xhr :delete, :${1:destroy}, :id => ${2:1}$0
-endsnippet
-
+  xhr :delete, :${1:destroy}, :id => ${2:1}$0
 snippet xget "xhr get"
-xhr :get, :${1:show}${2:, :id => ${3:1}}$0
-endsnippet
-
+  xhr :get, :${1:show}${2:, :id => ${3:1}}$0
 snippet xpost "xhr post"
-xhr :post, :${1:create}, :${2:object} => { $3 }
-endsnippet
-
+  xhr :post, :${1:create}, :${2:object} => { $3 }
 snippet xput "xhr put"
-xhr :put, :${1:update}, :id => ${2:1}, :${3:object} => { $4 }$0
-endsnippet
-
+  xhr :put, :${1:update}, :id => ${2:1}, :${3:object} => { $4 }$0
 snippet sweeper "Create sweeper class"
-class ${1:Model}Sweeper < ActionController::Caching::Sweeper
-	observe ${1:Model}
-
-	def after_save(${1/./\l$0/})
-		expire_cache(${1/./\l$0/})
-	end
-
-	def after_destroy(${1/./\l$0/})
-		expire_cache(${1/./\l$0/})
-	end
-
-	private
-
-		def expire_cache(${1/./\l$0/})
-			${0:expire_page ${1/./\l$0/}s_path
-			expire_page ${1/./\l$0/}_path(${1/./\l$0/})}
-		end
-
-end
-endsnippet
-
+  class ${1:Model}Sweeper < ActionController::Caching::Sweeper
+  	observe ${1:Model}
+  
+  	def after_save(${1/./\l$0/})
+  		expire_cache(${1/./\l$0/})
+  	end
+  
+  	def after_destroy(${1/./\l$0/})
+  		expire_cache(${1/./\l$0/})
+  	end
+  
+  	private
+  
+  		def expire_cache(${1/./\l$0/})
+  			${0:expire_page ${1/./\l$0/}s_path
+  			expire_page ${1/./\l$0/}_path(${1/./\l$0/})}
+  		end
+  
+  end
 snippet col "collection routes"
-collection do
-	${1:get :${2:action}}
-	${3:put :${4:action}}
-	${5:post :${6:action}}
-	${7:delete :${8:action}}
-end
-endsnippet
-
+  collection do
+  	${1:get :${2:action}}
+  	${3:put :${4:action}}
+  	${5:post :${6:action}}
+  	${7:delete :${8:action}}
+  end
 snippet format "format (respond_with)"
-format.${1:html|xml|json|js|any} { $0 }
-endsnippet
-
+  format.${1:html|xml|json|js|any} { $0 }
 snippet gem "gem"
-gem '${1:name}'${2:${3:, "${4:1.0}"}${5:${6:, :require => ${7:"${8:$1}"}}${9:, :group => :${10:test}}}}
-endsnippet
-
+  gem '${1:name}'${2:${3:, "${4:1.0}"}${5:${6:, :require => ${7:"${8:$1}"}}${9:, :group => :${10:test}}}}
 snippet gemg "gem :git"
-gem '${1:paperclip}', :git => "${2:git://github.com/thoughtbot/paperclip.git}"${3:, :branch => "${4:rails3}"}
-endsnippet
-
+  gem '${1:paperclip}', :git => "${2:git://github.com/thoughtbot/paperclip.git}"${3:, :branch => "${4:rails3}"}
 snippet match "match"
-match '${1:${2::controller}${3:/${4::action}${5:/${6::id}${7:(.:format)}}}}'${8: => '${9:$2}#${10:$4}'${11:, :as => :${12:$10}}}
-endsnippet
-
+  match '${1:${2::controller}${3:/${4::action}${5:/${6::id}${7:(.:format)}}}}'${8: => '${9:$2}#${10:$4}'${11:, :as => :${12:$10}}}
 snippet member "member routes"
-member do
-	${1:get :${2:action}}
-	${3:put :${4:action}}
-	${5:post :${6:action}}
-	${7:delete :${8:action}}
-end
-endsnippet
-
+  member do
+  	${1:get :${2:action}}
+  	${3:put :${4:action}}
+  	${5:post :${6:action}}
+  	${7:delete :${8:action}}
+  end
 snippet res "resources"
-resources :${1:posts}${2: do
-	$3
-end}
-endsnippet
-
+  resources :${1:posts}${2: do
+  	$3
+  end}
 snippet scope "scope"
-scope :${1:name}, ${2:joins(:${3:table}).}where(${4:'${5:$3.${6:field}} = ?', ${7:'${8:value}'}})
-endsnippet
-
+  scope :${1:name}, ${2:joins(:${3:table}).}where(${4:'${5:$3.${6:field}} = ?', ${7:'${8:value}'}})
 snippet scopel "scope lambda"
-scope :${1:name}, lambda { |${2:param}| ${3:where(${4::${5:field} => ${6:"${7:value}"}})} }
-endsnippet
-
+  scope :${1:name}, lambda { |${2:param}| ${3:where(${4::${5:field} => ${6:"${7:value}"}})} }
 snippet scopee "scope with extension"
-scope :${1:name}, ${2:where(${3::${4:field} => ${5:'${6:value}'}})} do
-	def ${7:method_name}
-		$0
-	end
-end
-endsnippet
-
+  scope :${1:name}, ${2:where(${3::${4:field} => ${5:'${6:value}'}})} do
+  	def ${7:method_name}
+  		$0
+  	end
+  end
 snippet sb "scoped_by"
-scoped_by_${1:attribute}(${2:id})
-endsnippet
-
+  scoped_by_${1:attribute}(${2:id})
 snippet setup "setup do..end"
-setup do
-	$0
-end
-endsnippet
-
+  setup do
+  	$0
+  end
 snippet trans "Translation snippet"
-I18n.t('`!v substitute(substitute(substitute(@%, substitute(getcwd() . "/", "\/", "\\\\/", "g"), "", ""), "\\(\\.\\(html\\|js\\)\\.\\(haml\\|erb\\)\\|\\(_controller\\)\\?\\.rb\\)$", "", ""), "/", ".", "g")`.${2:${1/[^\w]/_/g}}$3', :default => "${1:some_text}"$4)${5:$0}
-endsnippet
-
+  I18n.t('`!v substitute(substitute(substitute(@%, substitute(getcwd() . "/", "\/", "\\\\/", "g"), "", ""), "\\(\\.\\(html\\|js\\)\\.\\(haml\\|erb\\)\\|\\(_controller\\)\\?\\.rb\\)$", "", ""), "/", ".", "g")`.${2:${1/[^\w]/_/g}}$3', :default => "${1:some_text}"$4)${5:$0}
 snippet route_spec
-it 'routes to #${1:action}' do
-	${2:get}('/${3:url}').should route_to('`!v substitute(expand('%:t:r'), '_routing_spec$', '', '')`#$1'${4:, ${5:params}})$6
-end
-endsnippet
-
+  it 'routes to #${1:action}' do
+  	${2:get}('/${3:url}').should route_to('`!v substitute(expand('%:t:r'), '_routing_spec$', '', '')`#$1'${4:, ${5:params}})$6
+  end
 # vim:ft=snippets:
