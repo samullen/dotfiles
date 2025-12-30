@@ -154,9 +154,6 @@ map("n", "<leader>f", ":Files<cr>")
 map("n", "<leader>t", ":Tags<cr>")
 map("n", "<leader>gc", ":Commits<cr>")
 
--- SuperTab
--- vim.g.SuperTabDefaultCompletionType = '<C-n>'
-
 -- Valt
 map("n", "<leader>v", ":NV<CR>")
 

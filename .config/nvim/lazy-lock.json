@@ -2,7 +2,13 @@
   "CopilotChat.nvim": { "branch": "main", "commit": "df5376c132382dd47e3e552612940cbf25b3580c" },
   "LuaSnip": { "branch": "master", "commit": "5a1e39223db9a0498024a77b8441169d260c8c25" },
   "YankRing.vim": { "branch": "master", "commit": "28854abef8fa4ebd3cb219aefcf22566997d8f65" },
+<<<<<<< Updated upstream
   "copilot.vim": { "branch": "release", "commit": "f89e977c87180519ba3b942200e3d05b17b1e2fc" },
+||||||| Stash base
+  "copilot.vim": { "branch": "release", "commit": "f3d66c148aa60ad04c0a21d3e0a776459de09eb2" },
+=======
+  "copilot.lua": { "branch": "master", "commit": "508d8b00390ff3046323f61187a57069910c6e17" },
+>>>>>>> Stashed changes
   "fish.vim": { "branch": "master", "commit": "b51a869ec42100fb8054f3621ea1533cda98800f" },
   "fzf": { "branch": "master", "commit": "b3b221854b231c2385bd2aadfc1eb5ec3153cf3e" },
   "fzf.vim": { "branch": "master", "commit": "ddc14a6a5471147e2a38e6b32a7268282f669b0a" },
