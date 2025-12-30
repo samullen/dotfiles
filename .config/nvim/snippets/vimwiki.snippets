@@ -18,6 +18,11 @@ snippet clef "text form of a clef"
   -|- - - - - - - - - - - - - - - - -
   -|- - - - - - - - - - - - - - - - -
   -|- - - - - - - - - - - - - - - - -
+snippet fret "text form of a bass fretboard"
+  -|- - - - - - -
+  -|- - - - - - -
+  -|- - - - - - -
+  -|- - - - - - -
 snippet frontmatter "front matter"
   ---
   title:
@@ -31,6 +36,8 @@ snippet frontmatter "front matter"
   ---
 snippet js "JavaScript"
   JavaScript
+snippet mdv "markdown verse"
+  [$1 $2]($1#$2)
 snippet meet "Meeting boilerplate" b
   # `strftime("\%Y\%m\%d")`
 
@@ -124,3 +131,7 @@ snippet team_interview "Team Member Interview"
   - Are you happy working here?
 
   - What would make working here better?
+snippet ymd
+  `!v strftime("%Y%m%d")`
+snippet ymdhm
+  `!v strftime("%Y%m%d%H%M")`

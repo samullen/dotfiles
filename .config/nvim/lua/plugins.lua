@@ -1,3 +1,5 @@
+-- use :map to see a list of all mappings
+
 return {
   "tpope/vim-sensible",
   "vim-jp/syntax-vim-ex",
@@ -33,18 +35,18 @@ return {
       vim.keymap.set({"i"}, "<C-K>", function()
         ls.expand()
       end, {silent = true})
-      -- vim.keymap.set({"i", "s"}, "<C-L>", function()
-      --   ls.jump( 1)
-      -- end, {silent = true})
-      -- vim.keymap.set({"i", "s"}, "<C-J>", function()
-      --   ls.jump(-1)
-      -- end, {silent = true})
+      vim.keymap.set({"i", "s"}, "<C-L>", function()
+        ls.jump(1)
+      end, {silent = true})
+      vim.keymap.set({"i", "s"}, "<C-H>", function()
+        ls.jump(-1)
+      end, {silent = true})
 
-      -- vim.keymap.set({"i", "s"}, "<C-E>", function()
-      --   if ls.choice_active() then
-      --     ls.change_choice(1)
-      --   end
-      -- end, {silent = true})
+      vim.keymap.set({"i", "s"}, "<C-E>", function()
+        if ls.choice_active() then
+          ls.change_choice(1)
+        end
+      end, {silent = true})
     end,
   },
   {
@@ -69,12 +71,12 @@ return {
       autocmd("FileType", {
         group = "VimwikiRemaps",
         pattern = "vimwiki",
-        command = "inoremap <silent><expr><buffer> <M-n> vimwiki#tbl#kbd_tab()"
+        command = "inoremap <silent><expr><buffer> <M-N> vimwiki#tbl#kbd_tab()"
       })
       autocmd("FileType", {
         group = "VimwikiRemaps",
         pattern = "vimwiki",
-        command = "inoremap <silent><expr><buffer> <M-p> vimwiki#tbl#kbd_shift_tab()"
+        command = "inoremap <silent><expr><buffer> <M-P> vimwiki#tbl#kbd_shift_tab()"
       })
       autocmd("FileType", {
         group = "VimwikiRemaps",
@@ -92,7 +94,7 @@ return {
         expr = true,
         replace_keycodes = false
       })
-      vim.keymap.set('i', '<C-L>', '<Plug>(copilot-accept-word)', {
+      vim.keymap.set('i', '<C-M>', 'copilot#AcceptWord()', {
         expr = true,
       })
       vim.keymap.set('i', '<C-P>', '<Cmd>Copilot panel<cr>')
