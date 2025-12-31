@@ -94,7 +94,7 @@ return {
         expr = true,
         replace_keycodes = false
       })
-      vim.keymap.set('i', '<C-M>', 'copilot#AcceptWord()', {
+      vim.keymap.set('i', '<C-Y>', 'copilot#AcceptWord()', {
         expr = true,
       })
       vim.keymap.set('i', '<C-P>', '<Cmd>Copilot panel<cr>')
