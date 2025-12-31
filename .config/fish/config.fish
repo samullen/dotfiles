@@ -106,7 +106,9 @@ alias ds="delta --side-by-side"
 alias preview="open -a Preview"
 
 # Copy current working directory to clipboard
-alias cpwd="pbcopy < pwd"
+alias copy=pbcopy
+alias pasta=pbpaste
+alias cpwd="pwd | pbcopy"
 
 # Rails abbr -aes
 alias bi="bundle install -j 8"
