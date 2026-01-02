@@ -4,10 +4,15 @@ config-file = ?~/.ghostty.local
 
 command = /opt/homebrew/bin/fish --login --interactive
 
+# Font
 font-family = "Hack"
 font-family-bold = "JetBrains Mono"
 font-family-italic = "JetBrains Mono"
 font-family-bold-italic = "JetBrains Mono"
+font-thicken = false
+
+# Cells
+adjust-cell-width = -1
 
 scrollback-limit = 0
 
