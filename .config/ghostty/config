@@ -13,7 +13,7 @@ scrollback-limit = 0
 
 background = 000000
 foreground = eeeeee
-cursor-color = 00cc00
+cursor-color = 00b000
 
 # Cheat sheet for Palette colors: https://www.ditig.com/256-colors-cheat-sheet
 # palette = "0=#1d1f21"
