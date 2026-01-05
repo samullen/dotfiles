@@ -2,8 +2,6 @@
 
 config-file = ?~/.ghostty.local
 
-command = /opt/homebrew/bin/fish --login --interactive
-
 # Font
 font-family = "Hack"
 font-family-bold = "JetBrains Mono"
