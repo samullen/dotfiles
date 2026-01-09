@@ -14,16 +14,16 @@ return {
   "andymass/vim-matchup",
   "pangloss/vim-javascript",
   "vim-scripts/YankRing.vim",
-  -- {
-  --   "ervandew/supertab",
+  {
+    "ervandew/supertab",
 
-  --   init = function()
-  --     -- vim.g.SuperTabDefaultCompletionType = '<C-n>'
-  --     -- vim.g.SuperTabDefaultCompletionType = '<C-n>'
+    init = function()
+      -- vim.g.SuperTabDefaultCompletionType = '<C-n>'
+      -- vim.g.SuperTabDefaultCompletionType = '<C-n>'
 
-  --     vim.g.SuperTabDefaultCompletionType = 'context'
-  --   end,
-  -- },
+      vim.g.SuperTabDefaultCompletionType = 'context'
+    end,
+  },
   {
     "L3MON4D3/LuaSnip", version = "v2.*", build = "make install_jsregexp",
 
